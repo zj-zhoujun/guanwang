@@ -1,0 +1,121 @@
+<!--底部 开始-->
+<div class="pre-footer">
+    <div class="container">
+        <div class="row">
+            <!--底部关于我们 开始-->
+            <div class="col-md-2 col-sm-6 pre-footer-col">
+                <h2>{$Think.lang.about}</h2>
+                <ul class="list-unstyled">
+                    {tag:common name="rs" table="about" where="lang='en' and parentid<>0" num="6" order="sequence desc,id desc"}
+                        <li><i class="fa fa-angle-right"></i> <a href="{:url('/en/'.$rs['urlroute'].'-a'.$rs['id'])}">{$rs.title}</a></li>
+                    {/tag:common}
+                </ul>
+            </div>
+            <!--底部关于我们 结束-->
+            <!--底部产品中心 开始-->
+            <div class="col-md-2 col-sm-6 pre-footer-col">
+                <h2>{$Think.lang.product}</h2>
+                <ul class="list-unstyled">
+                    {tag:common name="rs" table="sort" where="lang='en' and moduleid=1 and parentid=0" num="6" order="sequence desc,id desc"}
+                        <li><i class="fa fa-angle-right"></i> <a href="{:url('/en/'.$rs['urlroute'].'-p'.$rs['id'].'-1')}">{$rs.title}</a></li>
+                    {/tag:common}
+                    <li><i class="fa fa-angle-right"></i> <a href="{:url('/en/product/index-1')}">{$Think.lang.v_more}</a></li>
+                </ul>
+            </div>
+            <!--底部产品中心 结束-->
+            <!--底部新闻动态 开始-->
+            <div class="col-md-2 col-sm-6 pre-footer-col">
+                <h2>{$Think.lang.v_news}</h2>
+                <ul class="list-unstyled">
+                    {tag:common name="rs" table="sort" where="lang='en' and moduleid=2 and parentid=0" num="6" order="sequence desc,id desc"}
+                        <li><i class="fa fa-angle-right"></i> <a href="{:url('/en/'.$rs['urlroute'].'-n'.$rs['id'].'-1')}">{$rs.title}</a></li>
+                    {/tag:common}
+                </ul>
+            </div>
+            <!--底部新闻动态 结束-->
+            <!--底部联系我们 开始-->
+            <div class="col-md-6 col-sm-6 pre-footer-col">
+                <h2 class="margin-bottom-0">{$Think.lang.v_contact}</h2>
+                <div class="pull-left margin-right-10 margin-top-10 text-center"><img src="{$erweima}" width="125" /><br />{$Think.lang.v_qrcode}</div>
+                <address class="pull-left margin-bottom-40">
+                    {$contact|htmlspecialchars_decode}
+                </address>
+            </div>
+            <!--底部联系我们 结束-->
+        </div>
+        {eq name="Request.controller" value="Index"}
+        <div class="row col-md-12 margin-bottom-10">
+            {$Think.lang.v_links}：
+            {tag:common name="rs" table="ad" where="lang='en' and typeid=2" num="35" order="sequence desc,id desc"}
+                <a href="{$rs.linkurl}" target="_blank">{$rs.title}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            {/tag:common}
+        </div>
+        {/eq}
+    </div>
+</div>
+<!--底部  结束-->
+<!--版权 开始-->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <!--左侧 开始-->
+            <div class="col-md-8 col-sm-8 padding-top-5">{$copyright|htmlspecialchars_decode}</div>
+            <!--左侧 结束-->
+            <!--右侧 开始-->
+            <div class="col-md-4 col-sm-4 text-right">
+                <p class="powered">Powered by: <a href="http://www.df81.com/">df81.com</a></p>
+            </div>
+            <!--右侧 结束-->
+        </div>
+    </div>
+</div>
+<!--版权 结束-->
+<!--客服 开始-->
+<div id="top">
+    <div id="izl_rmenu" class="izl-rmenu">
+        <div class="izl-rl"></div>
+        <div class="kfbtn btn-qq">
+            <div class="qq">
+                {tag:common name="rs" table="chat" where="lang='en' and typeid='msn'" num="5" order="sequence desc,id desc"}
+                    <a rel="nofollow" target="_blank" href="msnim:chat?contact={$rs.account}"><img src="{$rs.thumb}" alt="{$rs.title}" class="margin-right-10" />{$rs.title}</a>
+                {/tag:common}
+            </div>
+        </div>
+        <div class="kfbtn btn-wx"><img class="pic" src="{$erweima}"></div>
+        <div class="kfbtn btn-phone">
+            <div class="phone">{$telephone}</div>
+        </div>
+        <div class="kfbtn btn-top" style="display: none;"></div>
+    </div>
+</div>
+<!--客服 结束-->
+<!--核心脚本 开始-->
+<!--[if lt IE 9]>
+<script src="__PUBLIC__/theme/plugins/respond.min.js"></script>  
+<![endif]-->
+<script src="__PUBLIC__/theme/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/theme/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script><!--产品预览-->
+<!--核心脚本 结束-->
+<!--全局脚本 开始-->
+<script src="__PUBLIC__/theme/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products --><!--产品加载-->
+<script src="__PUBLIC__/theme/corporate/scripts/layout.js" type="text/javascript"></script><!--产品加载-->
+<!--产品内容页 开始-->
+<script src="__PUBLIC__/theme/plugins/jquery-migrate.min.js" type="text/javascript"></script><!--产品预览-->
+<script src="__PUBLIC__/theme/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!--产品预览-->
+<script src='__PUBLIC__/theme/plugins/zoom/jquery.zoom.min.js' type="text/javascript"></script><!--产品预览-->
+<script src="__PUBLIC__/theme/plugins/bootstrap-touchspin/bootstrap.touchspin.min.js" type="text/javascript"></script><!--数量增减-->
+<script src="__PUBLIC__/theme/plugins/rateit/src/jquery.rateit.min.js" type="text/javascript"></script><!--评分星级-->
+<!--产品内容页 结束-->
+<script type="text/javascript">
+jQuery(document).ready(function() {
+    Layout.init();//购物车滚动条及伸缩
+    Layout.initOWL();//产品加载
+    Layout.initTouchspin();//移动端
+    Layout.initFixHeaderWithPreHeader();//固定头部
+    Layout.initImageZoom();//产品预览
+});
+</script>
+<!--全局脚本 结束-->
+<script src="__PUBLIC__/js/kefu.js" type="text/javascript"></script><!--在线客服-->
+<script src="__PUBLIC__/js/global.js" type="text/javascript"></script><!--在线客服-->
+{notempty name="siteRs.htmlcode"}{$siteRs.htmlcode}{/notempty}

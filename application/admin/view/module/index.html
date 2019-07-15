@@ -1,0 +1,101 @@
+<!--有理想的地方，地狱都是天堂-->
+<!--Copyright @ df81.com 版权所有-->
+<!--作者: 符工@邦明 邮箱：1062129401@qq.com-->
+{include file="public/head" /}
+        <!--容器 开始-->
+        <div class="page-container">
+            <!--侧边栏 开始-->
+            <div class="page-sidebar-wrapper">
+                <!--侧边栏 开始-->
+                <div class="page-sidebar navbar-collapse collapse">
+                    {include file="public/global_left" /}
+                    {include file="public/response_left" /}
+                </div>
+            <!--侧边栏 结束-->
+            </div>
+            <!--侧边栏 结束-->
+            <!--内容 开始-->
+            <div class="page-content-wrapper">
+                <!--内容主体 开始-->
+                <div class="page-content">
+                    <!--页面头部 开始-->
+                    <!--页面导航 开始-->
+                    <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{$Think.lang.v_system_manage}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{$Think.lang.v_module_manage}</span></li>
+                        </ul>
+                    </div>
+                    <!--页面导航 结束-->
+                    <!--页面头部 结束-->
+                    <!--右侧主体 开始-->
+                    <div class="col-md-12 margin-top-10 margin-bottom-10">
+                        <button type="button" class="btn green" onclick="javascript:window.location.href='{:url('Module/edit?lang='.input('get.lang'))}'">{$Think.lang.v_add} {$Think.lang.v_module}</button>
+                    </div>
+                    <form name="form2" id="form2" action="" method="post">
+                        <table class="table table-striped table-bordered table-hover table-checkable order-column">
+                            <thead>
+                                <tr class="bg-default">
+                                    <th>ID</th>
+                                    <th>{$Think.lang.v_module_name}</th>
+                                    <th>{$Think.lang.v_module_mulu}</th>
+                                    <th>{$Think.lang.v_listnum}</th>
+                                    <th>{$Think.lang.v_sequence}</th>
+                                    <th>{$Think.lang.v_enable_ornot}</th>
+                                    <th>{$Think.lang.v_do}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              {volist name="list" id="rs"}
+                                <input type="hidden" name="id[]" value="{$rs.id}" />
+                                <tr class="odd gradeX">
+                                    <td>{gt name="rs.id" value="6"}<input type="checkbox" name="selectid[]" id="selectid" value="{$rs['id']}" /> {/gt}{$rs['id']}</td>
+                                    <td>
+                                        {switch name="rs.id"}
+                                            {case value="1"}{$Think.lang.v_product}{/case}
+                                            {case value="2"}{$Think.lang.v_news}{/case}
+                                            {case value="3"}{$Think.lang.v_about_module}{/case}
+                                            {case value="4"}{$Think.lang.v_project}{/case}
+                                            {case value="5"}{$Think.lang.v_down}{/case}
+                                            {default /}{$rs.title}
+                                        {/switch}{$Think.lang.v_module}
+                                    </td>
+                                    <td>{$rs['tabledir']}</td>
+                                    <td>
+                                        <input name="listnum[]" type="text" value="{$rs['listnum']}" class="form-control input-sm" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{$Think.lang.v_require_number}！');this.value='0';}" />
+                                    </td>
+                                    <td><input name="sequence[]" type="text" value="{$rs['sequence']}" class="form-control input-sm" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{$Think.lang.v_require_number}！');this.value='0';}" /></td>
+                                    <td>
+                                        {eq name="rs.disabled" value="1"}<a onClick='return confirm("{$Think.lang.v_enable_cancel}？");' href="{:url('Module/update_disabled?value=0&id='.$rs['id'])}" class="btn green btn-sm">{$Think.lang.v_enable}</a>
+                                            <else/><a onClick='return confirm("{$Think.lang.v_enable_makesure}？");' href="{:url('Module/update_disabled?value=1&id='.$rs['id'])}" class="btn red-flamingo btn-sm">{$Think.lang.v_disable}</a>
+                                        {/eq}
+                                    </td>
+	                                <td><a href="{:url('Module/edit?lang='.input('get.lang').'&id='.$rs['id'])}" class="btn green btn-sm">{$Think.lang.v_edit}</a>
+						                {lt name="rs.id" value="6"}
+                                            <span class="btn default btn-sm">{$Think.lang.v_cannot_delete}</span>
+                                        {else /}
+                                            <a onClick='return confirm("{$Think.lang.v_confirm_delete}！");' href="{:url('module/delete_one?id='.$rs['id'])}" class="btn red-flamingo btn-sm">{$Think.lang.v_delete}</a>
+                                        {/lt}
+					                </td>
+                                </tr>
+                              {/volist}
+                                <tr>
+                                    <td colspan="7">
+                                        <div class="col-md-7"><div class="pull-left pdl5">{$list->render()}</div><div class="pull-left lh31 pdl5">{$Think.lang.v_total} {$lastPage} {$Think.lang.v_page} {$total} {$Think.lang.v_records}</div></div>
+                                        <div class="col-md-5"><div class="pull-right"><button type="button" class="btn blue" onclick="CheckOthers(this.form);"><i class="fa fa-check"></i> {$Think.lang.v_select_all}</button><button type="button" class="btn green" onClick='ConfirmDel("","{:url('module/update_all')}","update");'><i class="fa fa-arrow-circle-o-up"></i> {$Think.lang.v_update_all}</button><button type="button" class="btn red-flamingo" onClick='ConfirmDel("{$Think.lang.v_confirm_delete}！","{:url('module/delete_all')}","delete");'><i class="fa fa-times"></i> {$Think.lang.v_delete_select}</button></div></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                    <!--右侧主体 结束-->
+                </div>
+                <!--内容主体 结束-->
+            </div>
+            <!--内容 结束-->
+        </div>
+        <!--容器 结束-->
+{include file="public/foot" /}
+</body>
+</html>

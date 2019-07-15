@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>{$siteRs.sitetitle}</title>
+<meta name="keywords" content="{$siteRs.sitekeyword}" />
+<meta name="description" content="{$siteRs.sitedescription}" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!--幻灯片 开始-->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/normalize.css" /><!--幻灯片-->
+<link rel="stylesheet" href="__PUBLIC__/css/flickity-docs.css" media="screen" /><!--幻灯片-->
+<!--[if IE]>
+    <script src="__PUBLIC__/js/html5shiv.min.js"></script>
+<![endif]-->
+<!--幻灯片 结束-->
+</head>
+<body class="ecommerce">
+{include file="public/head" /}
+<!--幻灯片 开始-->
+<div class="gallery show-neighbors js-flickity margin-bottom-50" data-flickity-options='{ "wrapAround": true,"autoPlay": true }'>
+    {tag:common name="rs" table="ad" where="lang='en' and find_in_set('pc',client) and typeid=1 and position='Index'" num="6" order="sequence desc,id desc"}
+    <div class="hero-gallery__cell hero-gallery__cell--4" style="background:url({$rs.thumb}) center no-repeat;"></div>
+    {/tag:common}
+</div>
+<!--幻灯片 结束-->
+<!--主体 开始-->
+<div class="main">
+    <div class="container">
+        <div class="row margin-bottom-40">
+            <!--推荐产品 开始-->
+            <div class="col-md-12 sale-product">
+                <h3 class="clearfix"><div class="pull-left">{$Think.lang.v_commend_product}</div><div class="pull-right padding-top-10 font-size16"><a href="{:url('product/index-1')}">&raquo;{$Think.lang.v_more} {$Think.lang.v_product}</a></div></h3>
+                <div class="owl-carousel owl-carousel5">
+                    {tag:common name="rs" table="product" where="lang='en' and find_in_set('view',status) and find_in_set('commend',status)" num="10" order="sequence desc,id desc"}
+                    <div>
+                        <div class="product-item">
+                            <div class="pi-img-wrapper">
+                                <img src="{$rs.thumb}" class="img-responsive" alt="{$rs.title}">
+                                <div>
+                                    <a href="{$rs.thumb}" class="btn btn-default fancybox-button">{$Think.lang.v_big_thumb}</a>
+                                    <a href="{:url('/en/'.$rs['urlroute'].'-p'.$rs['id'])}" class="btn btn-default fancybox-fast-view">{$Think.lang.v_detail}</a>
+                                </div>
+                            </div>
+                            <h3 class="text-center"><a href="{:url('/en/'.$rs['urlroute'].'-p'.$rs['id'])}">{$rs.title}</a></h3>
+                            <div class="pi-price">${$rs.price}</div>
+                            <a href="{:url('/en/'.$rs['urlroute'].'-p'.$rs['id'])}" class="btn btn-default add2cart">&raquo;{$Think.lang.v_detail}</a>
+                            {php}if(!empty($rs['status'])){
+                                if(in_array("hot",explode(',',$rs['status']))){
+                                    echo '<div class="sticker sticker-sale"></div>';
+                                }
+                                if(in_array("new",explode(',',$rs['status']))){
+                                    echo '<div class="sticker sticker-new"></div>';
+                                }
+                            }{/php}
+                        </div>
+                    </div>
+                    {/tag:common}
+                </div>
+            </div>
+            <!--推荐产品 结束-->
+        </div>
+        <!--侧边栏和内容 开始-->
+        <div class="row margin-bottom-40 ">
+            <!--新闻动态 开始-->
+            <div class="sidebar col-md-4 col-sm-4">
+                <h2>{$Think.lang.v_news}</h2>
+                <ul class="list-group sidebar-menu">
+                    {tag:common name="rs" table="news" where="lang='en' and find_in_set('view',status)" num="10" order="addtime desc"}
+                        <li class="list-group-item clearfix"><a href="{:url('/en/'.$rs['urlroute'].'-n'.$rs['id'])}"><i class="fa fa-angle-right"></i>{$rs.title|msubstr=0,38}</a></li>
+                    {/tag:common}
+                </ul>
+                <a href="{:url('/en/news/index-1')}" class="col-md-12 btn btn-default">&raquo; {$Think.lang.v_more} {$Think.lang.v_news}</a>
+            </div>
+            <!--新闻动态 结束-->
+            <!--关于我们 开始-->
+            <div class="col-md-8 col-sm-8">
+                <h3 class="clearfix"><div class="pull-left">{$Think.lang.about}</div><div class="pull-right padding-top-10 font-size16"><a href="{:url('/en/gongsijianjie-a227')}">&raquo;{$Think.lang.v_detail}</a></div></h3>
+                <div class="content-page">{$aboutus|htmlspecialchars_decode}</div>
+            </div>
+            <!--关于我们 结束-->
+        </div>
+        <!--侧边栏和内容 结束-->
+    </div>
+</div>
+{include file="public/foot" /}
+<script src="__PUBLIC__/js/flickity-docs.min.js"></script><!--幻灯片-->
+</body>
+</html>

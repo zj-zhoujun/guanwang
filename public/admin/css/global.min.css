@@ -1,0 +1,13 @@
+select,radio{cursor:pointer;}
+a:hover{text-decoration:none;}
+.cursor{cursor:pointer;}
+.margin-top-5{margin-top:5px;}
+.pdl5{padding-left:5px;}
+.lh31{line-height:31px;}
+#tab1 td{padding-top:10px;}
+#tabFile1 td{padding-top:10px;}
+/*编辑页面*/
+.edit_nav_left{float:left; list-style:none; line-height:38px; padding:0 0 0 10px;}
+/*权限复选框*/
+.borderradius{border-radius:0;}
+.borderradius_left0{border-bottom-left-radius:0;border-top-left-radius:0;}

@@ -1,0 +1,147 @@
+<!--有理想的地方，地狱都是天堂-->
+<!--Copyright @ df81.com 版权所有-->
+<!--作者: 符工@邦明 邮箱：1062129401@qq.com-->
+{include file="public/head" /}
+<link href="__ADMIN__/bootstrap/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__/bootstrap/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!--容器 开始-->
+        <div class="page-container">
+            <!--侧边栏 开始-->
+            <div class="page-sidebar-wrapper">
+                <!--侧边栏 开始-->
+                <div class="page-sidebar navbar-collapse collapse">
+                    {include file="public/left" /}
+                    {include file="public/response_left" /}
+                </div>
+            <!--侧边栏 结束-->
+            </div>
+            <!--侧边栏 结束-->
+            <!--内容 开始-->
+            <div class="page-content-wrapper">
+                <!--内容主体 开始-->
+                <div class="page-content">
+                    <!--页面头部 开始-->
+                    <!--页面导航 开始-->
+                    <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li><span>{$Think.lang.v_home}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>
+						    {switch name="modulenav.tabledir"}
+                                {case value="product"}{$Think.lang.v_product}{/case}
+                                {case value="news"}{$Think.lang.v_news}{/case}
+                                {case value="down"}{$Think.lang.v_down}{/case}
+                                {case value="about"}{$Think.lang.v_about_module}{/case}
+                                {case value="project"}{$Think.lang.v_project}{/case}
+                                {default /}{$modulenav.title}
+                            {/switch}
+                            {$Think.lang.v_manage}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>
+						    {switch name="modulenav.tabledir"}
+                                {case value="product"}{$Think.lang.v_product}{/case}
+                                {case value="news"}{$Think.lang.v_news}{/case}
+                                {case value="down"}{$Think.lang.v_down}{/case}
+                                {case value="about"}{$Think.lang.v_about_module}{/case}
+                                {case value="project"}{$Think.lang.v_project}{/case}
+                                {default /}{$modulenav.title}
+                            {/switch}
+                            {$Think.lang.v_attribute}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_attribute}</span></li>
+                        </ul>
+                    </div>
+                    <!--页面导航 结束-->
+                    <!--页面头部 结束-->
+                    <!--右侧主体 开始-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form method="post" action="" class="form-horizontal" id="validationForm">
+                                <input type="hidden" name="id" value="{$rs.id}">
+				                <input type="hidden" name="moduleid" value="{$moduleid}">
+				                <input type="hidden" name="lang" value="{:input('get.lang')}">
+                                <div class="portlet bg-green bg-font-white">
+                                    <div class="portlet-body">
+                                        <div class="tabbable-bordered">
+                                            <div class="edit_nav_left">
+                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_attribute}</span>
+                                            </div>
+                                            <ul class="nav nav-tabs tabs-reversed"></ul>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab_general">
+                                                    <div class="form-body">
+                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{$Think.lang.v_error_tips}</div>
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3">{$Think.lang.v_attribute_name}<span class="required" aria-required="true">*</span></label>
+                                                            <div class="col-md-5">
+                                                                <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="attname" value="{$rs.attname}" placeholder="{$Think.lang.v_attribute_name_tips}" /></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3">{$Think.lang.v_attribute_value}<span class="required" aria-required="true">*</span></label>
+                                                            <div class="col-md-5">
+                                                                <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="attvalue" value="{$rs.attvalue}" placeholder="{$Think.lang.v_attribute_value_tips}" /></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3">{$Think.lang.v_belong_sort}</label>
+                                                            <div class="col-md-5">
+                                                                <select name="sortid" autocomplete="off" id="single" class="form-control select2">
+                                                                    {foreach name="Sort" item="k"}
+                                                                        <option value="{$k['id']}" {if condition="$rs['id']==$k['id']"}selected="selected"{/if}>{$k['html']}{$k['title']}</option>
+                                                                    {/foreach}
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3">{$Think.lang.v_add_method}</label>
+                                                            <div class="col-md-5">
+                                                                <div class="radio-list">
+                                                                    <label class="radio-inline">
+                                                                        <input name="fieldtype" type="radio" value="1"{if condition="$rs['fieldtype']==1 or empty($rs['fieldtype'])"} checked="checked"{/if} />{$Think.lang.v_method_select}
+                                                                    </label>
+                                                                    <label class="radio-inline">
+									                                    <input type="radio" name="fieldtype" value="2"{if condition="$rs['fieldtype']==2"} checked="checked"{/if} />{$Think.lang.v_method_checkbox}
+                                                                    </label>
+                                                                    <label class="radio-inline">
+									                                    <input type="radio" name="fieldtype" value="3"{if condition="$rs['fieldtype']==3"} checked="checked"{/if} />{$Think.lang.v_method_text}
+                                                                    </label>
+                                                                    <label class="radio-inline">
+									                                    <input type="radio" name="fieldtype" value="4"{if condition="$rs['fieldtype']==4"} checked="checked"{/if} />{$Think.lang.v_method_textarea}
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3">{$Think.lang.v_sequence}</label>
+                                                            <div class="col-md-5">
+                                                                <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="sequence" value="{eq name="rs.sequence" value=""}0{else /}{$rs.sequence}{/eq}" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{$Think.lang.v_require_number}！');this.value='0';}" /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-actions">
+                                                    <div class="row">
+                                                        <div class="col-md-offset-3 col-md-9">
+                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {$Think.lang.v_save}</button>
+                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{$Think.lang.v_goback}</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--右侧主体 结束-->
+                </div>
+                <!--内容主体 结束-->
+            </div>
+            <!--内容 结束-->
+        </div>
+        <!--容器 结束-->
+{include file="public/foot" /}
+<script src="__ADMIN__/bootstrap/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="__ADMIN__/bootstrap/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+<script src="__ADMIN__/bootstrap/pages/scripts/components-select2.min.js" type="text/javascript"></script>
+</body>
+</html>

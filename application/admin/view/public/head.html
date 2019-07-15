@@ -1,0 +1,133 @@
+<!--有理想的地方，地狱都是天堂-->
+<!--Copyright @ df81.com 版权所有-->
+<!--作者: 符工@邦明 邮箱：1062129401@qq.com-->
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<title>{$Think.lang.v_admin_system}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<!--全局强制样式 开始-->
+<link href="__ADMIN__/bootstrap/googlefont/googlefont.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__/bootstrap/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__/bootstrap/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__/bootstrap/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__/bootstrap/global/plugins/uniform/css/uniform.default.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__/bootstrap/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+<!--全局强制样式 结束-->
+<!--皮肤全局样式 开始-->
+<link href="__ADMIN__/bootstrap/global/css/components-rounded.min.css" rel="stylesheet" id="style_components" type="text/css" />
+<link href="__ADMIN__/bootstrap/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+<!--皮肤全局样式 结束-->
+<!--皮肤布局样式 开始-->
+<link href="__ADMIN__/bootstrap/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__/bootstrap/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+<!--皮肤布局样式 结束-->
+<link href="__ADMIN__/css/global.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="page-header-fixed page-footer-fixed page-sidebar-closed-hide-logo page-content-white">
+        <!--头部 开始-->
+        <div class="page-header navbar navbar-fixed-top">
+            <!--头部内部 开始-->
+            <div class="page-header-inner ">
+                <!--LOGO 开始-->
+                <div class="page-logo">
+                    <a href="{:url('Index/index?lang='.input('lang'))}">{eq name="Think.get.lang" value="cn"}<img src="__ADMIN__/bootstrap/layouts/layout/img/logo.png" class="logo-default" />{else /}<img src="__ADMIN__/bootstrap/layouts/layout/img/logoen.png" class="logo-default" />{/eq}</a>
+                    <div class="menu-toggler sidebar-toggler"> </div>
+                </div>
+                <!--LOGO 结束-->
+                <!--头部左侧横向菜单 开始-->
+                <div class="hor-menu   hidden-sm hidden-xs">
+                    <ul class="nav navbar-nav">
+                        <li class="classic-menu-dropdown 
+                            {switch name="Request.controller"}
+                                {case value="Siteinfo|Guestbook|User|Area|AuthGroup|AuthRule|Language|Module|Config|Navigation|Banner|Comment|Ad|Keywordlink|Chat|Field|Databackup"}{/case}{default /}active
+                            {/switch}">
+                            <a href="{:url('Index/index?lang='.input('get.lang'))}"><i class="fa fa-home"></i> {$Think.lang.v_home}
+                                {switch name="Request.controller"}
+                                    {case value="Siteinfo|Guestbook|User|Area|AuthGroup|AuthRule|Language|Module|Config|Navigation|Banner|Comment|Ad|Keywordlink|Chat|Field|Databackup"}{/case}{default /}<span class="selected"></span>
+                                {/switch}
+                            </a>
+                        </li>
+                        <li class="classic-menu-dropdown 
+                            {switch name="Request.controller"}
+                                {case value="Siteinfo|Guestbook|User|Area|AuthGroup|AuthRule|Language|Module|Config|Navigation|Banner|Comment|Ad|Keywordlink|Chat|Field|Databackup"}active{/case}
+                            {/switch}">
+                            <a href="{:url('Siteinfo/index?lang='.input('get.lang'))}"><i class="fa fa-gear"></i> {$Think.lang.v_global}
+                                {switch name="Request.controller"}
+                                    {case value="Siteinfo|Guestbook|User|Area|AuthGroup|AuthRule|Language|Module|Config|Navigation|Banner|Comment|Ad|Keywordlink|Chat|Field|Databackup"}<span class="selected"></span>{/case}
+                                {/switch}
+                            </a>
+                        </li>
+                        <li class="classic-menu-dropdown"><a href="/" target="_blank"><i class="fa fa-desktop"></i> {$Think.lang.v_homepage}</a></li>
+                    </ul>
+                </div>
+                <!--头部左侧横向菜单 结束-->
+                <!--响应式菜单开关 开始-->
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
+                <!--响应式菜单开关 结束-->
+                <!--头部右侧横向菜单 开始-->
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                        <!--待办事项下拉 开始-->
+                        <li class="dropdown dropdown-extended">
+                            <a href="{:url('Index/delCache?lang='.input('lang'))}" class="dropdown-toggle">
+                                <i class="fa fa-refresh"></i> <span>{$Think.lang.v_clean_cache}</span>
+                            </a>
+                            <ul>
+                            </ul>
+                        </li>
+                        <!--待办事项下拉 结束-->
+                        <!--语言导航条 开始-->
+                        {gt name="languageNum" value="1"}
+                            <li class="dropdown dropdown-language">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <img alt="" src="{$nowLang.ico}">
+                                    <span class="langname">{$nowLang.admintitle}</span>
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-default">
+                                    {volist name="headlang" id="headlang"}
+                                        {neq name="Think.get.lang" value="$headlang.mulu"}
+                                            <li><a href="{:url('Index/index?lang='.$headlang['mulu'])}"><img src="{$headlang['ico']}">{$headlang['admintitle']}</a></li>
+                                        {/neq}
+                                    {/volist}
+                                </ul>
+                            </li>
+                         {/gt}
+                        <!--语言导航条 结束-->
+                        <!--用户登录下拉 开始-->
+                        <li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <img alt="" class="img-circle" src="{:input('session.avatar')}" />
+                                <span class="username username-hide-on-mobile"> {:input('session.realname')}</span>
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                <li>
+                                    <a href="{:url('User/edit?lang='.input('get.lang').'&id='.input('session.userid'))}">
+                                        <i class="icon-user"></i> {$Think.lang.v_me_edit}</a>
+                                </li>
+                                <li>
+                                    <a href="{:url('Login/logout')}" onClick='return confirm("{$Think.lang.v_confirm_quit}");'>
+                                        <i class="icon-power"></i> {$Think.lang.v_logout}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--用户登录下拉 结束-->
+                    </ul>
+                </div>
+                <!--头部右侧横向菜单 结束-->
+            </div>
+            <!--头部内部 结束-->
+        </div>
+        <!--头部 结束-->
+        <!--头部和内容分割 开始-->
+        <div class="clearfix"> </div>
+        <!--头部和内容分割 结束-->
+        

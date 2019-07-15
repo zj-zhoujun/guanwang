@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>{$seotitle}</title>
+<meta name="keywords" content="{$rs.keyword}" />
+<meta name="description" content="{$rs.description}" />
+</head>
+<body class="ecommerce">
+{include file="public/head" /}
+<!--内页banner  开始-->
+<div class="title-wrapper" style="background: #72c2ff url({$pagebanner}) no-repeat 100% 100%;">
+    <div class="container">
+        <div class="container-inner"></div>
+    </div>
+</div>
+<!--内页banner  结束-->
+    <div class="main">
+      <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/"><i class="fa fa-home"></i>{$Think.lang.v_home}</a></li>
+            <li><a href="{:url('/news/index-1')}">{$Think.lang.news}</a></li>
+            {volist name="listnavigation" id="pageNavRs"}
+                <li class="active"><a href="{:url('/'.$pageNavRs['urlroute'].'-n'.$pageNavRs['id'].'-1')}">{$pageNavRs.title}</a></li>
+            {/volist}
+        </ul>
+        <!--侧边栏和内容 开始-->
+        <div class="row margin-bottom-40">
+          <!--侧边栏 开始-->
+          <div class="sidebar col-md-3 col-sm-3">
+            <ul class="list-group margin-bottom-25 sidebar-menu">
+                    {volist name="moduleSort" id="newsSortRs"}
+                        {empty name="newsSortRs.sub"}
+                            <li class="list-group-item clearfix"><a href="{:url('/'.$newsSortRs['urlroute'].'-n'.$newsSortRs['id'].'-1')}"><i class="fa fa-angle-right"></i>{$newsSortRs.title}</a></li>
+                        {else /}
+                            <li class="list-group-item clearfix dropdown active">
+                                <a href="{:url('/'.$newsSortRs['urlroute'].'-n'.$newsSortRs['id'].'-1')}" class="collapsed"><i class="fa fa-angle-right"></i>{$newsSortRs.title}<i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu" style="display:block;">
+                                    {volist name="newsSortRs.sub" id="subRs"}
+                                        {empty name="subRs.subsub"}
+                                            <li class="list-group-item clearfix"><a href="{:url('/'.$subRs['urlroute'].'-n'.$subRs['id'].'-1')}"><i class="fa fa-angle-right"></i>{$subRs.title}</a></li>
+                                        {else /}
+                                            <li class="list-group-item dropdown clearfix">
+                                                <a href="{:url('/'.$subRs['urlroute'].'-n'.$subRs['id'].'-1')}"><i class="fa fa-angle-right"></i>{$subRs.title}<i class="fa fa-angle-down"></i></a>
+                                                <ul class="dropdown-menu" style="display:block;">
+                                                    {volist name="subRs.subsub" id="subsubRs"}
+                                                        <li class="list-group-item clearfix"><a href="{:url('/'.$subsubRs['urlroute'].'-n'.$subsubRs['id'].'-1')}"><i class="fa fa-angle-right"></i>{$subsubRs.title}</a></li>
+                                                    {/volist}
+                                                </ul>
+                                            </li>
+                                        {/empty}
+                                    {/volist}
+                                </ul>
+                            </li>
+                        {/empty}
+                    {/volist}
+            </ul>
+          </div>
+          <!--侧边栏 结束-->
+          <!--内容 开始-->
+          <div class="col-md-9 col-sm-9">
+            <h1 class="text-center margin-bottom-20">{$rs.title}</h1>
+            <h5 class="text-center margin-bottom-20">{$Think.lang.v_author}：{$rs.author} | {$Think.lang.v_copyfrom}：{$rs.copyfrom} | {$Think.lang.v_date}：{$rs.addtime|date='Y-m-d',###} | {$Think.lang.v_hits}：{$rs.hits}</h5>
+            <div class="content-page margin-bottom-20">
+                {$content1|htmlspecialchars_decode}
+            </div>
+            <h5>{$Think.lang.v_previous_page}：{$pre}</h5>
+            <h5 margin-bottom-20>{$Think.lang.v_next_page}：{$next}</h5>
+            <h5>
+                                <!--分享 开始-->
+<div class="jiathis_style_24x24"><span class="jiathis_txt" style="font-size:14px;">{$Think.lang.v_shareto}：</span>
+<a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_tqq"></a>
+<a class="jiathis_button_weixin"></a>
+<a class="jiathis_button_renren"></a>
+<a class="jiathis_button_cqq"></a>
+<a class="jiathis_button_xiaoyou"></a>
+<a class="jiathis_button_tifeng"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+	summary:"",
+	shortUrl:false,
+	hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!--分享 结束-->
+            </h5>
+          </div>
+          <!--内容 结束-->
+        </div>
+        <!--侧边栏和内容 结束-->
+      </div>
+    </div>
+{include file="public/foot" /}
+</body>
+</html>

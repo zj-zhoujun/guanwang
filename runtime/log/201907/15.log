@@ -1,0 +1,109 @@
+[ 2019-07-15T09:07:10+08:00 ] 127.0.0.1 127.0.0.1 GET /
+[ log ] lang.com/ [运行时间：0.386022s][吞吐率：2.59req/s] [内存消耗：2,947.34kb] [文件加载：56]
+[ info ] [ LANG ] E:\phpstudy\WWW\1\5bb1e9ba11ab2\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'lang=zh-cn; Hm_lvt_6611726b100529aefbef44b68cf21f60=1562830784; Hm_lvt_eaeabff74fbfaa0528be9c9691e1ef25=1562835356,1562986897; pgv_pvi=7809785856',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'purpose' => 'prefetch',
+  'connection' => 'close',
+  'host' => 'lang.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ BEHAVIOR ] Run app\common\behavior\SetTheme @module_init [ RunTime:0.001000s ]
+[ info ] [ LANG ] E:\phpstudy\WWW\1\5bb1e9ba11ab2/application/index\lang\cn.php
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ E:\phpstudy\WWW\1\5bb1e9ba11ab2\application\index\controller\Index.php ]
+[ info ] [ VIEW ] ./application/index/view/default/pc/index\index.html [ array (
+  0 => 'telephone',
+  1 => 'copyright',
+  2 => 'contact',
+  3 => 'aboutus',
+  4 => 'slogan',
+  5 => 'erweima',
+  6 => 'siteRs',
+  7 => 'navigation',
+) ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003001s ] mysql:dbname=zhoujun_guan;host=192.168.0.160;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bmkj_field` [ RunTime:0.035002s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_field` WHERE  `lang` = 'cn' [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bmkj_siteinfo` [ RunTime:0.013001s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_siteinfo` WHERE  `lang` = 'cn' LIMIT 1 [ RunTime:0.003000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bmkj_navigation` [ RunTime:0.015001s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 0  AND `lang` = 'cn' ORDER BY sequence desc,id desc [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 54 ORDER BY sequence desc,id desc [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 55 ORDER BY sequence desc,id desc [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 65 ORDER BY sequence desc,id desc [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 66 ORDER BY sequence desc,id desc [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 56 ORDER BY sequence desc,id desc [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 70 ORDER BY sequence desc,id desc [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 71 ORDER BY sequence desc,id desc [ RunTime:0.004001s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 72 ORDER BY sequence desc,id desc [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 73 ORDER BY sequence desc,id desc [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 74 ORDER BY sequence desc,id desc [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 57 ORDER BY sequence desc,id desc [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 76 ORDER BY sequence desc,id desc [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 79 ORDER BY sequence desc,id desc [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 77 ORDER BY sequence desc,id desc [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 78 ORDER BY sequence desc,id desc [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 58 ORDER BY sequence desc,id desc [ RunTime:0.003001s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 80 ORDER BY sequence desc,id desc [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 118 ORDER BY sequence desc,id desc [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 81 ORDER BY sequence desc,id desc [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 82 ORDER BY sequence desc,id desc [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 59 ORDER BY sequence desc,id desc [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 83 ORDER BY sequence desc,id desc [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 84 ORDER BY sequence desc,id desc [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 85 ORDER BY sequence desc,id desc [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_navigation` WHERE  `parentid` = 60 ORDER BY sequence desc,id desc [ RunTime:0.001000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=zhoujun_guan;host=192.168.0.160;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bmkj_language` [ RunTime:0.015001s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_language` WHERE  (  status=1 ) ORDER BY sequence desc,id desc LIMIT 5 [ RunTime:0.002000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012000s ] mysql:dbname=zhoujun_guan;host=192.168.0.160;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bmkj_ad` [ RunTime:0.003001s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_ad` WHERE  (  lang='cn' and find_in_set('pc',client) and typeid=1 and position='Index' ) ORDER BY sequence desc,id desc LIMIT 6 [ RunTime:0.013000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=zhoujun_guan;host=192.168.0.160;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bmkj_product` [ RunTime:0.003000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_product` WHERE  (  lang='cn' and find_in_set('view',status) and find_in_set('commend',status) ) ORDER BY sequence desc,id desc LIMIT 10 [ RunTime:0.017001s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=zhoujun_guan;host=192.168.0.160;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bmkj_news` [ RunTime:0.003000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_news` WHERE  (  lang='cn' and find_in_set('view',status) ) ORDER BY addtime desc LIMIT 10 [ RunTime:0.005001s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:dbname=zhoujun_guan;host=192.168.0.160;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bmkj_about` [ RunTime:0.011001s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_about` WHERE  (  lang='cn' and parentid<>0 ) ORDER BY sequence desc,id desc LIMIT 6 [ RunTime:0.002000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010001s ] mysql:dbname=zhoujun_guan;host=192.168.0.160;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bmkj_sort` [ RunTime:0.003000s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_sort` WHERE  (  lang='cn' and moduleid=1 and parentid=0 ) ORDER BY sequence desc,id desc LIMIT 6 [ RunTime:0.002000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:dbname=zhoujun_guan;host=192.168.0.160;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `bmkj_sort` WHERE  (  lang='cn' and moduleid=2 and parentid=0 ) ORDER BY sequence desc,id desc LIMIT 6 [ RunTime:0.002001s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=zhoujun_guan;host=192.168.0.160;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `bmkj_ad` WHERE  (  lang='cn' and typeid=2 ) ORDER BY sequence desc,id desc LIMIT 35 [ RunTime:0.001000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:dbname=zhoujun_guan;host=192.168.0.160;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `bmkj_chat` [ RunTime:0.015001s ]
+[ sql ] [ SQL ] SELECT * FROM `bmkj_chat` WHERE  (  lang='cn' and typeid='qq' ) ORDER BY sequence desc,id desc LIMIT 5 [ RunTime:0.013000s ]
+
+---------------------------------------------------------------

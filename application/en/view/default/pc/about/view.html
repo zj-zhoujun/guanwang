@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>{$seotitle}</title>
+<meta name="keywords" content="{$rs.keyword}" />
+<meta name="description" content="{$rs.description}" />
+</head>
+<body class="ecommerce">
+{include file="public/head" /}
+<!--内页banner  开始-->
+<div class="title-wrapper" style="background: #72c2ff url({$pagebanner}) no-repeat 100% 100%;">
+    <div class="container">
+        <div class="container-inner"></div>
+    </div>
+</div>
+<!--内页banner  结束-->
+    <div class="main">
+      <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/"><i class="fa fa-home"></i>{$Think.lang.v_home}</a></li>
+            {volist name="viewNavigation" id="aboutNavRs"}
+                <li class="active"><a href="{:url('/en/'.$aboutNavRs['urlroute'].'-a'.$aboutNavRs['id'])}">{$aboutNavRs.title}</a></li>
+            {/volist}
+        </ul>
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        <div class="row margin-bottom-40">
+          <!-- BEGIN SIDEBAR -->
+          <div class="sidebar col-md-3 col-sm-3">
+            <ul class="list-group margin-bottom-25 sidebar-menu">
+                    {volist name="moduleSort" id="aboutSortRs"}
+                        {empty name="aboutSortRs.sub"}
+                            <li class="list-group-item clearfix"><a href="{:url('/en/'.$aboutSortRs['urlroute'].'-a'.$aboutSortRs['id'])}"><i class="fa fa-angle-right"></i>{$aboutSortRs.title}</a></li>
+                        {else /}
+                            <li class="list-group-item clearfix dropdown active">
+                                <a href="{:url('/en/'.$aboutSortRs['urlroute'].'-a'.$aboutSortRs['id'])}" class="collapsed"><i class="fa fa-angle-right"></i>{$aboutSortRs.title}<i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu" style="display:block;">
+                                    {volist name="aboutSortRs.sub" id="subRs"}
+                                        {empty name="subRs.subsub"}
+                                            <li class="list-group-item clearfix"><a href="{:url('/en/'.$subRs['urlroute'].'-a'.$subRs['id'])}"><i class="fa fa-angle-right"></i>{$subRs.title}</a></li>
+                                        {else /}
+                                            <li class="list-group-item dropdown clearfix">
+                                                <a href="{:url('/en/'.$subRs['urlroute'].'-a'.$subRs['id'])}"><i class="fa fa-angle-right"></i>{$subRs.title}<i class="fa fa-angle-down"></i></a>
+                                                <ul class="dropdown-menu" style="display:block;">
+                                                    {volist name="subRs.subsub" id="subsubRs"}
+                                                        <li class="list-group-item clearfix"><a href="{:url('/en/'.$subsubRs['urlroute'].'-a'.$subsubRs['id'])}"><i class="fa fa-angle-right"></i>{$subsubRs.title}</a></li>
+                                                    {/volist}
+                                                </ul>
+                                            </li>
+                                        {/empty}
+                                    {/volist}
+                                </ul>
+                            </li>
+                        {/empty}
+                    {/volist}
+            </ul>
+          </div>
+          <!-- END SIDEBAR -->
+
+          <!-- BEGIN CONTENT -->
+          <div class="col-md-9 col-sm-9">
+            <h1>{$rs.title}</h1>
+            <div class="content-page">
+              {$content1|htmlspecialchars_decode}
+            </div>
+            {eq name="guestbook" value="1"}
+            <div class="content-page">
+                {include file="public/guestbook" /}
+            </div>
+            {/eq}
+          </div>
+          <!-- END CONTENT -->
+        </div>
+        <!-- END SIDEBAR & CONTENT -->
+      </div>
+    </div>
+{include file="public/foot" /}
+</body>
+</html>

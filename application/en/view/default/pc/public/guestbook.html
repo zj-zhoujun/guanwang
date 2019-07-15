@@ -1,0 +1,41 @@
+              <!--留言 开始-->
+              <form name="guestbook" id="guestbook" onSubmit="return guestbookCheck();" method="post" action="{:url('about/guestbook')}" class="default-form" role="form">
+                  <input type="hidden" name="addtime" value="{php}echo time();{/php}" />
+                <div class="form-group">
+                  <label for="name">{$Think.lang.v_realname}<span class="require">*</span></label>
+                  <input name="realname" id="realname" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email </label>
+                  <input name="email" id="email" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="message">{$Think.lang.v_content1}<span class="require">*</span></label>
+                  <textarea name="content" id="content" class="form-control" rows="8"></textarea>
+                </div>
+                <div class="form-group">
+                    <table><tr><td><img class="cursor" src="{:captcha_src()}" onclick="this.src='{:captcha_src()}'" border="0" width="125" height="34" align="absmiddle" /></td>
+                    <td width="10"></td><td><input name="verify" type="text" class="form-control" maxlength="4" autocomplete="off" placeholder="{$Think.lang.v_verify}" /></td>
+                    </tr></table>
+                </div>
+                <div class="padding-top-20">                  
+                  <button type="submit" class="btn btn-primary">{$Think.lang.v_submit}</button>
+                </div>
+              </form>
+              <!--留言 结束-->
+<script type="text/javascript">
+function guestbookCheck(){
+  var realname=document.guestbook.realname.value;
+  var content=document.guestbook.content.value;
+  if(document.guestbook.realname.value==""){
+      alert("{$Think.lang.v_require_realname}");
+      document.guestbook.realname.focus();
+	  return false;
+  }
+  if(document.getElementById("content").value.length <5 || document.getElementById("content").value.length >500){
+      alert("{$Think.lang.v_limit_content}");
+      document.guestbook.content.focus();
+	  return false;
+  }
+}
+</script>
