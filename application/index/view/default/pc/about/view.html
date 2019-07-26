@@ -8,9 +8,9 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>{$seotitle}</title>
-<meta name="keywords" content="{$rs.keyword}" />
-<meta name="description" content="{$rs.description}" />
+<title>{:lang($seotitle)}</title>
+<meta name="keywords" content="{:lang($rs.keyword)}" />
+<meta name="description" content="{:lang($rs.description)}" />
 </head>
 <body class="ecommerce">
 {include file="public/head" /}
@@ -24,9 +24,9 @@
     <div class="main">
       <div class="container">
         <ul class="breadcrumb">
-            <li><a href="/"><i class="fa fa-home"></i>{$Think.lang.v_home}</a></li>
+            <li><a href="/"><i class="fa fa-home"></i>{:lang('首页')}</a></li>
             {volist name="viewNavigation" id="aboutNavRs"}
-                <li class="active"><a href="{:url('/'.$aboutNavRs['urlroute'].'-a'.$aboutNavRs['id'])}">{$aboutNavRs.title}</a></li>
+                <li class="active"><a href="{:url('/'.$aboutNavRs['urlroute'].'-a'.$aboutNavRs['id'])}">{:lang($aboutNavRs.title)}</a></li>
             {/volist}
         </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
@@ -36,20 +36,36 @@
             <ul class="list-group margin-bottom-25 sidebar-menu">
                     {volist name="moduleSort" id="aboutSortRs"}
                         {empty name="aboutSortRs.sub"}
-                            <li class="list-group-item clearfix"><a href="{:url('/'.$aboutSortRs['urlroute'].'-a'.$aboutSortRs['id'])}"><i class="fa fa-angle-right"></i>{$aboutSortRs.title}</a></li>
+                            <li class="list-group-item clearfix">
+                                <a href="{:url('/'.$aboutSortRs['urlroute'].'-a'.$aboutSortRs['id'])}">
+                                    <i class="fa fa-angle-right"></i>{:lang($aboutSortRs.title)}
+                                </a>
+                            </li>
                         {else /}
                             <li class="list-group-item clearfix dropdown active">
-                                <a href="{:url('/'.$aboutSortRs['urlroute'].'-a'.$aboutSortRs['id'])}" class="collapsed"><i class="fa fa-angle-right"></i>{$aboutSortRs.title}<i class="fa fa-angle-down"></i></a>
+                                <a href="{:url('/'.$aboutSortRs['urlroute'].'-a'.$aboutSortRs['id'])}" class="collapsed">
+                                    <i class="fa fa-angle-right"></i>{:lang($aboutSortRs.title)}<i class="fa fa-angle-down"></i>
+                                </a>
                                 <ul class="dropdown-menu" style="display:block;">
                                     {volist name="aboutSortRs.sub" id="subRs"}
                                         {empty name="subRs.subsub"}
-                                            <li class="list-group-item clearfix"><a href="{:url('/'.$subRs['urlroute'].'-a'.$subRs['id'])}"><i class="fa fa-angle-right"></i>{$subRs.title}</a></li>
+                                            <li class="list-group-item clearfix">
+                                                <a href="{:url('/'.$subRs['urlroute'].'-a'.$subRs['id'])}">
+                                                    <i class="fa fa-angle-right"></i>{:lang($subRs.title)}
+                                                </a>
+                                            </li>
                                         {else /}
                                             <li class="list-group-item dropdown clearfix">
-                                                <a href="{:url('/'.$subRs['urlroute'].'-a'.$subRs['id'])}"><i class="fa fa-angle-right"></i>{$subRs.title}<i class="fa fa-angle-down"></i></a>
+                                                <a href="{:url('/'.$subRs['urlroute'].'-a'.$subRs['id'])}">
+                                                    <i class="fa fa-angle-right"></i>{:lang($subRs.title)}<i class="fa fa-angle-down"></i>
+                                                </a>
                                                 <ul class="dropdown-menu" style="display:block;">
                                                     {volist name="subRs.subsub" id="subsubRs"}
-                                                        <li class="list-group-item clearfix"><a href="{:url('/'.$subsubRs['urlroute'].'-a'.$subsubRs['id'])}"><i class="fa fa-angle-right"></i>{$subsubRs.title}</a></li>
+                                                        <li class="list-group-item clearfix">
+                                                            <a href="{:url('/'.$subsubRs['urlroute'].'-a'.$subsubRs['id'])}">
+                                                                <i class="fa fa-angle-right"></i>{:lang($subsubRs.title)}
+                                                            </a>
+                                                        </li>
                                                     {/volist}
                                                 </ul>
                                             </li>
@@ -65,14 +81,14 @@
 
           <!-- BEGIN CONTENT -->
           <div class="col-md-9 col-sm-9">
-            <h1>{$rs.title}</h1>
+            <h1>{:lang($rs.title)}</h1>
             <div class="content-page">
-              {$content1|htmlspecialchars_decode}
+              {:lang(htmlspecialchars_decode($content1))}
             </div>
             {eq name="guestbook" value="1"}
-            <div class="content-page">
-                {include file="public/guestbook" /}
-            </div>
+            <!--<div class="content-page">-->
+                <!--{include file="public/guestbook" /}-->
+            <!--</div>-->
             {/eq}
           </div>
           <!-- END CONTENT -->

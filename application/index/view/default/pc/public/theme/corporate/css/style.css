@@ -445,7 +445,7 @@ body.page-header-fixed {
   font-size: 23px;
   font-weight: 400;
 
-  margin-right: 150px;
+  /*margin-right: 150px;*/
   padding-top: 12px;
 }
 
@@ -472,7 +472,7 @@ body.page-header-fixed {
 
 /* Navigation */
 .header-navigation {
-	font: 16px Tahoma,Arial,"\5FAE\8F6F\96C5\9ED1";
+	font: 12px Tahoma,Arial,"\5FAE\8F6F\96C5\9ED1";
 	margin: 0 10px 0 0;
 	padding: 0;
 	float: left;

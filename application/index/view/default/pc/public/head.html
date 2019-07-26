@@ -13,26 +13,26 @@
 <link href="__PUBLIC__/css/kefu.css" rel="stylesheet" id="style-color"><!--在线客服-->
 <!--顶部导航条 开始-->
 <div class="pre-header">
-    <div class="container">
+    <div class="container" style="width: 1200px;">
         <div class="row">
             <!--顶部导航条左侧 开始-->
             <div class="col-md-6 col-sm-6">
                 <ul class="list-unstyled list-inline">
-                    <li>{$slogan}</li>
+                    <li>{:lang($slogan)}</li>
                 </ul>
             </div>
             <!--顶部导航条左侧 结束-->
             <!--顶部导航条菜单 开始-->
             <div class="col-md-6 col-sm-6">
                 <ul class="list-unstyled list-inline pull-right">
-                    <li><i class="fa fa-phone"></i>{$Think.lang.v_hotline}：{$telephone}</li>
+                    <li><i class="fa fa-phone"></i>{:lang('联系电话')}：{$telephone}</li>
                     <!--语言 开始-->
                     <li>
                         {tag:common name="langRs" table="language" where="status=1" num="5" order="sequence desc,id desc"}
                             {eq name="langRs.isdefault" value="1"}
-                                <a href="/"><img src="{$langRs.ico}" class="margin-right-5" />{$langRs.viewtitle}</a>
+                                <a href="{$this_url}?lang={$langRs.mulu}"><img src="{$langRs.ico}" class="margin-right-5" />{$langRs.viewtitle}</a>
                             {else/}
-                                <a href="/{$langRs.mulu}/"><img src="{$langRs.ico}" class="margin-right-5" />{$langRs.viewtitle}</a>
+                                <a href="{$this_url}?lang={$langRs.mulu}"><img src="{$langRs.ico}" class="margin-right-5" />{$langRs.viewtitle}</a>
                             {/eq}
                         {/tag:common}
                     </li>
@@ -54,20 +54,24 @@
             <ul>
                 {volist name="navigation" id="navRs"}
                     {empty name="navRs.sub"}
-                        <li><a href="{$navRs.linkurl}">{$navRs.title}</a></li>
+                        <li><a href="{$navRs.linkurl}">{:lang($navRs.title)}</a></li>
                     {else /}
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-target="#" href="{$navRs.linkurl}">{$navRs.title}<i class="fa fa-angle-right"></i></a>
+                            <a class="dropdown-toggle" data-target="#" href="{$navRs.linkurl}">
+                                {:lang($navRs.title)}<i class="fa fa-angle-right"></i>
+                            </a>
                             <ul class="dropdown-menu">
                                 {volist name="navRs.sub" id="subRs"}
                                     {empty name="subRs.subsub"}
-                                        <li><a href="{$subRs.linkurl}">{$subRs.title}</a></li>
+                                        <li><a href="{$subRs.linkurl}">{:lang($subRs.title)}</a></li>
                                     {else /}
                                         <li class="dropdown">
-                                            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="{$subRs.linkurl}">{$subRs.title}<i class="fa fa-angle-right"></i></a>
+                                            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="{$subRs.linkurl}">
+                                                {:lang($subRs.title)}<i class="fa fa-angle-right"></i>
+                                            </a>
                                             <ul class="dropdown-menu">
                                                 {volist name="subRs.subsub" id="subsubRs"}
-                                                    <li><a href="{$subsubRs.linkurl}">{$subsubRs.title}</a></li>
+                                                    <li><a href="{$subsubRs.linkurl}">{:lang($subsubRs.title)}</a></li>
                                                 {/volist}
                                             </ul>
                                         </li>

@@ -28,10 +28,10 @@
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
-            <li><a href="/"><i class="fa fa-home"></i>{$Think.lang.v_home}</a></li>
-            <li><a href="{:url('/product/index-1')}">{$Think.lang.product}</a></li>
+            <li><a href="/"><i class="fa fa-home"></i>{:lang('首页')}</a></li>
+            <li><a href="{:url('/product/index-1')}">{:lang('产品中心')}</a></li>
             {volist name="listnavigation" id="rs"}
-                <li class="active"><a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'].'-1')}">{$rs.title}</a></li>
+                <li class="active"><a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'].'-1')}">{:lang($rs.title)}</a></li>
             {/volist}
         </ul>
         <!--侧边栏和内容 开始-->
@@ -41,20 +41,34 @@
                 <ul class="list-group margin-bottom-25 sidebar-menu">
                     {volist name="moduleSort" id="rs"}
                         {empty name="rs.sub"}
-                            <li class="list-group-item clearfix"><a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'].'-1')}"><i class="fa fa-angle-right"></i>{$rs.title}</a></li>
+                            <li class="list-group-item clearfix">
+                                <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'].'-1')}"><i class="fa fa-angle-right"></i>{:lang($rs.title)}</a>
+                            </li>
                         {else /}
                             <li class="list-group-item clearfix dropdown active">
-                                <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'].'-1')}" class="collapsed"><i class="fa fa-angle-right"></i>{$rs.title}<i class="fa fa-angle-down"></i></a>
+                                <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'].'-1')}" class="collapsed">
+                                    <i class="fa fa-angle-right"></i>{:lang($rs.title)}<i class="fa fa-angle-down"></i>
+                                </a>
                                 <ul class="dropdown-menu" style="display:block;">
                                     {volist name="rs.sub" id="subRs"}
                                         {empty name="subRs.subsub"}
-                                            <li class="list-group-item clearfix"><a href="{:url('/'.$subRs['urlroute'].'-p'.$subRs['id'].'-1')}"><i class="fa fa-angle-right"></i>{$subRs.title}</a></li>
+                                            <li class="list-group-item clearfix">
+                                                <a href="{:url('/'.$subRs['urlroute'].'-p'.$subRs['id'].'-1')}">
+                                                    <i class="fa fa-angle-right"></i>{:lang($subRs.title)}
+                                                </a>
+                                            </li>
                                         {else /}
                                             <li class="list-group-item dropdown clearfix">
-                                                <a href="{:url('/'.$subRs['urlroute'].'-p'.$subRs['id'].'-1')}"><i class="fa fa-angle-right"></i>{$subRs.title}<i class="fa fa-angle-down"></i></a>
+                                                <a href="{:url('/'.$subRs['urlroute'].'-p'.$subRs['id'].'-1')}">
+                                                    <i class="fa fa-angle-right"></i>{:lang($subRs.title)}<i class="fa fa-angle-down"></i>
+                                                </a>
                                                 <ul class="dropdown-menu" style="display:block;">
                                                     {volist name="subRs.subsub" id="subsubRs"}
-                                                        <li class="list-group-item clearfix"><a href="{:url('/'.$subsubRs['urlroute'].'-p'.$subsubRs['id'].'-1')}"><i class="fa fa-angle-right"></i>{$subsubRs.title}</a></li>
+                                                        <li class="list-group-item clearfix">
+                                                            <a href="{:url('/'.$subsubRs['urlroute'].'-p'.$subsubRs['id'].'-1')}">
+                                                                <i class="fa fa-angle-right"></i>{:lang($subsubRs.title)}
+                                                            </a>
+                                                        </li>
                                                     {/volist}
                                                 </ul>
                                             </li>
@@ -66,11 +80,11 @@
                     {/volist}
                 </ul>
                 <div class="sidebar-products clearfix">
-                    <h2>{$Think.lang.v_related_product}</h2>
+                    <h2>{:lang('相似产品')}</h2>
                     {tag:common name="rs" table="product" where="sortid in($sortidArr) and lang='cn' and find_in_set('view',status)" num="6" order="hits desc,sequence desc"}
                         <div class="item">
-                            <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}"><img src="{$rs.thumb}" alt="{$rs.title}"></a>
-                            <h3><a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}">{$rs.title}</a></h3>
+                            <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}"><img src="{$rs.thumb}" alt="{:lang($rs.title)}"></a>
+                            <h3><a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}">{:lang($rs.title)}</a></h3>
                             <div class="price">&yen;{$rs.price}</div>
                         </div>
                     {/tag:common}
@@ -83,10 +97,10 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="product-main-image">
-                                <img src="{$rs.thumb}" alt="{$rs.title}" class="img-responsive" data-BigImgsrc="{$rs.thumb}">
+                                <img src="{$rs.thumb}" alt="{:lang($rs.title)}" class="img-responsive" data-BigImgsrc="{$rs.thumb}">
                             </div>
                             <div class="product-other-images">
-                                {foreach $morepics as $pic} 
+                                {foreach $morepics as $pic}
                                     <a href="{$pic}" class="fancybox-button" rel="photos-lib"><img src="{$pic}"></a>
                                 {/foreach}
                             </div>
@@ -99,34 +113,34 @@
                                     <em>&yen;<span>{$rs.marketprice}</span></em>
                                 </div>
                                 <div class="availability">
-                                    {$Think.lang.v_stock}：<strong>{$rs.quantity}</strong>
+                                    {:lang('库存')}：<strong>{$rs.quantity}</strong>
                                 </div>
                             </div>
                             <div class="description">
-                                <p>{$rs.description|htmlspecialchars_decode}</p>
+                                <p>{:lang(htmlspecialchars_decode($rs.description))}</p>
                             </div>
                             <div class="product-page-options">
                                 {volist name="attribute" id="attRs"}
-                                    <span class="f16">{$attRs.attname}：{:str_replace('|', '', $attRs['attvalue'])}</span><br />
+                                    <span class="f16">{:lang($attRs.attname)}：{:lang(str_replace('|', '', $attRs['attvalue']))}</span><br />
                                 {/volist}
                             </div>
                             <div class="review">
-                                <a href="javascript:;">{$Think.lang.v_hits}：{$rs.hits}</a>
+                                <!--<a href="javascript:;">{$Think.lang.v_hits}：{$rs.hits}</a>-->
                             </div>
                             <ul class="social-icons">
                                 <!--分享 开始-->
-<div class="jiathis_style_24x24"><span class="jiathis_txt" style="font-size:14px;">{$Think.lang.v_shareto}：</span>
-<a class="jiathis_button_qzone"></a>
-<a class="jiathis_button_tsina"></a>
-<a class="jiathis_button_tqq"></a>
-<a class="jiathis_button_weixin"></a>
-<a class="jiathis_button_renren"></a>
-<a class="jiathis_button_cqq"></a>
-<a class="jiathis_button_xiaoyou"></a>
-<a class="jiathis_button_tifeng"></a>
-<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-<a class="jiathis_counter_style"></a>
-</div>
+<!--<div class="jiathis_style_24x24"><span class="jiathis_txt" style="font-size:14px;">{$Think.lang.v_shareto}：</span>-->
+<!--<a class="jiathis_button_qzone"></a>-->
+<!--<a class="jiathis_button_tsina"></a>-->
+<!--<a class="jiathis_button_tqq"></a>-->
+<!--<a class="jiathis_button_weixin"></a>-->
+<!--<a class="jiathis_button_renren"></a>-->
+<!--<a class="jiathis_button_cqq"></a>-->
+<!--<a class="jiathis_button_xiaoyou"></a>-->
+<!--<a class="jiathis_button_tifeng"></a>-->
+<!--<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>-->
+<!--<a class="jiathis_counter_style"></a>-->
+<!--</div>-->
 <script type="text/javascript" >
 var jiathis_config={
 	summary:"",
@@ -140,19 +154,19 @@ var jiathis_config={
                         </div>
                         <div class="product-page-content">
                             <ul id="myTab" class="nav nav-tabs">
-                                <li class="active"><a href="#Description" data-toggle="tab">{$Think.lang.v_content1}</a></li>
-                                <li><a href="#Information" data-toggle="tab">{$Think.lang.v_content2}</a></li>
-                                <li><a href="#Reviews" data-toggle="tab">{$Think.lang.v_content3}</a></li>
+                                <li class="active"><a href="#Description" data-toggle="tab">{:lang('内容1')}</a></li>
+                                <li><a href="#Information" data-toggle="tab">{:lang('内容2')}</a></li>
+                                <li><a href="#Reviews" data-toggle="tab">{:lang('内容3')}</a></li>
                             </ul>
                             <div id="myTabContent" class="tab-content">
                                 <div class="tab-pane fade in active" id="Description">
-                                    {$content1|htmlspecialchars_decode}
+                                    {:lang(htmlspecialchars_decode($content1))}
                                 </div>
                                 <div class="tab-pane fade" id="Information">
-                                    {$rs.content2|htmlspecialchars_decode}
+                                    {:lang(htmlspecialchars_decode($rs.content2))}
                                 </div>
                                 <div class="tab-pane fade" id="Reviews">
-                                    {$rs.content3|htmlspecialchars_decode}
+                                    {:lang(htmlspecialchars_decode($rs.content3))}
                                 </div>
                             </div>
                         </div>
@@ -167,7 +181,7 @@ var jiathis_config={
         <!--类似产品 开始-->
         <div class="row margin-bottom-40">
             <div class="col-md-12 col-sm-12">
-                <h2>{$Think.lang.v_hot_product}</h2>
+                <h2>{:lang('热销产品')}</h2>
                 <div class="owl-carousel owl-carousel4">
                     {tag:common name="rs" table="product" where="lang='cn' and find_in_set('view',status) and find_in_set('hot',status)" num="8" order="hits desc,sequence desc"}
                     <div>
@@ -175,13 +189,13 @@ var jiathis_config={
                             <div class="pi-img-wrapper">
                                 <img src="{$rs.thumb}" class="img-responsive" alt="{$rs.title}">
                                 <div>
-                                    <a href="{$rs.thumb}" class="btn btn-default fancybox-button">{$Think.lang.v_big_thumb}</a>
-                                    <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}" class="btn btn-default fancybox-fast-view">{$Think.lang.v_detail}</a>
+                                    <a href="{$rs.thumb}" class="btn btn-default fancybox-button">{:lang('查看大图')}</a>
+                                    <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}" class="btn btn-default fancybox-fast-view">{:lang('查看详情')}</a>
                                 </div>
                             </div>
-                            <h3><a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}">{$rs.title}</a></h3>
+                            <h3><a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}">{:lang($rs.title)}</a></h3>
                             <div class="pi-price">&yen;{$rs.price}</div>
-                            <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}" class="btn btn-default add2cart">&raquo;{$Think.lang.v_detail}</a>
+                            <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}" class="btn btn-default add2cart">&raquo;{:lang('详情')}</a>
                         </div>
                     </div>
                     {/tag:common}

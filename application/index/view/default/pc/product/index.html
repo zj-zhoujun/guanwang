@@ -30,20 +30,36 @@
                 <ul class="list-group margin-bottom-25 sidebar-menu">
                     {volist name="moduleSort" id="rs"}
                         {empty name="rs.sub"}
-                            <li class="list-group-item clearfix"><a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'].'-1')}"><i class="fa fa-angle-right"></i>{$rs.title}</a></li>
+                            <li class="list-group-item clearfix">
+                                <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'].'-1')}">
+                                    <i class="fa fa-angle-right"></i>{:lang($rs.title)}
+                                </a>
+                            </li>
                         {else /}
                             <li class="list-group-item clearfix dropdown active">
-                                <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'].'-1')}" class="collapsed"><i class="fa fa-angle-right"></i>{$rs.title}<i class="fa fa-angle-down"></i></a>
+                                <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'].'-1')}" class="collapsed">
+                                    <i class="fa fa-angle-right"></i>{:lang($rs.title)}<i class="fa fa-angle-down"></i>
+                                </a>
                                 <ul class="dropdown-menu" style="display:block;">
                                     {volist name="rs.sub" id="subRs"}
                                         {empty name="subRs.subsub"}
-                                            <li class="list-group-item clearfix"><a href="{:url('/'.$subRs['urlroute'].'-p'.$subRs['id'].'-1')}"><i class="fa fa-angle-right"></i>{$subRs.title}</a></li>
+                                            <li class="list-group-item clearfix">
+                                                <a href="{:url('/'.$subRs['urlroute'].'-p'.$subRs['id'].'-1')}">
+                                                    <i class="fa fa-angle-right"></i>{:lang($subRs.title)}
+                                                </a>
+                                            </li>
                                         {else /}
                                             <li class="list-group-item dropdown clearfix">
-                                                <a href="{:url('/'.$subRs['urlroute'].'-p'.$subRs['id'].'-1')}"><i class="fa fa-angle-right"></i>{$subRs.title}<i class="fa fa-angle-down"></i></a>
+                                                <a href="{:url('/'.$subRs['urlroute'].'-p'.$subRs['id'].'-1')}">
+                                                    <i class="fa fa-angle-right"></i>{:lang($subRs.title)}<i class="fa fa-angle-down"></i>
+                                                </a>
                                                 <ul class="dropdown-menu" style="display:block;">
                                                     {volist name="subRs.subsub" id="subsubRs"}
-                                                        <li class="list-group-item clearfix"><a href="{:url('/'.$subsubRs['urlroute'].'-p'.$subsubRs['id'].'-1')}"><i class="fa fa-angle-right"></i>{$subsubRs.title}</a></li>
+                                                        <li class="list-group-item clearfix">
+                                                            <a href="{:url('/'.$subsubRs['urlroute'].'-p'.$subsubRs['id'].'-1')}">
+                                                                <i class="fa fa-angle-right"></i>{:lang($subsubRs.title)}
+                                                            </a>
+                                                        </li>
                                                     {/volist}
                                                 </ul>
                                             </li>
@@ -58,8 +74,8 @@
                     <h2>{$Think.lang.v_hot_product}</h2>
                     {tag:common name="rs" table="product" where="lang='cn' and find_in_set('view',status) and find_in_set('hot',status)" num="6" order="hits desc,sequence desc"}
                         <div class="item">
-                            <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}"><img src="{$rs.thumb}" alt="{$rs.title}"></a>
-                            <h3><a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}">{$rs.title}</a></h3>
+                            <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}"><img src="{$rs.thumb}" alt="{:lang($rs.title)}"></a>
+                            <h3><a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}">{:lang($rs.title)}</a></h3>
                             <div class="price">&yen;{$rs.price}</div>
                         </div>
                     {/tag:common}
@@ -71,18 +87,20 @@
                 <div class="row margin-bottom-10">
                     <div class="pull-left col-md-7 col-sm-7 padding-left-15">
                         <ul class="breadcrumb">
-                            <li><a href="/"><i class="fa fa-home"></i>{$Think.lang.v_home}</a></li>
-                            <li><a href="{:url('/product/index-1')}">{$Think.lang.product}</a></li>
+                            <li><a href="/"><i class="fa fa-home"></i>{:lang('首页')}</a></li>
+                            <li><a href="{:url('/product/index-1')}">{:lang('产品中心')}</a></li>
                             {volist name="listnavigation" id="rs"}
-                                <li class="active"><a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'].'-1')}">{$rs.title}</a></li>
+                                <li class="active"><a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'].'-1')}">{:lang($rs.title)}</a></li>
                             {/volist}
                         </ul>
                     </div>
                     <div class="pull-right col-md-5 col-sm-5 padding-right-15">
                         <form name="kwsearch" method="get" onSubmit="return checksearch();" action="">
                             <div class="input-group">
-                                <input name="keyword" type="text" placeholder="{$Think.lang.v_quickfind}" class="form-control">
-                                <span class="input-group-btn"><button class="btn btn-primary" type="submit">{$Think.lang.v_search}</button></span>
+                                <input name="keyword" type="text" placeholder="{:lang('快速搜索')}" class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit">{:lang('搜索')}</button>
+                                </span>
                             </div>
                         </form>
                     </div> 
@@ -94,15 +112,17 @@
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="product-item">
                                 <div class="pi-img-wrapper">
-                                    <img src="{$rs.thumb}" class="img-responsive" alt="{$rs.title}">
+                                    <img src="{$rs.thumb}" class="img-responsive" alt="{:lang($rs.title)}">
                                     <div>
-                                        <a href="{$rs.thumb}" class="btn btn-default fancybox-button">{$Think.lang.v_big_thumb}</a>
-                                        <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}" class="btn btn-default fancybox-fast-view">{$Think.lang.v_detail}</a>
+                                        <a href="{$rs.thumb}" class="btn btn-default fancybox-button">{:lang('查看大图')}</a>
+                                        <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}" class="btn btn-default fancybox-fast-view">
+                                            {:lang('详情')}
+                                        </a>
                                     </div>
                                 </div>
-                                <h3><a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}">{$rs.title}</a></h3>
+                                <h3><a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}">{:lang($rs.title)}</a></h3>
                                 <div class="pi-price">&yen;{$rs.price}</div>
-                                <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}" class="btn btn-default add2cart">&raquo;{$Think.lang.v_detail}</a>
+                                <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}" class="btn btn-default add2cart">&raquo;{:lang('详情')}</a>
                             {php}if(!empty($rs['status'])){
                                 if(in_array("hot",explode(',',$rs['status']))){
                                     echo '<div class="sticker sticker-sale"></div>';
@@ -119,7 +139,7 @@
                 <!--产品列表 结束-->
                 <!--分页 开始-->
                 <div class="row">
-                    <div class="col-md-4 col-sm-4 items-info">{$Think.lang.v_total} {$lastPage} {$Think.lang.v_page} {$total} {$Think.lang.v_records}</div>
+                    <!--<div class="col-md-4 col-sm-4 items-info">{$Think.lang.v_total} {$lastPage} {$Think.lang.v_page} {$total} {$Think.lang.v_records}</div>-->
                     <div class="col-md-8 col-sm-8">
                         {$list->render()}
                     </div>

@@ -4,52 +4,54 @@
         <div class="row">
             <!--底部关于我们 开始-->
             <div class="col-md-2 col-sm-6 pre-footer-col">
-                <h2>{$Think.lang.about}</h2>
+                <h2>{:lang('关于我们')}</h2>
                 <ul class="list-unstyled">
                     {tag:common name="rs" table="about" where="lang='cn' and parentid<>0" num="6" order="sequence desc,id desc"}
-                        <li><i class="fa fa-angle-right"></i> <a href="{:url('/'.$rs['urlroute'].'-a'.$rs['id'])}">{$rs.title}</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="{:url('/'.$rs['urlroute'].'-a'.$rs['id'])}">{:lang($rs.title)}</a></li>
                     {/tag:common}
                 </ul>
             </div>
             <!--底部关于我们 结束-->
             <!--底部产品中心 开始-->
             <div class="col-md-2 col-sm-6 pre-footer-col">
-                <h2>{$Think.lang.product}</h2>
+                <h2>{:lang('产品中心')}</h2>
                 <ul class="list-unstyled">
                     {tag:common name="rs" table="sort" where="lang='cn' and moduleid=1 and parentid=0" num="6" order="sequence desc,id desc"}
-                        <li><i class="fa fa-angle-right"></i> <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'].'-1')}">{$rs.title}</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'].'-1')}">{:lang($rs.title)}</a></li>
                     {/tag:common}
-                    <li><i class="fa fa-angle-right"></i> <a href="{:url('/product/index-1')}">{$Think.lang.v_more}</a></li>
+                    <li><i class="fa fa-angle-right"></i> <a href="{:url('/product/index-1')}">{:lang('更过')}</a></li>
                 </ul>
             </div>
             <!--底部产品中心 结束-->
             <!--底部新闻动态 开始-->
             <div class="col-md-2 col-sm-6 pre-footer-col">
-                <h2>{$Think.lang.v_news}</h2>
+                <h2>{:lang('新闻动态')}</h2>
                 <ul class="list-unstyled">
                     {tag:common name="rs" table="sort" where="lang='cn' and moduleid=2 and parentid=0" num="6" order="sequence desc,id desc"}
-                        <li><i class="fa fa-angle-right"></i> <a href="{:url('/'.$rs['urlroute'].'-n'.$rs['id'].'-1')}">{$rs.title}</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="{:url('/'.$rs['urlroute'].'-n'.$rs['id'].'-1')}">{:lang($rs.title)}</a></li>
                     {/tag:common}
                 </ul>
             </div>
             <!--底部新闻动态 结束-->
             <!--底部联系我们 开始-->
             <div class="col-md-6 col-sm-6 pre-footer-col">
-                <h2 class="margin-bottom-0">{$Think.lang.v_contact}</h2>
-                <div class="pull-left margin-right-10 margin-top-10 text-center"><img src="{$erweima}" width="125" /><br />{$Think.lang.v_qrcode}</div>
+                <h2 class="margin-bottom-0">{:lang('联系我们')}</h2>
+                <div class="pull-left margin-right-10 margin-top-10 text-center"><img src="{$erweima}" width="125" /><br />
+                    {:lang('二维码')}
+                </div>
                 <address class="pull-left margin-bottom-40">
-                    {$contact|htmlspecialchars_decode}
+                    {:lang(htmlspecialchars_decode($contact))}
                 </address>
             </div>
             <!--底部联系我们 结束-->
         </div>
         {eq name="Request.controller" value="Index"}
-        <div class="row col-md-12 margin-bottom-10">
-            {$Think.lang.v_links}：
-            {tag:common name="rs" table="ad" where="lang='cn' and typeid=2" num="35" order="sequence desc,id desc"}
-                <a href="{$rs.linkurl}" target="_blank">{$rs.title}</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            {/tag:common}
-        </div>
+        <!--<div class="row col-md-12 margin-bottom-10">-->
+            <!--{$Think.lang.v_links}：-->
+            <!--{tag:common name="rs" table="ad" where="lang='cn' and typeid=2" num="35" order="sequence desc,id desc"}-->
+                <!--<a href="{$rs.linkurl}" target="_blank">{$rs.title}</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
+            <!--{/tag:common}-->
+        <!--</div>-->
         {/eq}
     </div>
 </div>
@@ -59,12 +61,12 @@
     <div class="container">
         <div class="row">
             <!--左侧 开始-->
-            <div class="col-md-8 col-sm-8 padding-top-5">{$copyright|htmlspecialchars_decode}&nbsp;&nbsp;{notempty name="siteRs.icpnumber"}<a href="http://www.miitbeian.gov.cn/" target="_blank">{$siteRs.icpnumber}</a>{/notempty}</div>
+            <div class="col-md-8 col-sm-8 padding-top-5">{:lang(htmlspecialchars_decode($copyright))}&nbsp;&nbsp;{notempty name="siteRs.icpnumber"}
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">{$siteRs.icpnumber}</a>{/notempty}
+            </div>
             <!--左侧 结束-->
             <!--右侧 开始-->
-            <div class="col-md-4 col-sm-4 text-right">
-                <p class="powered">Powered by: <a href="http://www.df81.com/">df81.com</a></p>
-            </div>
+
             <!--右侧 结束-->
         </div>
     </div>

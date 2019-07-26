@@ -34,7 +34,7 @@
         <div class="row margin-bottom-40">
             <!--推荐产品 开始-->
             <div class="col-md-12 sale-product">
-                <h3 class="clearfix"><div class="pull-left">{$Think.lang.v_commend_product}</div><div class="pull-right padding-top-10 font-size16"><a href="{:url('/product/index-1')}">&raquo;{$Think.lang.v_more} {$Think.lang.v_product}</a></div></h3>
+                <h3 class="clearfix"><div class="pull-left">{:lang('推荐产品')}</div><div class="pull-right padding-top-10 font-size16"><a href="{:url('/product/index-1')}">&raquo;{:lang('更多产品')}</a></div></h3>
                 <div class="owl-carousel owl-carousel5">
                     {tag:common name="rs" table="product" where="lang='cn' and find_in_set('view',status) and find_in_set('commend',status)" num="10" order="sequence desc,id desc"}
                     <div>
@@ -42,13 +42,13 @@
                             <div class="pi-img-wrapper">
                                 <img src="{$rs.thumb}" class="img-responsive" alt="{$rs.title}">
                                 <div>
-                                    <a href="{$rs.thumb}" class="btn btn-default fancybox-button">{$Think.lang.v_big_thumb}</a>
-                                    <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}" class="btn btn-default fancybox-fast-view">{$Think.lang.v_detail}</a>
+                                    <a href="{$rs.thumb}" class="btn btn-default fancybox-button">{:lang('图片')}</a>
+                                    <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}" class="btn btn-default fancybox-fast-view">{:lang('详情')}</a>
                                 </div>
                             </div>
-                            <h3 class="text-center"><a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}">{$rs.title}</a></h3>
+                            <h3 class="text-center"><a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}">{:lang($rs.title)}</a></h3>
                             <div class="pi-price">&yen;{$rs.price}</div>
-                            <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}" class="btn btn-default add2cart">&raquo;{$Think.lang.v_detail}</a>
+                            <a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'])}" class="btn btn-default add2cart">&raquo;{:lang('查看详情')}</a>
                             {php}if(!empty($rs['status'])){
                                 if(in_array("hot",explode(',',$rs['status']))){
                                     echo '<div class="sticker sticker-sale"></div>';
@@ -68,19 +68,26 @@
         <div class="row margin-bottom-40 ">
             <!--新闻动态 开始-->
             <div class="sidebar col-md-4 col-sm-4">
-                <h2>{$Think.lang.v_news}</h2>
+                <h2>{:lang('新闻动态')}</h2>
                 <ul class="list-group sidebar-menu">
                     {tag:common name="rs" table="news" where="lang='cn' and find_in_set('view',status)" num="10" order="addtime desc"}
-                        <li class="list-group-item clearfix"><a href="{:url('/'.$rs['urlroute'].'-n'.$rs['id'])}"><i class="fa fa-angle-right"></i>{$rs.title|msubstr=0,21}</a></li>
+                        <li class="list-group-item clearfix"><a href="{:url('/'.$rs['urlroute'].'-n'.$rs['id'])}">
+                            <i class="fa fa-angle-right"></i>{:lang(msubstr($rs['title'],0,21))}</a>
+                        </li>
                     {/tag:common}
                 </ul>
-                <a href="{:url('/news/index-1')}" class="col-md-12 btn btn-default">&raquo; {$Think.lang.v_more} {$Think.lang.v_news}</a>
+                <a href="{:url('/news/index-1')}" class="col-md-12 btn btn-default">&raquo; {:lang('更多')} {:lang('详情')}</a>
             </div>
             <!--新闻动态 结束-->
             <!--关于我们 开始-->
             <div class="col-md-8 col-sm-8">
-                <h3 class="clearfix"><div class="pull-left">{$Think.lang.about}</div><div class="pull-right padding-top-10 font-size16"><a href="{:url('/gongsijianjie-a223')}">&raquo;{$Think.lang.v_detail}</a></div></h3>
-                <div class="content-page">{$aboutus|htmlspecialchars_decode}</div>
+                <h3 class="clearfix">
+                    <div class="pull-left">{:lang('关于我们')}</div>
+                    <div class="pull-right padding-top-10 font-size16">
+                        <a href="{:url('/gongsijianjie-a223')}">&raquo;{:lang('查看详情')}</a>
+                    </div>
+                </h3>
+                <div class="content-page">{:lang(htmlspecialchars_decode($aboutus))}</div>
             </div>
             <!--关于我们 结束-->
         </div>

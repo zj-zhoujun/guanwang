@@ -10,7 +10,20 @@ use think\Request;
 class Base extends Controller{
     public function _initialize(){
 		Lang::load(APP_PATH . 'index\\lang\\'.config('default_lang').'.php');//加载语言包
-		
+        $lang_set = config('extra_lang.lang_set');
+        $range = strtolower(input('lang'));
+        if(!$range){
+            $range = session('lang_range');
+        }
+
+        if(!$range || !in_array($range,$lang_set)){
+            $range = 'zh';
+        }
+        if(session('lang_range')!=$range){
+            session('lang_range',$range);
+        }
+
+		Lang::range($range);
 		$lang = config('default_lang');
  		//全局参数
 		$fieldRs = FieldModel::all(['lang'=>$lang]);
@@ -34,7 +47,8 @@ class Base extends Controller{
         define('MODULE_NAME',Request::instance()->module());//模块名
         define('CONTROLLER_NAME',Request::instance()->controller());//控制器名
         define('ACTION_NAME',Request::instance()->action());//方法名
-
+        //dump($_SERVER);exit;
+        $this->assign('this_url',$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME']);
     }
 	
 	

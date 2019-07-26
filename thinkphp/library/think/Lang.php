@@ -115,9 +115,50 @@ class Lang
         $range = $range ?: self::$range;
         // 空参数返回所有定义
         if (empty($name)) {
-            return self::$lang[$range];
+            return "";
         }
         $key   = strtolower($name);
+
+        /*********add by liguoqing @2018-02-05 15:06:44********/
+        if(self::range() !== 'zh_cn'&&!is_numeric($name)){
+            //表操作
+            $info = Db::name('langdata')->where(['symbol' => $name])->find();
+
+            if(!empty($info[self::range()])) {
+                //有翻译
+                $value = $info[self::range()];
+            } else {
+                //没有翻译时，去翻译，入表
+                //翻译
+                $langset = require realpath(APP_PATH . '/langset.php');
+                if(!empty($langset[self::range()])) {
+                    $rs  = language($name,'auto',$langset[self::range()]['trans']);
+                    if(empty($rs['err'])) {
+                        $value = $rs['data'];
+                    } else {
+                        $value = $name;
+                    }
+                    //入表
+                    if(empty($info)) {
+                        //新增记录
+                        $info = [];
+                        $info['symbol'] = $name;
+                        $info[self::range()] = $value;
+                        Db::name('langdata')->insert($info);
+                    } else {
+                        //更新记录
+                        $info[self::range()] = $value;
+                        Db::name('langdata')->update($info);
+                    }
+                } else {
+                    $value = $name;
+                }
+            }
+        }else{
+            $value = $name;
+        }
+        self::$lang[$range][strtolower($name)] = $value;
+
         $value = isset(self::$lang[$range][$key]) ? self::$lang[$range][$key] : $name;
 
         // 变量解析
