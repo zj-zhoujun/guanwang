@@ -102,12 +102,12 @@ class Project extends Base{
 	        
 	    //上一篇
 	    $previous = Db::name('project')->where('id','<',$id)->where('lang','=',$lang)->where('sortid','in',$sortidArr)->order('sequence desc,id desc')->limit(1)->find();
-	    $pre = !$previous ? lang('c_nodata') : "<a href=\"".url('/'.$previous['urlroute'].'-c'.$previous['id'])."\">".$previous['title']."</a>";
+	    $pre = !$previous ? lang('No data') : "<a href=\"".url('/'.$previous['urlroute'].'-c'.$previous['id'])."\">".$previous['title']."</a>";
 	    $this->assign('pre',$pre);
 	    
 	    //下一篇
 	    $next=Db::name('project')->where('id','>',$id)->where('lang','=',$lang)->where('sortid','in',$sortidArr)->order('sequence desc,id desc')->limit(1)->find();
-	    $next = !$next ? lang('c_nodata') : "<a href=\"".url('/'.$next['urlroute'].'-c'.$next['id'])."\">".$next['title']."</a>";
+	    $next = !$next ? lang('No data') : "<a href=\"".url('/'.$next['urlroute'].'-c'.$next['id'])."\">".$next['title']."</a>";
 	    $this->assign('next',$next);
 
         //详细内容站内链接

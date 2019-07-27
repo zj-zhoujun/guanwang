@@ -104,12 +104,12 @@ class About extends Base{
 	        
 	    //上一篇
 	    $previous = Db::name('about')->where('id','<',$id)->where('lang','=',$lang)->where('sortid','in',$sortidArr)->order('sequence desc,id desc')->limit(1)->find();
-	    $pre = !$previous ? lang('c_nodata') : "<a href=\"".url('/'.$previous['urlroute'].'-a'.$previous['id'])."\">".$previous['title']."</a>";
+	    $pre = !$previous ? lang('No data') : "<a href=\"".url('/'.$previous['urlroute'].'-a'.$previous['id'])."\">".$previous['title']."</a>";
 	    $this->assign('pre',$pre);
 	    
 	    //下一篇
 	    $next=Db::name('about')->where('id','>',$id)->where('lang','=',$lang)->where('sortid','in',$sortidArr)->order('sequence desc,id desc')->limit(1)->find();
-	    $next = !$next ? lang('c_nodata') : "<a href=\"".url('/'.$next['urlroute'].'-a'.$next['id'])."\">".$next['title']."</a>";
+	    $next = !$next ? lang('No data') : "<a href=\"".url('/'.$next['urlroute'].'-a'.$next['id'])."\">".$next['title']."</a>";
 	    $this->assign('next',$next);
 		
 		//插件
@@ -136,13 +136,13 @@ class About extends Base{
             $verify = input('post.verify');
             //验证码是否正确
             $captcha = new \think\captcha\Captcha();
-            if(!$captcha->check($verify)) $this->error(lang('c_error_verify'));
+            if(!$captcha->check($verify)) $this->error(lang('验证码错误'));
 
 			$result = GuestbookModel::edit($id);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'));
+			$this->success(lang('操作成功'));
 		}else{
-		    $this->error(lang('c_illegal_request'));	
+		    $this->error(lang('非法请求'));
 		}
 		
 	}

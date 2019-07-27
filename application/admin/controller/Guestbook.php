@@ -21,7 +21,7 @@ class Guestbook extends Base{
         }else{
 			$result = GuestbookModel::edit($id);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'));
+			$this->success(lang('操作成功'));
         }		
 	}
 
@@ -41,7 +41,7 @@ class Guestbook extends Base{
 	    $id=input('id');
         $guestbook = GuestbookModel::get($id);
         $guestbook->delete();
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量删除数据
@@ -54,7 +54,7 @@ class Guestbook extends Base{
 			$guestbook = GuestbookModel::get($id);
             $guestbook->delete();
 	    }
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 
 }

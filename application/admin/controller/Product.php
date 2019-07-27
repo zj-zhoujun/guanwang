@@ -20,10 +20,10 @@ class Product extends Base{
 		
 		//分类是否存在
 		$isSort = SortModel::all(['moduleid'=>$moduleid,'lang'=>$lang]);
-		if(empty($isSort)) $this->error(lang('c_add_sort_first'),url('Sort/index?moduleid='.$moduleid.'&lang='.$lang));
+		if(empty($isSort)) $this->error(lang('清先添加分类'),url('Sort/index?moduleid='.$moduleid.'&lang='.$lang));
 		//地区是否存在
 		$isArea = AreaModel::all(['lang'=>$lang]);
-		if(empty($isArea)) $this->error(lang('c_add_area'),url('Area/Index?lang='.$lang));
+		if(empty($isArea)) $this->error(lang('清先添加地区'),url('Area/Index?lang='.$lang));
 		
         if(!request()->isPost()){
             $rs = ProductModel::get($id);
@@ -76,7 +76,7 @@ class Product extends Base{
 
 			$result = ProductModel::edit($id);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'));
+			$this->success(lang('操作成功'));
         }		
 	}
 
@@ -101,7 +101,7 @@ class Product extends Base{
 		//删除对应的评论
 		Db::name("Comment")->where("moduleid=1 and infoid='".$id."'")->delete();
 		
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量删除数据
@@ -118,7 +118,7 @@ class Product extends Base{
 		    //删除对应的评论
 		    Db::name("Comment")->where("moduleid=1 and infoid='".$id."'")->delete();
 	    }
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 
 	//地区Ajax
@@ -148,7 +148,7 @@ class Product extends Base{
             ProductModel::update($data);
         }
 		
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 }
 

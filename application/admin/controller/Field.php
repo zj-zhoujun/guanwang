@@ -28,7 +28,7 @@ class Field extends Base{
 				
 			$result = FieldModel::edit($id);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'));
+			$this->success(lang('操作成功'));
         }		
 	}
 
@@ -48,7 +48,7 @@ class Field extends Base{
 	    $id=input('id');
         $field = FieldModel::get($id);
         $field->delete();
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量删除数据
@@ -61,7 +61,7 @@ class Field extends Base{
 			$field = FieldModel::get($id);
             $field->delete();
 	    }
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量更新数据
@@ -77,7 +77,7 @@ class Field extends Base{
             FieldModel::update($data);
         }
 		
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 
 }

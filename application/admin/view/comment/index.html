@@ -22,15 +22,15 @@
                     <!--页面导航 开始-->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_comment} {$Think.lang.v_manage}</span></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('评论')} {:lang('管理')}</span></li>
                         </ul>
                         <form name="formsearch" method="post" action="">
                             <input type="hidden" name="lang" value="{:input('get.lang')}">
                             <div class="col-md-4 input-group pull-right margin-top-5">
-                                <input type="text" name="keyword" class="form-control" placeholder="{$Think.lang.v_quickfind}" />
-                                <span class="input-group-btn pdr5"><button type="submit" class="btn blue">{$Think.lang.v_search}</button></span>
+                                <input type="text" name="keyword" class="form-control" placeholder="{:lang('快速查找')}" />
+                                <span class="input-group-btn pdr5"><button type="submit" class="btn blue">{:lang('搜索')}</button></span>
                             </div>
                         </form>
                     </div>
@@ -43,12 +43,12 @@
                             <thead>
                                 <tr class="bg-default">
                                     <th>ID</th>
-                                    <th>{$Think.lang.v_comment} {$Think.lang.v_content_a}</th>
-                                    <th>{$Think.lang.v_reply}</th>
-                                    <th>{$Think.lang.v_date}</th>
-                                    <th>{$Think.lang.v_status}</th>
-                                    <th>{$Think.lang.v_sequence}</th>
-                                    <th>{$Think.lang.v_do}</th>
+                                    <th>{:lang('评论')} {:lang('内容')}</th>
+                                    <th>{:lang('回复')}</th>
+                                    <th>{:lang('日期')}</th>
+                                    <th>{:lang('状态')}</th>
+                                    <th>{:lang('排序')}</th>
+                                    <th>{:lang('操作')}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,45 +65,45 @@
                                         {/eq}
                                         {switch name="rs['moduleid']"}
                                             {case value="1"}
-                                                [ {$Think.lang.v_product} ]
-                                                <a href="{:url($mulu.'product/view?id='.$rs['infoid'])}" target="_blank">&gt;&gt;{$Think.lang.v_view} {$Think.lang.v_original}</a>
+                                                [ {:lang('产品')} ]
+                                                <a href="{:url($mulu.'product/view?id='.$rs['infoid'])}" target="_blank">&gt;&gt;{:lang('查看')} {:lang('原文')}</a>
                                             {/case}
                                             {case value="2"}
-                                                [ {$Think.lang.v_news} ]
-                                                <a href="{:url($mulu.'news/view?id='.$rs['infoid'])}" target="_blank">&gt;&gt;{$Think.lang.v_view} {$Think.lang.v_original}</a>
+                                                [ {:lang('新闻')} ]
+                                                <a href="{:url($mulu.'news/view?id='.$rs['infoid'])}" target="_blank">&gt;&gt;{:lang('查看')} {:lang('原文')}</a>
                                             {/case}
                                             {case value="3"}
-                                                [ {$Think.lang.v_about_module} ]
-                                                <a href="{:url($mulu.'about/view?id='.$rs['infoid'])}" target="_blank">&gt;&gt;{$Think.lang.v_view} {$Think.lang.v_original}</a>
+                                                [ {:lang('单页')} ]
+                                                <a href="{:url($mulu.'about/view?id='.$rs['infoid'])}" target="_blank">&gt;&gt;{:lang('查看')} {:lang('原文')}</a>
                                             {/case}
                                             {case value="4"}
-                                                [ {$Think.lang.v_project} ]
-                                                <a href="{:url($mulu.'project/view?id='.$rs['infoid'])}" target="_blank">&gt;&gt;{$Think.lang.v_view} {$Think.lang.v_original}</a>
+                                                [ {:lang('案例')} ]
+                                                <a href="{:url($mulu.'project/view?id='.$rs['infoid'])}" target="_blank">&gt;&gt;{:lang('查看')} {:lang('原文')}</a>
                                             {/case}
                                             {case value="5"}
-                                                [ {$Think.lang.v_down} ]
-                                                <a href="{:url($mulu.'down/view?id='.$rs['infoid'])}" target="_blank">&gt;&gt;{$Think.lang.v_view} {$Think.lang.v_original}</a>
+                                                [ {:lang('下载')} ]
+                                                <a href="{:url($mulu.'down/view?id='.$rs['infoid'])}" target="_blank">&gt;&gt;{:lang('查看')} {:lang('原文')}</a>
                                             {/case}
                                             {default /}
                                         {/switch}
                                     </td>
-                                    <td><a href="{:url('Comment/edit?moduleid='.$rs['moduleid'].'&parentid='.$rs['id'].'&id='.$rs['id'].'&reply=yes&lang='.input('get.lang'))}">{$Think.lang.v_reply}</a></td>
+                                    <td><a href="{:url('Comment/edit?moduleid='.$rs['moduleid'].'&parentid='.$rs['id'].'&id='.$rs['id'].'&reply=yes&lang='.input('get.lang'))}">{:lang('回复')}</a></td>
                                     <td>{$rs['addtime']|date='Y-m-d H:i:s',###}</td>
                                     <td>
 						                {eq name="rs['status']" value="1"}
-						                    <a onClick='return confirm("{$Think.lang.v_whether} {$Think.lang.v_check_cancel}？");' href="{:url('Comment/update_status?status=0&id='.$rs['id'])}" class="btn green btn-sm">{$Think.lang.v_audit}</a>
+						                    <a onClick='return confirm("{:lang('是否')} {:lang('取消审核')}？");' href="{:url('Comment/update_status?status=0&id='.$rs['id'])}" class="btn green btn-sm">{:lang('已审')}</a>
 						                {else/}
-						                    <a onClick='return confirm("{$Think.lang.v_whether} {$Think.lang.v_check_pass}？");' href="{:url('Comment/update_status?status=1&id='.$rs['id'])}" class="btn red-flamingo btn-sm">{$Think.lang.v_audit_pending}</a>
+						                    <a onClick='return confirm("{:lang('是否')} {:lang('通过审核')}？");' href="{:url('Comment/update_status?status=1&id='.$rs['id'])}" class="btn red-flamingo btn-sm">{:lang('未审')}</a>
                                         {/eq}
                                     </td>
-                                    <td><input name="sequence[]" type="text" value="{$rs['sequence']}" class="form-control input-sm" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{$Think.lang.v_require_number}！');this.value='0';}" /></td>
-                                    <td><a href="{:url('Comment/edit?moduleid='.$rs['moduleid'].'&parentid='.$rs['parentid'].'&id='.$rs['id'].'&lang='.input('get.lang'))}" class="btn green btn-sm"><i class="fa fa-edit"></i> {$Think.lang.v_edit}</a><a class="btn red-flamingo btn-sm" onClick='return confirm("{$Think.lang.v_confirm_delete}！");' href="{:url('comment/delete_one?id='.$rs['id'])}"><i class="fa fa-times"></i> {$Think.lang.v_delete}</a></td>
+                                    <td><input name="sequence[]" type="text" value="{$rs['sequence']}" class="form-control input-sm" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{:lang('必须为0或正整数')}！');this.value='0';}" /></td>
+                                    <td><a href="{:url('Comment/edit?moduleid='.$rs['moduleid'].'&parentid='.$rs['parentid'].'&id='.$rs['id'].'&lang='.input('get.lang'))}" class="btn green btn-sm"><i class="fa fa-edit"></i> {:lang('编辑')}</a><a class="btn red-flamingo btn-sm" onClick='return confirm("{$Think.lang.v_confirm_delete}！");' href="{:url('comment/delete_one?id='.$rs['id'])}"><i class="fa fa-times"></i> {:lang('删除')}</a></td>
                                 </tr>
                               {/volist}
                                 <tr>
                                     <td colspan="7">
-                                        <div class="col-md-5"><div class="pull-left lh31 pdl5">{$Think.lang.v_total} {$total} {$Think.lang.v_records}</div></div>
-                                        <div class="col-md-7"><button type="button" class="btn blue" onclick="CheckOthers(this.form);"><i class="fa fa-check"></i> {$Think.lang.v_select_all}</button><button type="button" class="btn green-meadow" onClick='ConfirmDel("","{:url('comment/update_pass?status=1')}","update");'><i class="fa fa-check-circle-o"></i> {$Think.lang.v_check_pass}</button><button type="button" class="btn red-intense" onClick='ConfirmDel("","{:url('comment/update_pass?status=0')}","update");'><i class="fa fa-minus-circle"></i> {$Think.lang.v_check_cancel}</button><button type="button" class="btn green" onClick='ConfirmDel("","{:url('comment/update_all')}","update");'><i class="fa fa-arrow-circle-o-up"></i> {$Think.lang.v_update_all}</button><button type="button" class="btn red-flamingo" onClick='ConfirmDel("{$Think.lang.v_confirm_delete}！","{:url('comment/delete_all')}","delete");'><i class="fa fa-times"></i> {$Think.lang.v_delete_select}</button></div></div>
+                                        <div class="col-md-5"><div class="pull-left lh31 pdl5">{:lang('共')} {$total} {:lang('条记录')}</div></div>
+                                        <div class="col-md-7"><button type="button" class="btn blue" onclick="CheckOthers(this.form);"><i class="fa fa-check"></i> {:lang('全选或反选')}</button><button type="button" class="btn green-meadow" onClick='ConfirmDel("","{:url('comment/update_pass?status=1')}","update");'><i class="fa fa-check-circle-o"></i> {:lang('通过审核')}</button><button type="button" class="btn red-intense" onClick='ConfirmDel("","{:url('comment/update_pass?status=0')}","update");'><i class="fa fa-minus-circle"></i> {:lang('取消审核')}</button><button type="button" class="btn green" onClick='ConfirmDel("","{:url('comment/update_all')}","update");'><i class="fa fa-arrow-circle-o-up"></i> {:lang('批量更新')}</button><button type="button" class="btn red-flamingo" onClick='ConfirmDel("{$Think.lang.v_confirm_delete}！","{:url('comment/delete_all')}","delete");'><i class="fa fa-times"></i> {:lang('删除所选')}</button></div></div>
                                     </td>
                                 </tr>
                             </tbody>

@@ -36,10 +36,10 @@
                     <!--页面导航 开始-->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_chat}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_chat}</span></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('在线客服')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{eq name="rs.id" value=""}{:lang('添加')}{else /}{:lang('编辑')}{/eq} {:lang('在线客服')}</span></li>
                         </ul>
                     </div>
                     <!--页面导航 结束-->
@@ -54,20 +54,20 @@
                                     <div class="portlet-body">
                                         <div class="tabbable-bordered">
                                             <div class="edit_nav_left">
-                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_chat}</span>
+                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{eq name="rs.id" value=""}{:lang('添加')}{else /}{:lang('编辑')}{/eq} {:lang('在线客服')}</span>
                                             </div>
                                             <ul class="nav nav-tabs tabs-reversed"></ul>
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="tab_general">
                                                     <div class="form-body">
-                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{$Think.lang.v_error_tips}</div>
+                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{:lang('表单填写有误，清检查红色区域修正')}</div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_chattype}</label>
+                                                            <label class="control-label col-md-3">{:lang('客服类型')}</label>
                                                             <div class="col-md-4">
                                                                 <select name="typeid" class="form-control" data-style="btn-primary">
-									                                <option value="qq"{eq name="rs.typeid" value="qq"} selected="selected"{/eq}>{$Think.lang.v_qq}</option>
-									                                <option value="msn"{eq name="rs.typeid" value="msn"} selected="selected"{/eq}>{$Think.lang.v_msn}</option>
-									                                <option value="wangwang"{eq name="rs.typeid" value="wangwang"} selected="selected"{/eq}>{$Think.lang.v_wangwang}</option>
+									                                <option value="qq"{eq name="rs.typeid" value="qq"} selected="selected"{/eq}>{:lang('QQ')}</option>
+									                                <option value="msn"{eq name="rs.typeid" value="msn"} selected="selected"{/eq}>{:lang('MSN')}</option>
+									                                <option value="wangwang"{eq name="rs.typeid" value="wangwang"} selected="selected"{/eq}>{:lang('旺旺')}</option>
 									                                <option value="skype"{eq name="rs.typeid" value="skype"} selected="selected"{/eq}>{$Think.lang.v_skype}</option>
 									                                <option value="icq"{eq name="rs.typeid" value="icq"} selected="selected"{/eq}>{$Think.lang.v_icq}</option>
 									                                <option value="yahoo"{eq name="rs.typeid" value="yahoo"} selected="selected"{/eq}>{$Think.lang.v_yahoo}</option>
@@ -75,27 +75,27 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_img}</label>
+                                                            <label class="control-label col-md-3">{:lang('图片')}</label>
                                                             <div class="col-md-4">
-                                                                <div class="input-group"><input type="text" name="thumb" id="morepics1" value="{$rs['thumb']}" class="form-control" /><span class="input-group-btn"><input type="button" onClick="upImage1();" value=" {$Think.lang.v_upload_img} " class="btn green" /></span></div>
+                                                                <div class="input-group"><input type="text" name="thumb" id="morepics1" value="{$rs['thumb']}" class="form-control" /><span class="input-group-btn"><input type="button" onClick="upImage1();" value=" {:lang('上传图片')} " class="btn green" /></span></div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_chatname}</label>
+                                                            <label class="control-label col-md-3">{:lang('客服名称')}</label>
                                                             <div class="col-md-4">
                                                                 <input type="text" class="form-control" name="title" value="{$rs.title}" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_account}</label>
+                                                            <label class="control-label col-md-3">{:lang('客服账号')}</label>
                                                             <div class="col-md-4">
                                                                 <input type="text" class="form-control" name="account" value="{$rs.account}" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_sequence}</label>
+                                                            <label class="control-label col-md-3">{:lang('排序')}</label>
                                                             <div class="col-md-4">
-                                                                <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="sequence" value="{php}if(empty($rs['sequence'])){ echo "0"; }else{ echo $rs['sequence']; }{/php}" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{$Think.lang.v_require_number}！');this.value='0';}" /></div>
+                                                                <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="sequence" value="{php}if(empty($rs['sequence'])){ echo "0"; }else{ echo $rs['sequence']; }{/php}" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{:lang('必须为0或正整数')}！');this.value='0';}" /></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -103,8 +103,8 @@
                                                 <div class="form-actions">
                                                     <div class="row">
                                                         <div class="col-md-offset-3 col-md-9">
-                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {$Think.lang.v_save}</button>
-                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{$Think.lang.v_goback}</button>
+                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {:lang('保存')}</button>
+                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{:lang('返回上一页')}</button>
                                                         </div>
                                                     </div>
                                                 </div>

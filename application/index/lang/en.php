@@ -86,7 +86,7 @@ return [
      'about' => 'About us',
      'project' => 'Projects',
      'c_parameter_error' => 'Parameter error',
-	 'c_success' => 'Success',
+	 '操作成功' => 'Success',
 	 'c_fail' => 'Fail',
 	 'c_error_verify' => 'Verification code error',
 	 'c_agree' => 'Agree',

@@ -19,7 +19,7 @@ class Language extends Base{
 			return $this->fetch();
         }else{
 			//操作失败，仅限开发者使用
-			$this->error(lang('c_fail_only_developer'));
+			$this->error(lang('操作失败，仅限开发者'));
 			
 			//表单验证
 			$checkResult = $this->validate(input('post.'),'Language');
@@ -27,7 +27,7 @@ class Language extends Base{
 				
 			$result = LanguageModel::edit($id);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'));
+			$this->success(lang('操作成功'));
         }		
 	}
 
@@ -45,20 +45,20 @@ class Language extends Base{
 	//删除单条数据
     public function delete_one(){
 		//操作失败，仅限开发者使用
-		$this->error(lang('c_fail_only_developer'));
+		$this->error(lang('操作失败，仅限开发者'));
 			
 	    $id=input('id');
         $language = LanguageModel::get($id);
         if($language['isdefault']==1) $this->error(lang('c_delete_cannot_default_language'));
 
         $language->delete();
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量删除数据
     public function delete_all(){
 		//操作失败，仅限开发者使用
-		$this->error(lang('c_fail_only_developer'));
+		$this->error(lang('操作失败，仅限开发者'));
 			
 		$selectid=input('selectid/a');
 		if(empty($selectid)) $this->error(lang('c_delete_check'));
@@ -72,13 +72,13 @@ class Language extends Base{
 			}
             $language->delete();
 	    }
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量更新数据
     public function update_all(){
 		//操作失败，仅限开发者使用
-		$this->error(lang('c_fail_only_developer'));
+		$this->error(lang('操作失败，仅限开发者'));
 			
 		$id = input('id/a');
         $sequence = input('sequence/a');
@@ -100,19 +100,19 @@ class Language extends Base{
 				break;
 			}
 			if(!preg_match("/^\d+$/",$sequence[$i])){
-			    $this->error(lang('c_require_sequence'));
+			    $this->error(lang('排序必须为0或正整数'));
 				break;
 			}
 
             LanguageModel::update($data);
         }
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//更新启用或默认
     public function update_status_default(){
 		//操作失败，仅限开发者使用
-		$this->error(lang('c_fail_only_developer'));
+		$this->error(lang('操作失败，仅限开发者'));
 			
 		$id = input('id');
 		$field = input('field');
@@ -121,7 +121,7 @@ class Language extends Base{
             $CountStatus = LanguageModel::all(['status'=>1])->count();
 			$RsStatus = LanguageModel::get($id);
 			if($value==0 and $RsStatus['isdefault']==1) $this->error(lang('c_cancel_language_default_first'));
-			if($value==0 and $RsStatus['status']==1 and $CountStatus<2) $this->error(lang('c_atleast_enable'));
+			if($value==0 and $RsStatus['status']==1 and $CountStatus<2) $this->error(lang('至少启用一项'));
             $data['id'] = (int)$id[$i];
             $data['status'] = $value;
 			LanguageModel::update($data);
@@ -138,7 +138,7 @@ class Language extends Base{
 			    LanguageModel::update($DataNo);
 			}
 		}
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 
 }

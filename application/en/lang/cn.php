@@ -85,7 +85,7 @@ return [
      'about' => '关于我们',
      'project' => '案例展示',
      'c_parameter_error' => '参数错误',
-	 'c_success' => '操作成功',
+	 '操作成功' => '操作成功',
 	 'c_fail' => '操作失败',
 	 'c_error_verify' => '验证码错误',
 	 'c_agree' => '赞成',

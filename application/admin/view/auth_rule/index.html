@@ -22,9 +22,9 @@
                     <!--页面导航 开始-->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_system_manage}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_auth_manage}</span></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('系统管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('权限管理')}</span></li>
                         </ul>
                     </div>
                     <!--页面导航 结束-->
@@ -32,13 +32,13 @@
                     <!--右侧主体 开始-->
                     <div class="col-md-12 margin-top-10 margin-bottom-10">
                         <div class="col-md-8">
-                            <button type="button" class="btn green" onclick="javascript:window.location.href='{:url('AuthRule/edit?lang='.input('get.lang'))}'">{$Think.lang.v_add} {$Think.lang.v_auth}</button>
+                            <button type="button" class="btn green" onclick="javascript:window.location.href='{:url('AuthRule/edit?lang='.input('get.lang'))}'">{:lang('添加')} {:lang('权限')}</button>
                         </div>
                         <form name="form1" action="" method="post">
                             <input type="hidden" name="lang" value="{:input('get.lang')}">
                             <div class="col-md-4 input-group">
-                                <input type="text" name="keyword" class="form-control" placeholder="{$Think.lang.v_quickfind}" />
-                                <span class="input-group-btn pdr5"><button type="submit" class="btn blue">{$Think.lang.v_search}</button></span>
+                                <input type="text" name="keyword" class="form-control" placeholder="{:lang('快速查找')}" />
+                                <span class="input-group-btn pdr5"><button type="submit" class="btn blue">{:lang('搜索')}</button></span>
                             </div>
                         </form>
                     </div>
@@ -47,9 +47,9 @@
                             <thead>
                                 <tr class="bg-default">
                                     <th>ID</th>
-                                    <th>{$Think.lang.v_auth_name}</th>
-                                    <th>{$Think.lang.v_auth_value}</th>
-                                    <th>{$Think.lang.v_do}</th>
+                                    <th>{:lang('权限名称')}</th>
+                                    <th>{:lang('权限值')}</th>
+                                    <th>{:lang('操作')}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,15 +60,15 @@
                                     <td>{$rs['html']} {$rs['title']}</td>
                                     <td>{$rs.name}</td>
                                     <td>
-                                        <a href="{:url('AuthRule/edit?lang='.input('get.lang').'&id='.$rs['id'])}" class="btn green btn-sm"><i class="fa fa-edit"></i> {$Think.lang.v_edit}</a>
-                                        <a class="btn red-flamingo btn-sm" onClick='return confirm("{$Think.lang.v_confirm_delete}！");' href="{:url('authRule/delete_one?id='.$rs['id'])}"><i class="fa fa-times"></i> {$Think.lang.v_delete}</a>
+                                        <a href="{:url('AuthRule/edit?lang='.input('get.lang').'&id='.$rs['id'])}" class="btn green btn-sm"><i class="fa fa-edit"></i> {:lang('编辑')}</a>
+                                        <a class="btn red-flamingo btn-sm" onClick='return confirm("{$Think.lang.v_confirm_delete}！");' href="{:url('authRule/delete_one?id='.$rs['id'])}"><i class="fa fa-times"></i> {:lang('删除')}</a>
                                     </td>
                                 </tr>
                               {/volist}
                                 <tr>
                                     <td colspan="4">
-                                        <div class="col-md-7"><div class="pull-left lh31 pdl5">{$Think.lang.v_total} {$total} {$Think.lang.v_records}</div></div>
-                                        <div class="col-md-5"><div class="pull-right"><button type="button" class="btn blue" onclick="CheckOthers(this.form);"><i class="fa fa-check"></i> {$Think.lang.v_select_all}</button><button type="button" class="btn red-flamingo" onClick='ConfirmDel("{$Think.lang.v_confirm_delete}！","{:url('authRule/delete_all')}","delete");'><i class="fa fa-times"></i> {$Think.lang.v_delete_select}</button></div></div>
+                                        <div class="col-md-7"><div class="pull-left lh31 pdl5">{:lang('共')} {$total} {:lang('条记录')}</div></div>
+                                        <div class="col-md-5"><div class="pull-right"><button type="button" class="btn blue" onclick="CheckOthers(this.form);"><i class="fa fa-check"></i> {:lang('全选或反选')}</button><button type="button" class="btn red-flamingo" onClick='ConfirmDel("{$Think.lang.v_confirm_delete}！","{:url('authRule/delete_all')}","delete");'><i class="fa fa-times"></i> {:lang('删除所选')}</button></div></div>
                                     </td>
                                 </tr>
                             </tbody>

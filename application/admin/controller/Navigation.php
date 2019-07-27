@@ -34,7 +34,7 @@ class Navigation extends Base{
         }else{
 			$result = NavigationModel::edit($id);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'),url('navigation/index?lang='.$lang));
+			$this->success(lang('操作成功'),url('navigation/index?lang='.$lang));
         }		
 	}
 	
@@ -43,11 +43,11 @@ class Navigation extends Base{
 		$id = input('id');
         //禁止删除含有子分类的分类
         $hasChild = NavigationModel::all(['parentid'=>$id]);
-        if($hasChild) $this->error(lang('c_delete_sort_child_first'));
+        if($hasChild) $this->error(lang('清先删除该分类下的子分类'));
 		
 		$navigation = NavigationModel::get($id);
         $navigation->delete($id);
-        $this->success(lang('c_success'));
+        $this->success(lang('操作成功'));
     }	
 	
 	//批量删除数据
@@ -61,14 +61,14 @@ class Navigation extends Base{
             //禁止删除含有子分类的分类
             $hasChild = NavigationModel::all(['parentid'=>$id]);
             if($hasChild){
-                $this->error(lang('c_delete_sort_child_first'));
+                $this->error(lang('清先删除该分类下的子分类'));
 				break;
             }
 			
 			$navigation = NavigationModel::get($id);
             $navigation->delete($id);
 	    }
-        $this->success(lang('c_success'));
+        $this->success(lang('操作成功'));
     }	
 	
 	//批量更新排序
@@ -82,7 +82,7 @@ class Navigation extends Base{
             NavigationModel::update($data);
         }
 		
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 }

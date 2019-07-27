@@ -22,9 +22,9 @@
                     <!--页面导航 开始-->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
-                            <li><span>{$Think.lang.v_home}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_guestbook} {$Think.lang.v_manage}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_guestbook} {$Think.lang.v_manage}</span></li>
+                            <li><span>{:lang('内容管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('留言')} {:lang('管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('留言')} {:lang('管理')}</span></li>
                         </ul>
                     </div>
                     <!--页面导航 结束-->
@@ -37,8 +37,8 @@
                             <input type="hidden" name="lang" value="{:input('get.lang')}">
                             <input type="hidden" name="moduleid" value="{:input('get.moduleid')}">
                             <div class="col-md-4 input-group">
-                                <input type="text" name="keyword" class="form-control" placeholder="{$Think.lang.v_quickfind}" />
-                                <span class="input-group-btn pdr5"><button type="submit" class="btn blue">{$Think.lang.v_search}</button></span>
+                                <input type="text" name="keyword" class="form-control" placeholder="{:lang('快速查找')}" />
+                                <span class="input-group-btn pdr5"><button type="submit" class="btn blue">{:lang('搜索')}</button></span>
                             </div>
                         </form>
                     </div>
@@ -47,11 +47,11 @@
                             <thead>
                                 <tr class="bg-default">
                                     <th>ID</th>
-                                    <th>{$Think.lang.v_realname}</th>
-                                    <th>{$Think.lang.v_mobile}</th>
-                                    <th>{$Think.lang.v_content_a}</th>
-                                    <th>{$Think.lang.v_date}</th>
-                                    <th>{$Think.lang.v_do}</th>
+                                    <th>{:lang('姓名')}</th>
+                                    <th>{:lang('手机')}</th>
+                                    <th>{:lang('内容')}</th>
+                                    <th>{:lang('日期')}</th>
+                                    <th>{:lang('操作')}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -63,13 +63,13 @@
                                     <td>{$rs.mobile}</td>
                                     <td>{$rs['content']|mb_substr=###,0,38,'utf-8'}</td>
                                     <td>{$rs.addtime|date="Y-m-d H:i",###}</td>
-                                    <td><a href="{:url('Guestbook/edit?id='.$rs['id'].'&moduleid='.input('get.moduleid').'&lang='.input('get.lang'))}" class="btn green btn-sm"><i class="fa fa-edit"></i> 查看</a><a class="btn red-flamingo btn-sm" onClick='return confirm("{$Think.lang.v_confirm_delete}！");' href="{:url('guestbook/delete_one?id='.$rs['id'])}"><i class="fa fa-times"></i> {$Think.lang.v_delete}</a></td>
+                                    <td><a href="{:url('Guestbook/edit?id='.$rs['id'].'&moduleid='.input('get.moduleid').'&lang='.input('get.lang'))}" class="btn green btn-sm"><i class="fa fa-edit"></i> 查看</a><a class="btn red-flamingo btn-sm" onClick='return confirm("{$Think.lang.v_confirm_delete}！");' href="{:url('guestbook/delete_one?id='.$rs['id'])}"><i class="fa fa-times"></i> {:lang('删除')}</a></td>
                                 </tr>
                               {/volist}
                                 <tr>
                                     <td colspan="6">
-                                        <div class="col-md-7"><div class="pull-left pdl5">{$list->render()}</div><div class="pull-left lh31 pdl5">{$Think.lang.v_total} {$lastPage} {$Think.lang.v_page} {$total} {$Think.lang.v_records}</div></div>
-                                        <div class="col-md-5"><div class="pull-right"><button type="button" class="btn blue" onclick="CheckOthers(this.form);"><i class="fa fa-check"></i> {$Think.lang.v_select_all}</button><button type="button" class="btn red-flamingo" onClick='ConfirmDel("{$Think.lang.v_confirm_delete}！","{:url('guestbook/delete_all')}","delete");'><i class="fa fa-times"></i> {$Think.lang.v_delete_select}</button></div></div>
+                                        <div class="col-md-7"><div class="pull-left pdl5">{$list->render()}</div><div class="pull-left lh31 pdl5">{:lang('共')} {$lastPage} {:lang('页')} {$total} {:lang('条记录')}</div></div>
+                                        <div class="col-md-5"><div class="pull-right"><button type="button" class="btn blue" onclick="CheckOthers(this.form);"><i class="fa fa-check"></i> {:lang('全选或反选')}</button><button type="button" class="btn red-flamingo" onClick='ConfirmDel("{$Think.lang.v_confirm_delete}！","{:url('guestbook/delete_all')}","delete");'><i class="fa fa-times"></i> {:lang('删除所选')}</button></div></div>
                                     </td>
                                 </tr>
                             </tbody>

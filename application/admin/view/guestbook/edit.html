@@ -22,9 +22,9 @@
                     <!--页面导航 开始-->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
-                            <li><span>{$Think.lang.v_home}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_guestbook} {$Think.lang.v_manage}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_view} {$Think.lang.v_guestbook}</span></li>
+                            <li><span>{:lang('内容管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('留言')} {:lang('管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('查看')} {:lang('留言')}</span></li>
                         </ul>
                     </div>
                     <!--页面导航 结束-->
@@ -37,26 +37,26 @@
                                     <div class="portlet-body">
                                         <div class="tabbable-bordered">
                                             <div class="edit_nav_left">
-                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{$Think.lang.v_view} {$Think.lang.v_guestbook}</span>
+                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{:lang('查看')} {:lang('留言')}</span>
                                             </div>
                                             <ul class="nav nav-tabs tabs-reversed"></ul>
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="tab_general">
                                                     <div class="form-body">
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_title}：</label>
+                                                            <label class="control-label col-md-3">{:lang('标题')}：</label>
                                                             <div class="col-md-5">
                                                                 <div class="form-control-static">{$rs.title}</div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_realname}：</label>
+                                                            <label class="control-label col-md-3">{:lang('姓名')}：</label>
                                                             <div class="col-md-5">
                                                                 <div class="form-control-static">{$rs.realname}</div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_telephone}：</label>
+                                                            <label class="control-label col-md-3">{:lang('电话')}：</label>
                                                             <div class="col-md-5">
                                                                 <div class="form-control-static">{$rs.telephone}</div>
                                                             </div>
@@ -90,7 +90,7 @@
                                                 <div class="form-actions">
                                                     <div class="row">
                                                         <div class="col-md-offset-3 col-md-9">
-                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{$Think.lang.v_goback}</button>
+                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{:lang('返回上一页')}</button>
                                                         </div>
                                                     </div>
                                                 </div>

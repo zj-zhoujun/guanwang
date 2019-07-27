@@ -22,9 +22,9 @@
                     <!--页面导航 开始-->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
-                            <li><span>{$Think.lang.v_home}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_news_manage}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_news_manage}</span></li>
+                            <li><span>{:lang('内容管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('新闻管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('新闻管理')}</span></li>
                         </ul>
                     </div>
                     <!--页面导航 结束-->
@@ -34,15 +34,15 @@
                         <div class="col-md-8">
                             {php}$isdisplay_array=explode(',',$modulenav['isdisplay']);{/php}
                             {if condition="(in_array('addinfo',$isdisplay_array))"}
-                                <button type="button" class="btn green" onclick="javascript:window.location.href='{:url('News/edit?moduleid='.input('get.moduleid').'&lang='.input('get.lang'))}'">{$Think.lang.v_add} {$Think.lang.v_news}</button>
+                                <button type="button" class="btn green" onclick="javascript:window.location.href='{:url('News/edit?moduleid='.input('get.moduleid').'&lang='.input('get.lang'))}'">{:lang('添加')} {:lang('新闻')}</button>
                             {/if}
                         </div>
                         <form name="form1" action="" method="post">
                             <input type="hidden" name="lang" value="{:input('get.lang')}">
                             <input type="hidden" name="moduleid" value="{:input('get.moduleid')}">
                             <div class="col-md-4 input-group">
-                                <input type="text" name="keyword" class="form-control" placeholder="{$Think.lang.v_quickfind}" />
-                                <span class="input-group-btn pdr5"><button type="submit" class="btn blue">{$Think.lang.v_search}</button></span>
+                                <input type="text" name="keyword" class="form-control" placeholder="{:lang('快速查找')}" />
+                                <span class="input-group-btn pdr5"><button type="submit" class="btn blue">{:lang('搜索')}</button></span>
                             </div>
                         </form>
                     </div>
@@ -51,10 +51,10 @@
                             <thead>
                                 <tr class="bg-default">
                                     <th>ID</th>
-                                    <th>{$Think.lang.v_belong_sort}</th>
-                                    <th>{$Think.lang.v_title}</th>
-                                    <th>{$Think.lang.v_sequence}</th>
-                                    <th>{$Think.lang.v_do}</th>
+                                    <th>{:lang('所属分类')}</th>
+                                    <th>{:lang('标题')}</th>
+                                    <th>{:lang('排序')}</th>
+                                    <th>{:lang('操作')}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,14 +64,14 @@
                                     <td><input type="checkbox" name="selectid[]" id="selectid" value="{$rs['id']}" /> {$rs['id']}</td>
                                     <td>{$rs.s_title}</td>
                                     <td>{$rs.title}</td>
-                                    <td><input name="sequence[]" type="text" value="{$rs.sequence}" class="form-control input-sm" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{$Think.lang.v_require_number}！');this.value='0';}" /></td>
-                                    <td><a href="{:url('News/edit?id='.$rs['id'].'&moduleid='.input('get.moduleid').'&lang='.input('get.lang'))}" class="btn green btn-sm"><i class="fa fa-edit"></i> {$Think.lang.v_edit}</a><a class="btn red-flamingo btn-sm" onClick='return confirm("{$Think.lang.v_confirm_delete}！");' href="{:url('news/delete_one?id='.$rs['id'])}"><i class="fa fa-times"></i> {$Think.lang.v_delete}</a></td>
+                                    <td><input name="sequence[]" type="text" value="{$rs.sequence}" class="form-control input-sm" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{:lang('必须为0或正整数')}！');this.value='0';}" /></td>
+                                    <td><a href="{:url('News/edit?id='.$rs['id'].'&moduleid='.input('get.moduleid').'&lang='.input('get.lang'))}" class="btn green btn-sm"><i class="fa fa-edit"></i> {:lang('编辑')}</a><a class="btn red-flamingo btn-sm" onClick='return confirm("{$Think.lang.v_confirm_delete}！");' href="{:url('news/delete_one?id='.$rs['id'])}"><i class="fa fa-times"></i> {:lang('删除')}</a></td>
                                 </tr>
                               {/volist}
                                 <tr>
                                     <td colspan="5">
-                                        <div class="col-md-7"><div class="pull-left pdl5">{$list->render()}</div><div class="pull-left lh31 pdl5">{$Think.lang.v_total} {$lastPage} {$Think.lang.v_page} {$total} {$Think.lang.v_records}</div></div>
-                                        <div class="col-md-5"><div class="pull-right"><button type="button" class="btn blue" onclick="CheckOthers(this.form);"><i class="fa fa-check"></i> {$Think.lang.v_select_all}</button><button type="button" class="btn green" onClick='ConfirmDel("","{:url('news/update_all')}","update");'><i class="fa fa-arrow-circle-o-up"></i> {$Think.lang.v_update_all}</button><button type="button" class="btn red-flamingo" onClick='ConfirmDel("{$Think.lang.v_confirm_delete}！","{:url('news/delete_all')}","delete");'><i class="fa fa-times"></i> {$Think.lang.v_delete_select}</button></div></div>
+                                        <div class="col-md-7"><div class="pull-left pdl5">{$list->render()}</div><div class="pull-left lh31 pdl5">{:lang('共')} {$lastPage} {:lang('页')} {$total} {:lang('条记录')}</div></div>
+                                        <div class="col-md-5"><div class="pull-right"><button type="button" class="btn blue" onclick="CheckOthers(this.form);"><i class="fa fa-check"></i> {:lang('全选或反选')}</button><button type="button" class="btn green" onClick='ConfirmDel("","{:url('news/update_all')}","update");'><i class="fa fa-arrow-circle-o-up"></i> {:lang('批量更新')}</button><button type="button" class="btn red-flamingo" onClick='ConfirmDel("{$Think.lang.v_confirm_delete}！","{:url('news/delete_all')}","delete");'><i class="fa fa-times"></i> {:lang('删除所选')}</button></div></div>
                                     </td>
                                 </tr>
                             </tbody>

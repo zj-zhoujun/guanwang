@@ -17,7 +17,7 @@ class AuthGroup extends Base{
     public function edit($id=0){
 		$lang = input('lang');
 		
-		if(AuthRuleModel::all()==false) $this->error(lang('c_add_auth_first'),url('AuthRule/edit?lang='.$lang));
+		if(AuthRuleModel::all()==false) $this->error(lang('请先添加权限'),url('AuthRule/edit?lang='.$lang));
 		
         if(!request()->isPost()){
             $rs = AuthGroupModel::get($id);
@@ -34,7 +34,7 @@ class AuthGroup extends Base{
         }else{
 			$result = AuthGroupModel::edit($id);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'));
+			$this->success(lang('操作成功'));
         }		
 	}
 
@@ -62,7 +62,7 @@ class AuthGroup extends Base{
         $AuthGroup = AuthGroupModel::get($id);
         $AuthGroup->delete();
 		
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量删除数据
@@ -79,7 +79,7 @@ class AuthGroup extends Base{
 			$AuthGroup = AuthGroupModel::get($id);
             $AuthGroup->delete();
 	    }
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 
 	//更新启用
@@ -91,7 +91,7 @@ class AuthGroup extends Base{
         $data['status'] = $value;
         AuthGroupModel::update($data);
 
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
 	}
 }
 

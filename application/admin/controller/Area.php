@@ -40,7 +40,7 @@ class Area extends Base{
         }else{
 			$result = AreaModel::edit($id);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'));
+			$this->success(lang('操作成功'));
         }		
 	}
 	
@@ -69,7 +69,7 @@ class Area extends Base{
 
         $area = AreaModel::get($id);
 		$area->delete();
-        $this->success(lang('c_success'));
+        $this->success(lang('操作成功'));
     }	
 	
 	//批量删除数据
@@ -120,7 +120,7 @@ class Area extends Base{
 			$area = AreaModel::get($id);
             $area->delete();
 	    }
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量更新
@@ -134,7 +134,7 @@ class Area extends Base{
             AreaModel::update($data);
         }
 		
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 }

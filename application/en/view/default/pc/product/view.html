@@ -28,7 +28,7 @@
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
-            <li><a href="/"><i class="fa fa-home"></i>{$Think.lang.v_home}</a></li>
+            <li><a href="/"><i class="fa fa-home"></i>{:lang('内容管理')}</a></li>
             <li><a href="{:url('/en/product/index-1')}">{$Think.lang.product}</a></li>
             {volist name="listnavigation" id="proSortRs"}
                 <li class="active"><a href="{:url('/en/'.$proSortRs['urlroute'].'-p'.$proSortRs['id'].'-1')}">{$proSortRs.title}</a></li>

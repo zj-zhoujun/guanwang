@@ -35,10 +35,10 @@
                     <!--页面导航 开始-->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_user_manage}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_user}</span></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('用户管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{eq name="rs.id" value=""}{:lang('添加')}{else /}{:lang('编辑')}{/eq} {:lang('用户')}</span></li>
                         </ul>
                     </div>
                     <!--页面导航 结束-->
@@ -53,33 +53,33 @@
                                     <div class="portlet-body">
                                         <div class="tabbable-bordered">
                                             <div class="edit_nav_left">
-                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_user}</span>
+                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{eq name="rs.id" value=""}{:lang('添加')}{else /}{:lang('编辑')}{/eq} {:lang('用户')}</span>
                                             </div>
                                             <ul class="nav nav-tabs tabs-reversed"></ul>
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="tab_general">
                                                     <div class="form-body">
-                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{$Think.lang.v_error_tips}</div>
+                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{:lang('表单填写有误，清检查红色区域修正')}</div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_username}<span class="required" aria-required="true">*</span></label>
+                                                            <label class="control-label col-md-3">{:lang('用户名')}<span class="required" aria-required="true">*</span></label>
                                                             <div class="col-md-5">
                                                                 <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="username" value="{$rs.username}" placeholder="{$Think.lang.v_username_tips}" /></div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_password}</label>
+                                                            <label class="control-label col-md-3">{:lang('密码')}</label>
                                                             <div class="col-md-5">
                                                                 <input type="text" class="form-control" name="password" value="" placeholder="{$Think.lang.v_password_tips}" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_repassword}</label>
+                                                            <label class="control-label col-md-3">{:lang('确认密码')}</label>
                                                             <div class="col-md-5">
                                                                 <input type="text" class="form-control" name="vpassword" value="" placeholder="{$Think.lang.v_password_tips}" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group {eq name="rs.id" value="1"} hidden{/eq}">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_usergroup}</label>
+                                                            <label class="control-label col-md-3">{:lang('用户组')}</label>
                                                             <div class="col-md-5">
                                                                 <select name="groupid" class="form-control" data-style="btn-primary">
                                                                     {foreach name="AuthGroup" item="k"}
@@ -89,15 +89,15 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_realname}</label>
+                                                            <label class="control-label col-md-3">{:lang('姓名')}</label>
                                                             <div class="col-md-5">
                                                                 <input type="text" class="form-control" name="realname" value="{$rs.realname}" placeholder="{$Think.lang.v_realname_tips}" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_avatar}</label>
+                                                            <label class="control-label col-md-3">{:lang('头像')}</label>
                                                             <div class="col-md-5">
-                                                                <div class="input-group"><input name="avatar" id="morepics1" type="text" class="form-control" value="{eq name="rs.avatar" value=""}/public/admin/bootstrap/layouts/layout/img/avatar.jpg{else /}{$rs.avatar}{/eq}" /> <span class="input-group-btn"><input type="button" value=" {$Think.lang.v_upload} {$Think.lang.v_avatar} " class="btn green" onclick="upImage1();"></span></div>
+                                                                <div class="input-group"><input name="avatar" id="morepics1" type="text" class="form-control" value="{eq name="rs.avatar" value=""}/public/admin/bootstrap/layouts/layout/img/avatar.jpg{else /}{$rs.avatar}{/eq}" /> <span class="input-group-btn"><input type="button" value=" {$Think.lang.v_upload} {:lang('头像')} " class="btn green" onclick="upImage1();"></span></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -105,8 +105,8 @@
                                                 <div class="form-actions">
                                                     <div class="row">
                                                         <div class="col-md-offset-3 col-md-9">
-                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {$Think.lang.v_save}</button>
-                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{$Think.lang.v_goback}</button>
+                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {:lang('保存')}</button>
+                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{:lang('返回上一页')}</button>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -2,7 +2,7 @@
               <form name="guestbook" id="guestbook" onSubmit="return guestbookCheck();" method="post" action="{:url('about/guestbook')}" class="default-form" role="form">
                   <input type="hidden" name="addtime" value="{php}echo time();{/php}" />
                 <div class="form-group">
-                  <label for="name">{$Think.lang.v_realname}<span class="require">*</span></label>
+                  <label for="name">{:lang('姓名')}<span class="require">*</span></label>
                   <input name="realname" id="realname" type="text" class="form-control">
                 </div>
                 <div class="form-group">

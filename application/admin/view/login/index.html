@@ -8,7 +8,7 @@
 <html lang="en">
 <!--<![endif]--><head>
 <meta charset="utf-8" />
-<title>{$Think.lang.v_admin_system}</title>
+<title>{:lang('后台管理')}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 <!--全局强制样式 开始-->
@@ -45,47 +45,32 @@
         <div class="content">
             <!--登录表单 开始-->
             <form name="login" class="login-form" onSubmit="return logincheck();" action="{:url('?lang=cn')}" method="post">
-                <h3 class="form-title">{$Think.lang.v_user_login}</h3>
+                <h3 class="form-title">{:lang('用户登录')}</h3>
                 <div class="form-group">
                     <!--IE8和IE9不支持html5 placeholder,所以我们显示用户名在这里-->
-                    <label class="control-label visible-ie8 visible-ie9">{$Think.lang.v_username}</label>
+                    <label class="control-label visible-ie8 visible-ie9">{:lang('用户名')}</label>
                     <div class="input-icon">
                         <i class="fa fa-user"></i>
-                        <input name="username" type="text" class="form-control placeholder-no-fix" maxlength="20" autocomplete="off" placeholder="{$Think.lang.v_username}" />
+                        <input name="username" type="text" class="form-control placeholder-no-fix" maxlength="20" autocomplete="off" placeholder="{:lang('用户名')}" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">{$Think.lang.v_password}</label>
+                    <label class="control-label visible-ie8 visible-ie9">{:lang('密码')}</label>
                     <div class="input-icon">
                         <i class="fa fa-lock"></i>
-                        <input name="password" type="password" class="form-control placeholder-no-fix" maxlength="20" autocomplete="off" placeholder="{$Think.lang.v_password}" />
+                        <input name="password" type="password" class="form-control placeholder-no-fix" maxlength="20" autocomplete="off" placeholder="{:lang('密码')}" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">{$Think.lang.v_verify}</label>
+                    <label class="control-label visible-ie8 visible-ie9">{:lang('验证码')}</label>
                     <div class="input-icon">
                         <i class="fa fa-info-circle"></i>
-                        <input name="verify" type="text" class="form-control" maxlength="4" autocomplete="off" placeholder="{$Think.lang.v_verify}" />
+                        <input name="verify" type="text" class="form-control" maxlength="4" autocomplete="off" placeholder="{:lang('验证码')}" />
                     </div>
                 </div>
                 <div class="form-actions">
                     <img class="cursor" src="{:url('Captcha/index')}" onclick="this.src='{:url('Captcha/index')}'" border="0" width="125" height="35" align="absmiddle" />
-                    <button type="submit" class="btn green pull-right"> {$Think.lang.v_login} </button>
-                </div>
-                <div class="login-options">
-                    <div class="radio-list">
-                        {volist name="langlist" id="lang"}
-                            <label class="radio-inline">
-                                <input name="language" type="radio" value="{$lang['mulu']}" {eq name="lang.isdefault" value="1"} checked="checked"{/eq} /><img src="{$lang['ico']}" border="0" width="16" height="11" class="mr5" />{$lang.admintitle}
-                            </label>
-                        {/volist}
-                    </div>
-                </div>
-                <div class="forget-password">
-                    <h4>{$helloChosen}</h4>
-                </div>
-                <div class="create-account">
-                    <p>{$Think.lang.v_words}</p>
+                    <button type="submit" class="btn green pull-right"> {:lang('登陆')} </button>
                 </div>
             </form>
             <!--登录表单结束-->
@@ -94,7 +79,7 @@
         <!--版权 开始-->
         <div class="copyright">
             {eq name="Think.config.copyright" value="1"}
-                Copyright &copy; {$system_url} {$system_name}<br>{$Think.lang.v_version}：{$system_version}
+                Copyright &copy; {$system_url} {$system_name}<br>{:lang('版本')}：{$system_version}
             {/eq}
         </div>
         <!--版权 结束-->
@@ -125,7 +110,7 @@
   var password=document.login.password.value;
   var verify=document.login.verify.value;
   if(username==""){
-      alert("{$Think.lang.v_username_required}");
+      alert("{:lang('请输入用户名')}");
       document.login.username.focus();
 	  return false;
   }
@@ -162,7 +147,7 @@ var Login = function () {
 
 	            messages: {
 	                username: {
-	                    required: "{$Think.lang.v_username_required}"
+	                    required: "{:lang('请输入用户名')}"
 	                },
 	                password: {
 	                    required: "{$Think.lang.v_password_required}"

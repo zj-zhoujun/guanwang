@@ -38,9 +38,9 @@
                     <!--页面导航 开始-->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
-                            <li><span>{$Think.lang.v_home}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_product_manage}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_product}</span></li>
+                            <li><span>{:lang('内容管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('产品管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{eq name="rs.id" value=""}{:lang('添加')}{else /}{:lang('编辑')}{/eq} {:lang('产品')}</span></li>
                         </ul>
                     </div>
                     <!--页面导航 结束-->
@@ -57,15 +57,15 @@
                                     <div class="portlet-body">
                                         <div class="tabbable-bordered">
                                             <div class="edit_nav_left">
-                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_product}</span>
+                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{eq name="rs.id" value=""}{:lang('添加')}{else /}{:lang('编辑')}{/eq} {:lang('产品')}</span>
                                             </div>
                                             <ul class="nav nav-tabs tabs-reversed"></ul>
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="tab_general">
                                                     <div class="form-body">
-                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{$Think.lang.v_error_tips}</div>
+                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{:lang('表单填写有误，清检查红色区域修正')}</div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_sort}</label>
+                                                            <label class="control-label col-md-3">{:lang('分类')}</label>
                                                             <div class="col-md-5">
                                                                 <select name="sortid" onchange="showAttribute(this.value)" autocomplete="off" id="single" class="form-control select2">
 										                            {php}$LoadSortID = $rs['sortid'];{/php}
@@ -80,62 +80,62 @@
                                                             <div id="attNameValue"></div>
                                                         {/if}
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_title}<span class="required" aria-required="true">*</span></label>
+                                                            <label class="control-label col-md-3">{:lang('标题')}<span class="required" aria-required="true">*</span></label>
                                                             <div class="col-md-5">
                                                                 <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="title" id="title" onblur="strtopy();" value="{$rs.title}" /></div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_seo} {$Think.lang.v_title}</label>
+                                                            <label class="control-label col-md-3">{:lang('SEO')} {:lang('标题')}</label>
                                                             <div class="col-md-5">
-                                                                <input type="text" class="form-control" name="seotitle" value="{$rs.seotitle}" placeholder="{$Think.lang.v_seo_use_title}" />
+                                                                <input type="text" class="form-control" name="seotitle" value="{$rs.seotitle}" placeholder="{:lang('不填则用标题')}" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_keyword}</label>
+                                                            <label class="control-label col-md-3">{:lang('关键词')}</label>
                                                             <div class="col-md-5">
                                                                 <input type="text" class="form-control" name="keyword" value="{$rs.keyword}" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_description}</label>
+                                                            <label class="control-label col-md-3">{:lang('描述')}</label>
                                                             <div class="col-md-5">
                                                                 <textarea name="description" rows="4" class="form-control">{$rs.description}</textarea>
                                                             </div>
                                                         </div>
                                                         {if condition="(in_array('fileurl',$isdisplay_array))"}
                                                             <div class="form-group">
-                                                                <label class="control-label col-md-3">{$Think.lang.v_upload_file}</label>
+                                                                <label class="control-label col-md-3">{:lang('上传附件')}</label>
                                                                 <div class="col-md-5">
-                                                                    <div class="input-group"><input name="fileurl" id="file" type="text" class="form-control" value="{$rs['fileurl']}" /> <span class="input-group-btn"><input type="button" value=" {$Think.lang.v_upload_file} " class="btn green" onclick="upFiles();"></span></div>
+                                                                    <div class="input-group"><input name="fileurl" id="file" type="text" class="form-control" value="{$rs['fileurl']}" /> <span class="input-group-btn"><input type="button" value=" {:lang('上传附件')} " class="btn green" onclick="upFiles();"></span></div>
                                                                 </div>
                                                             </div>
                                                         {/if}
                                                         {if condition="(in_array('morecontents',$isdisplay_array))"}
                                                             <div class="form-group">
-                                                                <label class="control-label col-md-3">{$Think.lang.v_content_a}</label>
+                                                                <label class="control-label col-md-3">{:lang('内容')}</label>
                                                                 <div class="col-md-9">
-                                                                    <button type="button" name="ShowUeditor1" id="ShowUeditor1" onclick="ShowUeditor1a();" class="btn green btn-sm" />{$Think.lang.v_editor_showornot}</button>
+                                                                    <button type="button" name="ShowUeditor1" id="ShowUeditor1" onclick="ShowUeditor1a();" class="btn green btn-sm" />{:lang('点击 显示 / 隐藏 编辑器')}</button>
                                                                     <textarea name="content1" id="content1a" style="width:100%; height:350px; display:none;">{$rs['content1']}</textarea>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label col-md-3">{$Think.lang.v_content_b}</label>
+                                                                <label class="control-label col-md-3">{:lang('内容2')}</label>
                                                                 <div class="col-md-9">
-                                                                    <button type="button" name="ShowUeditor2" id="ShowUeditor2" onclick="ShowUeditor2a();" class="btn green btn-sm" />{$Think.lang.v_editor_showornot}</button>
+                                                                    <button type="button" name="ShowUeditor2" id="ShowUeditor2" onclick="ShowUeditor2a();" class="btn green btn-sm" />{:lang('点击 显示 / 隐藏 编辑器')}</button>
                                                                     <textarea name="content2" id="content2a" style="width:100%; height:350px; display:none;">{$rs['content2']}</textarea>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label col-md-3">{$Think.lang.v_content_c}</label>
+                                                                <label class="control-label col-md-3">{:lang('内容3')}</label>
                                                                 <div class="col-md-9">
-                                                                    <button type="button" name="ShowUeditor3" id="ShowUeditor3" onclick="ShowUeditor3a();" class="btn green btn-sm" />{$Think.lang.v_editor_showornot}</button>
+                                                                    <button type="button" name="ShowUeditor3" id="ShowUeditor3" onclick="ShowUeditor3a();" class="btn green btn-sm" />{:lang('点击 显示 / 隐藏 编辑器')}</button>
                                                                     <textarea name="content3" id="content3a" style="width:100%; height:350px; display:none;">{$rs['content3']}</textarea>
                                                                 </div>
                                                             </div>
                                                         {else /}
                                                             <div class="form-group">
-                                                                <label class="control-label col-md-3">{$Think.lang.v_content_a}</label>
+                                                                <label class="control-label col-md-3">{:lang('内容')}</label>
                                                                 <div class="col-md-9">
                                                                     <textarea name="content1" id="content1a" style="width:100%; height:350px;">{$rs['content1']}</textarea>
                                                                 </div>
@@ -163,15 +163,15 @@
                                                         
                                                         {if condition="(in_array('thumb',$isdisplay_array))"}
                                                             <div class="form-group">
-                                                                <label class="control-label col-md-3">{$Think.lang.v_img}</label>
+                                                                <label class="control-label col-md-3">{:lang('图片')}</label>
                                                                 <div class="col-md-5">
-                                                                    <div class="input-group"><input name="thumb" id="morepics1" type="text" class="form-control" value="{$rs['thumb']}" /> <span class="input-group-btn"><input type="button" value=" {$Think.lang.v_upload_img} " class="btn green" onclick="upImage1();"></span></div>
+                                                                    <div class="input-group"><input name="thumb" id="morepics1" type="text" class="form-control" value="{$rs['thumb']}" /> <span class="input-group-btn"><input type="button" value=" {:lang('上传图片')} " class="btn green" onclick="upImage1();"></span></div>
                                                                 </div>
                                                             </div>
                                                         {/if}<!--更多图片-->
                                                         {if condition="(in_array('morepics',$isdisplay_array))"}
                                                             <div class="form-group">
-                                                                <label class="control-label col-md-3">{$Think.lang.v_more_img}</label>
+                                                                <label class="control-label col-md-3">{:lang('更多图片')}</label>
                                                                 <div class="col-md-5">
                                                                     <table width="100%" border="0" cellpadding="0" cellspacing="0" id="tab1">
 												                        {if condition="empty($rs['morepics'])"}
@@ -180,7 +180,7 @@
                                                                                     <div class="input-group">
                                                                                         <input type="text" name="morepics[]" id="morepics2" value="{$rs['morepics']}" class="form-control">
                                                                                         <span class="input-group-btn">
-                                                                                            <input type="button" onClick="upImage2();" value=" {$Think.lang.v_upload_img} " class="btn green borderradius" /><input type="button" class="btn blue borderradius_left0" value="{$Think.lang.v_add_one}" onClick="javascript:AddRow();" />
+                                                                                            <input type="button" onClick="upImage2();" value=" {:lang('上传图片')} " class="btn green borderradius" /><input type="button" class="btn blue borderradius_left0" value="{:lang('增加一个')}" onClick="javascript:AddRow();" />
                                                                                         </span><input type="hidden" name="fuJ" id="fuJ1" />
                                                                                     </div>
                                                                                 </td>
@@ -192,11 +192,11 @@
                                                                                         <div class="input-group">
                                                                                             <input type="text" name="morepics[]" id="morepics{$i+1}" value="{$img}" class="form-control">
                                                                                             <span class="input-group-btn">
-                                                                                                <input type="button" onClick="upImage{$i+1}();" value=" {$Think.lang.v_upload_img} " class="btn green borderradius" />
+                                                                                                <input type="button" onClick="upImage{$i+1}();" value=" {:lang('上传图片')} " class="btn green borderradius" />
                                                                                                 {eq name="i" value="1"}
-                                                                                                    <input type="button" class="btn blue borderradius_left0" value="{$Think.lang.v_add_one}" onClick="javascript:AddRow();" />
+                                                                                                    <input type="button" class="btn blue borderradius_left0" value="{:lang('增加一个')}" onClick="javascript:AddRow();" />
                                                                                                 {else /}
-                                                                                                    <label class="btn red borderradius_left0"><input type="checkbox" class="hidden" id="box1" onClick="javascript:DelRow();" />{$Think.lang.v_delete_this}</label>
+                                                                                                    <label class="btn red borderradius_left0"><input type="checkbox" class="hidden" id="box1" onClick="javascript:DelRow();" />{:lang('删除这个')}</label>
                                                                                                 {/eq}
                                                                                             </span><input type="hidden" name="fuJ" id="fuJ1" />
                                                                                         </div>
@@ -210,80 +210,80 @@
                                                         {/if}
                                                         {if condition="(in_array('price',$isdisplay_array))"}
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_price}</label>
+                                                            <label class="control-label col-md-3">{:lang('价格')}</label>
                                                             <div class="col-md-5">
                                                                 <input type="text" class="form-control" name="price" value="{eq name="rs.price" value=""}0.00{else /}{$rs.price}{/eq}" />
                                                             </div>
                                                         </div>
                                                         {/if}
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_market_price}</label>
+                                                            <label class="control-label col-md-3">{:lang('市场价')}</label>
                                                             <div class="col-md-5">
                                                                 <input type="text" class="form-control" name="marketprice" value="{eq name="rs.marketprice" value=""}0.00{else /}{$rs.marketprice}{/eq}" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_quantity}</label>
+                                                            <label class="control-label col-md-3">{:lang('库存')}</label>
                                                             <div class="col-md-5">
-                                                                <input type="text" class="form-control" name="quantity" value="{eq name="rs.quantity" value=""}1000000{else /}{$rs.quantity}{/eq}" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{$Think.lang.v_require_number}！');this.value='1000000';}" />
+                                                                <input type="text" class="form-control" name="quantity" value="{eq name="rs.quantity" value=""}1000000{else /}{$rs.quantity}{/eq}" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{:lang('必须为0或正整数')}！');this.value='1000000';}" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_urlroute}</label>
+                                                            <label class="control-label col-md-3">{:lang('URL网址')}</label>
                                                             <div class="col-md-5">
-                                                                <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="urlroute" id="urlroute" placeholder="{$Think.lang.v_urlroute_tips}" value="{$rs.urlroute}" /></div>
+                                                                <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="urlroute" id="urlroute" placeholder="{:lang('URL网址必须为1-30个英文字母')}" value="{$rs.urlroute}" /></div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_sequence}</label>
+                                                            <label class="control-label col-md-3">{:lang('排序')}</label>
                                                             <div class="col-md-5">
-                                                                <input type="text" class="form-control" name="sequence" value="{eq name="rs.sequence" value=""}0{else /}{$rs.sequence}{/eq}" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{$Think.lang.v_require_number}！');this.value='0';}" />
+                                                                <input type="text" class="form-control" name="sequence" value="{eq name="rs.sequence" value=""}0{else /}{$rs.sequence}{/eq}" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{:lang('必须为0或正整数')}！');this.value='0';}" />
                                                             </div>
                                                         </div>
                                                         {if condition="(in_array('hits',$isdisplay_array))"}
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_click}</label>
+                                                            <label class="control-label col-md-3">{:lang('点击数')}</label>
                                                             <div class="col-md-5">
-                                                                <input type="text" class="form-control" name="hits" value="{eq name="rs.hits" value=""}1{else /}{$rs.hits}{/eq}" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{$Think.lang.v_require_number}！');this.value='1';}" />
+                                                                <input type="text" class="form-control" name="hits" value="{eq name="rs.hits" value=""}1{else /}{$rs.hits}{/eq}" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{:lang('必须为0或正整数')}！');this.value='1';}" />
                                                             </div>
                                                         </div>
                                                         {/if}
                                                         <div class="form-group {if condition="(in_array('client',$isdisplay_array))"}{else /}hidden{/if}">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_client}</label>
+                                                            <label class="control-label col-md-3">{:lang('客户端')}</label>
                                                             <div class="col-md-5">
                                                                 <div class="checkbox-list">
                                                                     {php}$client_array=explode(',',$rs['client']);{/php}
                                                                     <label class="checkbox-inline">
-                                                                        <input type="checkbox" name="client[]" value="pc" {if condition="(in_array('pc',$client_array)) or $rs['client'] eq ''"}checked="checked"{/if}>{$Think.lang.v_client_pc}
+                                                                        <input type="checkbox" name="client[]" value="pc" {if condition="(in_array('pc',$client_array)) or $rs['client'] eq ''"}checked="checked"{/if}>{:lang('电脑端')}
                                                                     </label>
                                                                     <label class="checkbox-inline">
-                                                                        <input type="checkbox" name="client[]" value="wap" {if condition="(in_array('wap',$client_array)) or $rs['client'] eq ''"}checked="checked"{/if}>{$Think.lang.v_client_mobile}
+                                                                        <input type="checkbox" name="client[]" value="wap" {if condition="(in_array('wap',$client_array)) or $rs['client'] eq ''"}checked="checked"{/if}>{:lang('移动端')}
                                                                     </label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group {if condition="(in_array('status',$isdisplay_array))"}{else /}hidden{/if}">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_status}</label>
+                                                            <label class="control-label col-md-3">{:lang('状态')}</label>
                                                             <div class="col-md-5">
                                                                 <div class="checkbox-list">
                                                                     {php}$status_array=explode(',',$rs['status']);{/php}
                                                                     <label class="checkbox-inline">
-                                                                        <input name="status[]" type="checkbox" value="view" {if condition="(in_array('view',$status_array)) or $rs['status'] eq ''"}checked="checked"{/if} />{$Think.lang.v_status_show}
+                                                                        <input name="status[]" type="checkbox" value="view" {if condition="(in_array('view',$status_array)) or $rs['status'] eq ''"}checked="checked"{/if} />{:lang('显示')}
                                                                     </label>
                                                                     <label class="checkbox-inline">
-                                                                        <input name="status[]" type="checkbox" class="ml10r5" value="commend" {if condition="(in_array('commend',$status_array)) or $rs['status'] eq ''"}checked="checked"{/if} />{$Think.lang.v_status_commend}
+                                                                        <input name="status[]" type="checkbox" class="ml10r5" value="commend" {if condition="(in_array('commend',$status_array)) or $rs['status'] eq ''"}checked="checked"{/if} />{:lang('推荐')}
                                                                     </label>
                                                                     <label class="checkbox-inline">
-                                                                        <input name="status[]" type="checkbox" class="ml10r5" value="new" {if condition="(in_array('new',$status_array)) or $rs['status'] eq ''"}checked="checked"{/if} />{$Think.lang.v_status_new}
+                                                                        <input name="status[]" type="checkbox" class="ml10r5" value="new" {if condition="(in_array('new',$status_array)) or $rs['status'] eq ''"}checked="checked"{/if} />{:lang('最新')}
                                                                     </label>
                                                                     <label class="checkbox-inline">
-                                                                        <input name="status[]" type="checkbox" class="ml10r5" value="hot" {if condition="(in_array('hot',$status_array)) or $rs['status'] eq ''"}checked="checked"{/if} />{$Think.lang.v_status_hot}
+                                                                        <input name="status[]" type="checkbox" class="ml10r5" value="hot" {if condition="(in_array('hot',$status_array)) or $rs['status'] eq ''"}checked="checked"{/if} />{:lang('热门')}
                                                                     </label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group {if condition="(in_array('addtime',$isdisplay_array))"}{else /}hidden{/if}">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_adddate}</label>
+                                                            <label class="control-label col-md-3">{:lang('添加日期')}</label>
                                                             <div class="col-md-5">
                                                                 <div class="input-group date form_datetime">
                                                                     <input type="text" class="form-control" name="addtime" readonly="readonly" value="{php}if(empty($rs['addtime'])){ echo date('Y-m-d H:i:s',time()); }else{ echo date('Y-m-d H:i:s',$rs['addtime']);}{/php}" />
@@ -295,7 +295,7 @@
                                                         </div>
                                                         {if condition="(in_array('linkurl',$isdisplay_array))"}
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_jump_url}</label>
+                                                            <label class="control-label col-md-3">{:lang('跳转地址')}</label>
                                                             <div class="col-md-5">
                                                                 <input type="text" class="form-control" name="linkurl" value="{$rs.linkurl}" />
                                                             </div>
@@ -306,8 +306,8 @@
                                                 <div class="form-actions">
                                                     <div class="row">
                                                         <div class="col-md-offset-3 col-md-9">
-                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {$Think.lang.v_save}</button>
-                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{$Think.lang.v_goback}</button>
+                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {:lang('保存')}</button>
+                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{:lang('返回上一页')}</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -506,7 +506,7 @@ function AddRow(){
 	var morepicsNum={$morepicsNum}+i;
     //添加列
     var newTd0 = newTr.insertCell();
-    newTd0.innerHTML = '<div class="input-group"><input type="text" name="morepics[]" id="morepics'+morepicsNum+'" value="" class="form-control" /><span class="input-group-btn"><input type="button" onClick="upImage'+morepicsNum+'();" value=" {$Think.lang.v_upload_img} " class="btn green borderradius" /><label class="btn red borderradius_left0"><input type="checkbox" class="hidden" id="box1" onclick="javascript:DelRow();"/ />{$Think.lang.v_delete_this}</label><input type="hidden" name="fuJ" id='+Cod+' /></span></div>';
+    newTd0.innerHTML = '<div class="input-group"><input type="text" name="morepics[]" id="morepics'+morepicsNum+'" value="" class="form-control" /><span class="input-group-btn"><input type="button" onClick="upImage'+morepicsNum+'();" value=" {:lang('上传图片')} " class="btn green borderradius" /><label class="btn red borderradius_left0"><input type="checkbox" class="hidden" id="box1" onclick="javascript:DelRow();"/ />{:lang('删除这个')}</label><input type="hidden" name="fuJ" id='+Cod+' /></span></div>';
 }
 function DelRow(){
 //删除一行

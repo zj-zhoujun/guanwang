@@ -61,7 +61,7 @@
                 <div class="row margin-bottom-10">
                     <div class="pull-left col-md-6 col-sm-6 padding-left-15">
                         <ul class="breadcrumb">
-                            <li><a href="/"><i class="fa fa-home"></i>{$Think.lang.v_home}</a></li>
+                            <li><a href="/"><i class="fa fa-home"></i>{:lang('内容管理')}</a></li>
                             <li><a href="{:url('/news/index-1')}">{$Think.lang.news}</a></li>
                             {volist name="listnavigation" id="navRs"}
                                 <li class="active"><a href="{:url('/'.$rs['urlroute'].'-n'.$navRs['id'].'-1')}">{$navRs.title}</a></li>
@@ -71,8 +71,8 @@
                     <div class="pull-right col-md-6 col-sm-6 padding-right-15">
                         <form name="kwsearch" method="get" onSubmit="return checksearch();" action="">
                             <div class="input-group">
-                                <input name="keyword" type="text" placeholder="{$Think.lang.v_quickfind}" class="form-control">
-                                <span class="input-group-btn"><button class="btn btn-primary" type="submit">{$Think.lang.v_search}</button></span>
+                                <input name="keyword" type="text" placeholder="{:lang('快速查找')}" class="form-control">
+                                <span class="input-group-btn"><button class="btn btn-primary" type="submit">{:lang('搜索')}</button></span>
                             </div>
                         </form>
                     </div> 
@@ -87,13 +87,13 @@
                             {$rs.description|htmlspecialchars_decode|str_ireplace=$keyword,"<span class=red>$keyword</span>",###}
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12 padding-top-10 padding-bottom-10 margin-bottom-20 border-bottom-1">
-                            <i class="fa fa-calendar"></i> {$Think.lang.v_date}：{$rs.addtime|date='Y-m-d',###} <i class="fa fa-eye"></i> {$Think.lang.v_hits}：{$rs.hits} <a href="{:url('/'.$rs['urlroute'].'-n'.$rs['id'])}"><i class="fa fa-plus-circle"></i> {$Think.lang.v_detail} &raquo;</a>
+                            <i class="fa fa-calendar"></i> {:lang('日期')}：{$rs.addtime|date='Y-m-d',###} <i class="fa fa-eye"></i> {$Think.lang.v_hits}：{$rs.hits} <a href="{:url('/'.$rs['urlroute'].'-n'.$rs['id'])}"><i class="fa fa-plus-circle"></i> {$Think.lang.v_detail} &raquo;</a>
                         </div>
                     {/volist}
                 </div>
                 <!--分页 开始-->
                 <div class="row">
-                    <div class="col-md-4 col-sm-4 items-info">{$Think.lang.v_total} {$lastPage} {$Think.lang.v_page} {$total} {$Think.lang.v_records}</div>
+                    <div class="col-md-4 col-sm-4 items-info">{:lang('共')} {$lastPage} {:lang('页')} {$total} {:lang('条记录')}</div>
                     <div class="col-md-8 col-sm-8">
                         {$list->render()}
                     </div>

@@ -35,7 +35,7 @@ class Ad extends Base{
         }else{
 			$result = AdModel::edit($id);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'));
+			$this->success(lang('操作成功'));
         }		
 	}
 	
@@ -44,7 +44,7 @@ class Ad extends Base{
 	    $id=input('id');
         $ad = AdModel::get($id);
         $ad->delete();
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量删除数据
@@ -57,7 +57,7 @@ class Ad extends Base{
 			$ad = AdModel::get($id);
             $ad->delete();
 	    }
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量更新排序
@@ -71,7 +71,7 @@ class Ad extends Base{
             AdModel::update($data);
         }
 		
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 }

@@ -36,7 +36,7 @@ class Keywordlink extends Base{
 				
 			$result = KeywordlinkModel::edit($id);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'));
+			$this->success(lang('操作成功'));
         }		
 	}
 	
@@ -45,7 +45,7 @@ class Keywordlink extends Base{
 	    $id=input('id');
         $keywordlink = KeywordlinkModel::get($id);
         $keywordlink->delete();
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量删除数据
@@ -58,7 +58,7 @@ class Keywordlink extends Base{
 			$keywordlink = KeywordlinkModel::get($id);
             $keywordlink->delete();
 	    }
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量更新排序
@@ -71,7 +71,7 @@ class Keywordlink extends Base{
             $data['sequence'] = $sequence[$i];
             KeywordlinkModel::update($data);
         }
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 }

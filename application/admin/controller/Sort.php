@@ -20,7 +20,7 @@ class Sort extends Base{
     //用分页读取数据
     public function index(){
 		$moduleid = input('moduleid');
-	    if(empty($moduleid)) $this->error(lang('c_error_parameter'));//所属模块不存在
+	    if(empty($moduleid)) $this->error(lang('参数错误'));//所属模块不存在
 
 		$rs = SortModel::index();
 		
@@ -36,7 +36,7 @@ class Sort extends Base{
 		$lang = input('lang');
 		$moduleid = input('moduleid');
 		
-	    if(empty($moduleid)) $this->error(lang('c_error_parameter'));//所属模块不存在
+	    if(empty($moduleid)) $this->error(lang('参数错误'));//所属模块不存在
 
         if(!request()->isPost()){
             $rs = SortModel::get($id);
@@ -55,7 +55,7 @@ class Sort extends Base{
 
 			$result = SortModel::edit($id);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'));
+			$this->success(lang('操作成功'));
         }		
 	}
 	
@@ -65,29 +65,29 @@ class Sort extends Base{
 		//请先删除该分类下的信息
 		//产品
 		$product = ProductModel::all(['sortid'=>$id]);
-        if($product) $this->error(lang('c_delete_sort_info_first'));
+        if($product) $this->error(lang('清先删除该分类下的信息'));
 		//新闻
 		$news = NewsModel::all(['sortid'=>$id]);
-        if($news) $this->error(lang('c_delete_sort_info_first'));
+        if($news) $this->error(lang('清先删除该分类下的信息'));
 		//下载
 		$down = DownModel::all(['sortid'=>$id]);
-        if($down) $this->error(lang('c_delete_sort_info_first'));
+        if($down) $this->error(lang('清先删除该分类下的信息'));
 		//单页
 		$about = AboutModel::all(['sortid'=>$id]);
-        if($about) $this->error(lang('c_delete_sort_info_first'));
+        if($about) $this->error(lang('清先删除该分类下的信息'));
 		//案例
 		$project = ProjectModel::all(['sortid'=>$id]);
-        if($project) $this->error(lang('c_delete_sort_info_first'));
+        if($project) $this->error(lang('清先删除该分类下的信息'));
 		
         //禁止删除含有子分类的分类
 		$hasChild = SortModel::all(['parentid'=>$id]);
-        if($hasChild) $this->error(lang('c_delete_sort_child_first'));
+        if($hasChild) $this->error(lang('清先删除该分类下的子分类'));
 		
 		//删除该分类下的属性
 		Db::name('Attribute')->where('sortid='.$id)->delete();
 		
         $rs=Db::name('Sort')->delete($id);
-        $rs ? $this->success(lang('c_success')) : $this->error(lang('c_fail'));
+        $rs ? $this->success(lang('操作成功')) : $this->error(lang('操作失败'));
     }	
 	
 	//批量删除数据
@@ -101,37 +101,37 @@ class Sort extends Base{
 		    //产品
 			$product = ProductModel::all(['sortid'=>$id]);
             if($product){
-                $this->error(lang('c_delete_sort_info_first'));
+                $this->error(lang('清先删除该分类下的信息'));
 				break;
             }
 		    //新闻
             $news = NewsModel::all(['sortid'=>$id]);
             if($news){
-                $this->error(lang('c_delete_sort_info_first'));
+                $this->error(lang('清先删除该分类下的信息'));
 				break;
             }
 		    //下载
             $down = DownModel::all(['sortid'=>$id]);
             if($down){
-                $this->error(lang('c_delete_sort_info_first'));
+                $this->error(lang('清先删除该分类下的信息'));
 				break;
             }
 		    //单页
             $about = AboutModel::all(['sortid'=>$id]);
             if($about){
-                $this->error(lang('c_delete_sort_info_first'));
+                $this->error(lang('清先删除该分类下的信息'));
 				break;
             }
 		    //案例
             $project = ProjectModel::all(['sortid'=>$id]);
             if($project){
-                $this->error(lang('c_delete_sort_info_first'));
+                $this->error(lang('清先删除该分类下的信息'));
 				break;
             }
             //禁止删除含有子分类的分类
             $hasChild = SortModel::all(['parentid'=>$id]);
             if($hasChild){
-                $this->error(lang('c_delete_sort_child_first'));
+                $this->error(lang('清先删除该分类下的子分类'));
 				break;
             }
 		    //删除该分类下的属性
@@ -140,7 +140,7 @@ class Sort extends Base{
 			$sort = SortModel::get($id);
             $sort->delete();
 	    }
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量更新
@@ -154,7 +154,7 @@ class Sort extends Base{
             SortModel::update($data);
         }
 		
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 }

@@ -22,9 +22,9 @@
                     <!--页面导航 开始-->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_system_manage}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_data} {$Think.lang.v_backup}</span></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('系统管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('数据库')} {:lang('备份')}</span></li>
                         </ul>
                     </div>
                     <!--页面导航 结束-->
@@ -32,17 +32,17 @@
                     <!--右侧主体 开始-->
                     <div class="col-md-12 margin-top-10 margin-bottom-10">
                         <div class="col-md-8">
-                            <button type="button" class="btn green" onclick="javascript:window.location.href='{:url('Databackup/index?Action=backup&lang='.input('get.lang'))}'">{$Think.lang.v_add} {$Think.lang.v_backup}</button>
+                            <button type="button" class="btn green" onclick="javascript:window.location.href='{:url('Databackup/index?Action=backup&lang='.input('get.lang'))}'">{:lang('添加')} {:lang('备份')}</button>
                         </div>
                     </div>
                         <table class="table table-striped table-bordered table-hover table-checkable order-column">
                             <thead>
                                 <tr class="bg-default">
-                                    <th>{$Think.lang.v_serial}</th>
-                                    <th>{$Think.lang.v_document_name}</th>
-                                    <th>{$Think.lang.v_backup} {$Think.lang.v_time}</th>
-                                    <th>{$Think.lang.v_document} {$Think.lang.v_size}</th>
-                                    <th>{$Think.lang.v_do}</th>
+                                    <th>{:lang('序号')}</th>
+                                    <th>{:lang('文件名')}</th>
+                                    <th>{:lang('备份')} {:lang('时间')}</th>
+                                    <th>{:lang('文件')} {$Think.lang.v_size}</th>
+                                    <th>{:lang('操作')}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,9 +54,9 @@
                                     <td>{$row|getfiletime=$datadir}</td>
                                     <td>{$row|getfilesize=$datadir}</td>
                                     <td>
-                                        <a href="{:url('Databackup/index',array('Action'=>'download','lang'=>input('get.lang'),'file'=>$row))}" class="btn green btn-sm"><i class="fa fa-download"></i> {$Think.lang.v_down}</a>
-                                        <a onclick="return confirm('{$Think.lang.v_data_restore_tips}？')"href="{:url('Databackup/index',array('Action'=>'RL','lang'=>input('get.lang'),'File'=>$row))}" class="btn blue btn-sm"><i class="fa fa-reply-all"></i> {$Think.lang.v_restore}</a>
-                                        <a onclick="return confirm('{$Think.lang.v_confirm_delete}！')" href="{:url('Databackup/index',array('Action'=>'Del','lang'=>input('get.lang'),'File'=>$row))}" class="btn red-flamingo btn-sm"><i class="fa fa-times"></i> {$Think.lang.v_delete}</a>
+                                        <a href="{:url('Databackup/index',array('Action'=>'download','lang'=>input('get.lang'),'file'=>$row))}" class="btn green btn-sm"><i class="fa fa-download"></i> {:lang('下载')}</a>
+                                        <a onclick="return confirm('{:lang('确定将数据库还原到当前备份吗')}？')"href="{:url('Databackup/index',array('Action'=>'RL','lang'=>input('get.lang'),'File'=>$row))}" class="btn blue btn-sm"><i class="fa fa-reply-all"></i> {:lang('还原')}</a>
+                                        <a onclick="return confirm('{$Think.lang.v_confirm_delete}！')" href="{:url('Databackup/index',array('Action'=>'Del','lang'=>input('get.lang'),'File'=>$row))}" class="btn red-flamingo btn-sm"><i class="fa fa-times"></i> {:lang('删除')}</a>
                                     </td>
                                 </tr>
                                 {/if}

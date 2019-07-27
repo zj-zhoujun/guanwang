@@ -22,10 +22,10 @@
                     <!--页面导航 开始-->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_comment} {$Think.lang.v_manage}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_comment}</span></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('评论')} {:lang('管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{eq name="rs.id" value=""}{:lang('添加')}{else /}{:lang('编辑')}{/eq} {:lang('评论')}</span></li>
                         </ul>
                     </div>
                     <!--页面导航 结束-->
@@ -46,91 +46,91 @@
                                     <div class="portlet-body">
                                         <div class="tabbable-bordered">
                                             <div class="edit_nav_left">
-                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_comment}</span>
+                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{eq name="rs.id" value=""}{:lang('添加')}{else /}{:lang('编辑')}{/eq} {:lang('评论')}</span>
                                             </div>
                                             <ul class="nav nav-tabs tabs-reversed"></ul>
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="tab_general">
                                                     <div class="form-body">
-                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{$Think.lang.v_error_tips}</div>
+                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{:lang('表单填写有误，清检查红色区域修正')}</div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_original}</label>
+                                                            <label class="control-label col-md-3">{:lang('原文')}</label>
                                                             <div class="col-md-4">
                                                                 <div class="form-control-static"><a href="{:url($module.'/view?id='.$rs['moduleinfoid'])}" target="_blank">{$rs['title']}</a></div>
                                                             </div>
                                                         </div>
                                                         {eq name="Think.get.reply" value="yes"}
                                                             <div class="form-group">
-                                                                <label class="control-label col-md-3">{$Think.lang.v_comment}</label>
+                                                                <label class="control-label col-md-3">{:lang('评论')}</label>
                                                                 <div class="col-md-4">
                                                                     <div class="form-control-static">{$rs['content']|htmlspecialchars_decode}</div>
                                                                  </div>
                                                             </div>
                                                         {/eq}
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_date} / IP</label>
+                                                            <label class="control-label col-md-3">{:lang('日期')} / IP</label>
                                                             <div class="col-md-4">
                                                                 <div class="form-control-static">{$rs['addtime']|date='Y-m-d H:i:s',###} IP：{$rs['ip']}</div>
                                                             </div>
                                                         </div>
                                                         {neq name="Think.get.reply" value="yes"}
                                                             <div class="form-group">
-                                                                <label class="control-label col-md-3">{$Think.lang.v_score}</label>
+                                                                <label class="control-label col-md-3">{:lang('评分')}</label>
                                                                 <div class="radio-list">
                                                                     <label class="radio-inline">
-                                                                        <input name="star" type="radio" value="3" {eq name="rs['star']" value="3"}checked="checked"{/eq} />{$Think.lang.v_good}<img src="__ADMIN__/img/star3.gif" width="36" height="12" />
+                                                                        <input name="star" type="radio" value="3" {eq name="rs['star']" value="3"}checked="checked"{/eq} />{:lang('好评')}<img src="__ADMIN__/img/star3.gif" width="36" height="12" />
                                                                     </label>
                                                                     <label class="radio-inline">
-                                                                        <input name="star" type="radio" value="2" {eq name="rs['star']" value="2"}checked="checked"{/eq} />{$Think.lang.v_medium}<img src="__ADMIN__/img/star2.gif" width="36" height="12" />
+                                                                        <input name="star" type="radio" value="2" {eq name="rs['star']" value="2"}checked="checked"{/eq} />{:lang('中评')}<img src="__ADMIN__/img/star2.gif" width="36" height="12" />
                                                                     </label>
                                                                     <label class="radio-inline">
-                                                                        <input name="star" type="radio" value="1" {eq name="rs['star']" value="1"}checked="checked"{/eq} /> {$Think.lang.v_bad}<img src="__ADMIN__/img/star1.gif" width="36" height="12" />
+                                                                        <input name="star" type="radio" value="1" {eq name="rs['star']" value="1"}checked="checked"{/eq} /> {:lang('差评')}<img src="__ADMIN__/img/star1.gif" width="36" height="12" />
                                                                     </label>
                                                                 </div>
                                                             </div>
                                                         {else /}
                                                             <div class="form-group">
-                                                                <label class="control-label col-md-3">{eq name="Think.get.reply" value="yes"}{$Think.lang.v_reply}{/eq} {$Think.lang.v_score}</label>
+                                                                <label class="control-label col-md-3">{eq name="Think.get.reply" value="yes"}{:lang('回复')}{/eq} {:lang('评分')}</label>
                                                                 <div class="radio-list">
                                                                     <label class="radio-inline">
-                                                                        <input name="star" type="radio" value="3" checked="checked" />{$Think.lang.v_good}<img src="__ADMIN__/img/star3.gif" width="36" height="12" />
+                                                                        <input name="star" type="radio" value="3" checked="checked" />{:lang('好评')}<img src="__ADMIN__/img/star3.gif" width="36" height="12" />
                                                                     </label>
                                                                     <label class="radio-inline">
-                                                                        <input name="star" type="radio" value="2" />{$Think.lang.v_medium}<img src="__ADMIN__/img/star2.gif" width="36" height="12" />
+                                                                        <input name="star" type="radio" value="2" />{:lang('中评')}<img src="__ADMIN__/img/star2.gif" width="36" height="12" />
                                                                     </label>
                                                                     <label class="radio-inline">
-                                                                        <input name="star" type="radio" value="1" /> {$Think.lang.v_bad}<img src="__ADMIN__/img/star1.gif" width="36" height="12" />
+                                                                        <input name="star" type="radio" value="1" /> {:lang('差评')}<img src="__ADMIN__/img/star1.gif" width="36" height="12" />
                                                                     </label>
                                                                 </div>
                                                             </div>
                                                         {/neq}
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{neq name="Think.get.reply" value="yes"}{$Think.lang.v_comment}{else /}{$Think.lang.v_reply}{/neq} {$Think.lang.v_content_a}</label>
+                                                            <label class="control-label col-md-3">{neq name="Think.get.reply" value="yes"}{:lang('评论')}{else /}{:lang('回复')}{/neq} {:lang('内容')}</label>
                                                             <div class="col-md-4">
                                                                 <textarea name="content" class="form-control" rows="5">{neq name="Think.get.reply" value="yes"}{$rs['content']}{/neq}</textarea>
                                                             </div>
                                                         </div>
                                                         {neq name="Think.get.reply" value="yes"}
                                                             <div class="form-group">
-                                                                <label class="control-label col-md-3">{$Think.lang.v_status}</label>
+                                                                <label class="control-label col-md-3">{:lang('状态')}</label>
                                                                 <div class="radio-list">
                                                                     <label class="radio-inline">
-                                                                        <input name="status" type="radio" value="1" {eq name="rs['status']" value="1"}checked="checked"{/eq} />{$Think.lang.v_audit}
+                                                                        <input name="status" type="radio" value="1" {eq name="rs['status']" value="1"}checked="checked"{/eq} />{:lang('已审')}
                                                                     </label>
                                                                     <label class="radio-inline">
-                                                                        <input name="status" type="radio" value="0" {eq name="rs['status']" value="0"}checked="checked"{/eq} />{$Think.lang.v_audit_pending}
+                                                                        <input name="status" type="radio" value="0" {eq name="rs['status']" value="0"}checked="checked"{/eq} />{:lang('未审')}
                                                                     </label>
                                                                 </div>
                                                             </div>
                                                         {else /}
                                                             <div class="form-group">
-                                                                <label class="control-label col-md-3">{eq name="Think.get.reply" value="yes"}{$Think.lang.v_reply}{/eq} {$Think.lang.v_status}</label>
+                                                                <label class="control-label col-md-3">{eq name="Think.get.reply" value="yes"}{:lang('回复')}{/eq} {:lang('状态')}</label>
                                                                 <div class="radio-list">
                                                                     <label class="radio-inline">
-                                                                        <input name="status" type="radio" value="1" checked="checked" />{$Think.lang.v_audit}
+                                                                        <input name="status" type="radio" value="1" checked="checked" />{:lang('已审')}
                                                                     </label>
                                                                     <label class="radio-inline">
-                                                                        <input name="status" type="radio" value="0" />{$Think.lang.v_audit_pending}
+                                                                        <input name="status" type="radio" value="0" />{:lang('未审')}
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -140,8 +140,8 @@
                                                 <div class="form-actions">
                                                     <div class="row">
                                                         <div class="col-md-offset-3 col-md-9">
-                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {$Think.lang.v_save}</button>
-                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{$Think.lang.v_goback}</button>
+                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {:lang('保存')}</button>
+                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{:lang('返回上一页')}</button>
                                                         </div>
                                                     </div>
                                                 </div>

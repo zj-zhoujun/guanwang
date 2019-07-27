@@ -34,7 +34,7 @@
         <div class="row margin-bottom-40">
             <!--推荐产品 开始-->
             <div class="col-md-12 sale-product">
-                <h3 class="clearfix"><div class="pull-left">{$Think.lang.v_commend_product}</div><div class="pull-right padding-top-10 font-size16"><a href="{:url('product/index-1')}">&raquo;{$Think.lang.v_more} {$Think.lang.v_product}</a></div></h3>
+                <h3 class="clearfix"><div class="pull-left">{$Think.lang.v_commend_product}</div><div class="pull-right padding-top-10 font-size16"><a href="{:url('product/index-1')}">&raquo;{$Think.lang.v_more} {:lang('产品')}</a></div></h3>
                 <div class="owl-carousel owl-carousel5">
                     {tag:common name="rs" table="product" where="lang='en' and find_in_set('view',status) and find_in_set('commend',status)" num="10" order="sequence desc,id desc"}
                     <div>
@@ -68,13 +68,13 @@
         <div class="row margin-bottom-40 ">
             <!--新闻动态 开始-->
             <div class="sidebar col-md-4 col-sm-4">
-                <h2>{$Think.lang.v_news}</h2>
+                <h2>{:lang('新闻')}</h2>
                 <ul class="list-group sidebar-menu">
                     {tag:common name="rs" table="news" where="lang='en' and find_in_set('view',status)" num="10" order="addtime desc"}
                         <li class="list-group-item clearfix"><a href="{:url('/en/'.$rs['urlroute'].'-n'.$rs['id'])}"><i class="fa fa-angle-right"></i>{$rs.title|msubstr=0,38}</a></li>
                     {/tag:common}
                 </ul>
-                <a href="{:url('/en/news/index-1')}" class="col-md-12 btn btn-default">&raquo; {$Think.lang.v_more} {$Think.lang.v_news}</a>
+                <a href="{:url('/en/news/index-1')}" class="col-md-12 btn btn-default">&raquo; {$Think.lang.v_more} {:lang('新闻')}</a>
             </div>
             <!--新闻动态 结束-->
             <!--关于我们 开始-->

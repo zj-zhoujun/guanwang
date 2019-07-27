@@ -36,10 +36,10 @@
                     <!--页面导航 开始-->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_ad} {$Think.lang.v_manage}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_ad}</span></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('广告')} {:lang('管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{eq name="rs.id" value=""}{:lang('添加')}{else /}{:lang('编辑')}{/eq} {:lang('广告')}</span></li>
                         </ul>
                     </div>
                     <!--页面导航 结束-->
@@ -54,85 +54,85 @@
                                     <div class="portlet-body">
                                         <div class="tabbable-bordered">
                                             <div class="edit_nav_left">
-                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_ad}</span>
+                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{eq name="rs.id" value=""}{:lang('添加')}{else /}{:lang('编辑')}{/eq} {:lang('广告')}</span>
                                             </div>
                                             <ul class="nav nav-tabs tabs-reversed"></ul>
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="tab_general">
                                                     <div class="form-body">
-                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{$Think.lang.v_error_tips}</div>
+                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{:lang('表单填写有误，清检查红色区域修正')}</div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_title}</label>
+                                                            <label class="control-label col-md-3">{:lang('标题')}</label>
                                                             <div class="col-md-4">
                                                                 <input type="text" class="form-control" name="title" value="{$rs.title}" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_img}</label>
+                                                            <label class="control-label col-md-3">{:lang('图片')}</label>
                                                             <div class="col-md-4">
-                                                                <div class="input-group"><input type="text" name="thumb" id="morepics1" value="{$rs.thumb}" class="form-control" /><span class="input-group-btn"><input type="button" onClick="upImage1();" value=" {$Think.lang.v_upload_img} " class="btn green" /></span></div>
+                                                                <div class="input-group"><input type="text" name="thumb" id="morepics1" value="{$rs.thumb}" class="form-control" /><span class="input-group-btn"><input type="button" onClick="upImage1();" value=" {:lang('上传图片')} " class="btn green" /></span></div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_linkurl}</label>
+                                                            <label class="control-label col-md-3">{:lang('链接地址')}</label>
                                                             <div class="col-md-4">
                                                                 <input type="text" class="form-control" name="linkurl" value="{$rs.linkurl}" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_description}</label>
+                                                            <label class="control-label col-md-3">{:lang('描述')}</label>
                                                             <div class="col-md-4">
                                                                 <textarea name="description" class="form-control" rows="5">{$rs.description}</textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_sequence}</label>
+                                                            <label class="control-label col-md-3">{:lang('排序')}</label>
                                                             <div class="col-md-4">
-                                                                <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="sequence" value="{php}if(empty($rs['sequence'])){ echo "0"; }else{ echo $rs['sequence']; }{/php}" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{$Think.lang.v_require_number}！');this.value='0';}" /></div>
+                                                                <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="sequence" value="{php}if(empty($rs['sequence'])){ echo "0"; }else{ echo $rs['sequence']; }{/php}" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{:lang('必须为0或正整数')}！');this.value='0';}" /></div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_type}</label>
+                                                            <label class="control-label col-md-3">{:lang('类型')}</label>
                                                             <div class="radio-list">
                                                                 <label class="radio-inline">
-                                                                    <input type="radio" name="typeid" id="optionsRadios1" value="1"{if condition="($rs['typeid'] eq 1) or $rs['typeid'] eq ''"} checked="checked"{/if} /> {$Think.lang.v_banner}
+                                                                    <input type="radio" name="typeid" id="optionsRadios1" value="1"{if condition="($rs['typeid'] eq 1) or $rs['typeid'] eq ''"} checked="checked"{/if} /> {:lang('幻灯片')}
                                                                 </label>
                                                                 <label class="radio-inline">
-                                                                    <input type="radio" name="typeid" id="optionsRadios1" value="2"{if condition="$rs['typeid'] eq 2"} checked="checked"{/if} />{$Think.lang.v_friendlink}
+                                                                    <input type="radio" name="typeid" id="optionsRadios1" value="2"{if condition="$rs['typeid'] eq 2"} checked="checked"{/if} />{:lang('友情链接')}
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_position}</label>
+                                                            <label class="control-label col-md-3">{:lang('位置')}</label>
                                                             <div class="radio-list">
                                                                 <label class="radio-inline">
-                                                                    <input type="radio" name="position" id="optionsRadios1" value="Index"{if condition="($rs['position'] eq 'Index') or $rs['position'] eq ''"} checked="checked"{/if} />{$Think.lang.v_index}
+                                                                    <input type="radio" name="position" id="optionsRadios1" value="Index"{if condition="($rs['position'] eq 'Index') or $rs['position'] eq ''"} checked="checked"{/if} />{:lang('首页')}
                                                                 </label>
                                                                 {volist name="Module" id="ModuleRs"}
                                                                     <label class="radio-inline">
                                                                         <input type="radio" name="position" id="optionsRadios1" value="{$ModuleRs['tabledir']}"{if condition="$rs['position'] eq $ModuleRs['tabledir']"} checked="checked"{/if} />
 						                                                {switch name="ModuleRs.id"}
-                                                                            {case value="1"}{$Think.lang.v_product}{/case}
-                                                                            {case value="2"}{$Think.lang.v_news}{/case}
-                                                                            {case value="3"}{$Think.lang.v_about_module}{/case}
-                                                                            {case value="4"}{$Think.lang.v_project}{/case}
-                                                                            {case value="5"}{$Think.lang.v_down}{/case}
+                                                                            {case value="1"}{:lang('产品')}{/case}
+                                                                            {case value="2"}{:lang('新闻')}{/case}
+                                                                            {case value="3"}{:lang('单页')}{/case}
+                                                                            {case value="4"}{:lang('案例')}{/case}
+                                                                            {case value="5"}{:lang('下载')}{/case}
                                                                             {default /} {$ModuleRs['modulename']}
-                                                                        {/switch} {$Think.lang.v_module}
+                                                                        {/switch} {:lang('模块')}
                                                                     </label>
                                                                 {/volist}
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_client}</label>
+                                                            <label class="control-label col-md-3">{:lang('客户端')}</label>
                                                             <div class="col-md-4">
                                                                 <div class="checkbox-list">
                                                                     <label class="checkbox-inline">
                                                                         {php}$client_array=explode(',',$rs['client']);{/php}
-                                                                        <input type="checkbox" name="client[]" value="pc" {if condition="(in_array('pc',$client_array)) or $rs['client'] eq ''"}checked="checked"{/if}>{$Think.lang.v_client_pc}
+                                                                        <input type="checkbox" name="client[]" value="pc" {if condition="(in_array('pc',$client_array)) or $rs['client'] eq ''"}checked="checked"{/if}>{:lang('电脑端')}
                                                                     </label>
                                                                     <label class="checkbox-inline">
-                                                                        <input type="checkbox" name="client[]" value="wap" {if condition="(in_array('wap',$client_array)) or $rs['client'] eq ''"}checked="checked"{/if}>{$Think.lang.v_client_mobile}
+                                                                        <input type="checkbox" name="client[]" value="wap" {if condition="(in_array('wap',$client_array)) or $rs['client'] eq ''"}checked="checked"{/if}>{:lang('移动端')}
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -142,8 +142,8 @@
                                                 <div class="form-actions">
                                                     <div class="row">
                                                         <div class="col-md-offset-3 col-md-9">
-                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {$Think.lang.v_save}</button>
-                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{$Think.lang.v_goback}</button>
+                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {:lang('保存')}</button>
+                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{:lang('返回上一页')}</button>
                                                         </div>
                                                     </div>
                                                 </div>

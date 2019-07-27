@@ -58,7 +58,7 @@ class Comment extends Base{
         }else{
 			$result = CommentModel::edit($id);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'));
+			$this->success(lang('操作成功'));
         }		
 	}
 	
@@ -69,11 +69,11 @@ class Comment extends Base{
 	    $id=input('id');
         //禁止删除含有子分类的分类
 		$hasChild = CommentModel::all(['parentid'=>$id]);
-        if($hasChild) $this->error(lang('c_delete_sort_child_first'));
+        if($hasChild) $this->error(lang('清先删除该分类下的子分类'));
 		
         $comment = CommentModel::get($id);
         $comment->delete();
-        $this->success(lang('c_success'));
+        $this->success(lang('操作成功'));
     }	
 	
 	//批量删除数据
@@ -86,14 +86,14 @@ class Comment extends Base{
             //禁止删除含有子分类的分类
             $hasChild = CommentModel::all(['parentid'=>$id]);
             if($hasChild){
-                $this->error(lang('c_delete_sort_child_first'));
+                $this->error(lang('清先删除该分类下的子分类'));
 				break;
             }
 			$comment = CommentModel::get($id);
             $comment->delete();
 	    }
 		
-        $this->success(lang('c_success'));
+        $this->success(lang('操作成功'));
     }	
 	
 	//批量更新排序
@@ -107,14 +107,14 @@ class Comment extends Base{
             CommentModel::update($data);
         }
 		
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量审核
     public function update_pass(){
 		$status=input('status/a');
 		$id=input('id/a');
-		if(empty($id)) $this->error(lang('c_do_check'));
+		if(empty($id)) $this->error(lang('请选择要处理的数据'));
 		
 		foreach($id as $i => $rs){
             $data['id'] = (int)$id[$i];
@@ -122,7 +122,7 @@ class Comment extends Base{
             CommentModel::update($data);
         }
 		
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 
 	//取消或通过审核
@@ -134,7 +134,7 @@ class Comment extends Base{
         $data['status'] = $status;
         CommentModel::update($data);
 		
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 }

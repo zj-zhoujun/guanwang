@@ -49,7 +49,7 @@ class Index extends Base{
 	//清理缓存
     public function delCache(){
         $delCacheDo = delDirAndFile(RUNTIME_PATH,true);
-		$delCacheDo ? $this->success(lang('c_success')) : $this->error(lang('c_fail'));
+		$delCacheDo ? $this->success(lang('操作成功')) : $this->error(lang('操作失败'));
      }	
 
 	

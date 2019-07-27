@@ -37,28 +37,28 @@
                     <!--页面导航 开始-->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
-                            <li><span>{$Think.lang.v_home}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('内容管理')}</span><i class="fa fa-angle-right"></i></li>
                             <li><span>
 						    {switch name="modulenav.tabledir"}
-                                {case value="product"}{$Think.lang.v_product}{/case}
-                                {case value="news"}{$Think.lang.v_news}{/case}
-                                {case value="down"}{$Think.lang.v_down}{/case}
-                                {case value="about"}{$Think.lang.v_about_module}{/case}
-                                {case value="project"}{$Think.lang.v_project}{/case}
+                                {case value="product"}{:lang('产品')}{/case}
+                                {case value="news"}{:lang('新闻')}{/case}
+                                {case value="down"}{:lang('下载')}{/case}
+                                {case value="about"}{:lang('单页')}{/case}
+                                {case value="project"}{:lang('案例')}{/case}
                                 {default /}{$modulenav.title}
                             {/switch}
-                            {$Think.lang.v_manage}</span><i class="fa fa-angle-right"></i></li>
+                            {:lang('管理')}</span><i class="fa fa-angle-right"></i></li>
                             <li><span>
 						    {switch name="modulenav.tabledir"}
-                                {case value="product"}{$Think.lang.v_product}{/case}
-                                {case value="news"}{$Think.lang.v_news}{/case}
-                                {case value="down"}{$Think.lang.v_down}{/case}
-                                {case value="about"}{$Think.lang.v_about_module}{/case}
-                                {case value="project"}{$Think.lang.v_project}{/case}
+                                {case value="product"}{:lang('产品')}{/case}
+                                {case value="news"}{:lang('新闻')}{/case}
+                                {case value="down"}{:lang('下载')}{/case}
+                                {case value="about"}{:lang('单页')}{/case}
+                                {case value="project"}{:lang('案例')}{/case}
                                 {default /}{$modulenav.title}
                             {/switch}
-                            {$Think.lang.v_sort}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_sort}</span></li>
+                            {:lang('分类')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{eq name="rs.id" value=""}{:lang('添加')}{else /}{:lang('编辑')}{/eq} {:lang('分类')}</span></li>
                         </ul>
                     </div>
                     <!--页面导航 结束-->
@@ -75,50 +75,50 @@
                                     <div class="portlet-body">
                                         <div class="tabbable-bordered">
                                             <div class="edit_nav_left">
-                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_sort}</span>
+                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{eq name="rs.id" value=""}{:lang('添加')}{else /}{:lang('编辑')}{/eq} {:lang('分类')}</span>
                                             </div>
                                             <ul class="nav nav-tabs tabs-reversed"></ul>
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="tab_general">
                                                     <div class="form-body">
-                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{$Think.lang.v_error_tips}</div>
+                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{:lang('表单填写有误，清检查红色区域修正')}</div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_title}<span class="required" aria-required="true">*</span></label>
+                                                            <label class="control-label col-md-3">{:lang('标题')}<span class="required" aria-required="true">*</span></label>
                                                             <div class="col-md-5">
                                                                 <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="title" id="title" onblur="strtopy();" value="{$rs.title}" /></div>
                                                             </div>
                                                         </div>
                                                         {if condition="(in_array('sortimg',$isdisplay_array))"}
                                                             <div class="form-group">
-                                                                <label class="control-label col-md-3">{$Think.lang.v_img}</label>
+                                                                <label class="control-label col-md-3">{:lang('图片')}</label>
                                                                 <div class="col-md-5">
-                                                                    <div class="input-group"><input name="thumb" id="morepics1" type="text" class="form-control" value="{$rs.thumb}" /> <span class="input-group-btn"><input type="button" value=" {$Think.lang.v_upload_img} " class="btn green" onclick="upImage1();"></span></div>
+                                                                    <div class="input-group"><input name="thumb" id="morepics1" type="text" class="form-control" value="{$rs.thumb}" /> <span class="input-group-btn"><input type="button" value=" {:lang('上传图片')} " class="btn green" onclick="upImage1();"></span></div>
                                                                 </div>
                                                             </div>
                                                         {/if}
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_seo} {$Think.lang.v_title}</label>
+                                                            <label class="control-label col-md-3">{:lang('SEO')} {:lang('标题')}</label>
                                                             <div class="col-md-5">
-                                                                <input type="text" class="form-control" name="seotitle" value="{$rs.seotitle}" placeholder="{$Think.lang.v_seo_use_title}" />
+                                                                <input type="text" class="form-control" name="seotitle" value="{$rs.seotitle}" placeholder="{:lang('不填则用标题')}" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_keyword}</label>
+                                                            <label class="control-label col-md-3">{:lang('关键词')}</label>
                                                             <div class="col-md-5">
                                                                 <input type="text" class="form-control" name="keyword" value="{$rs.keyword}" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_description}</label>
+                                                            <label class="control-label col-md-3">{:lang('描述')}</label>
                                                             <div class="col-md-5">
                                                                 <textarea name="description" class="form-control" rows="4">{$rs.description}</textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_parent_sort}</label>
+                                                            <label class="control-label col-md-3">{:lang('父级分类')}</label>
                                                             <div class="col-md-5">
                                                                 <select name="parentid" autocomplete="off" id="single" class="form-control select2">
-                                                                    <option>{$Think.lang.v_top_sort}</option>
+                                                                    <option>{:lang('顶级分类')}</option>
 								                                    {foreach name="Sort" item="v"}
 											                            {neq name="v['id']" value="$rs['id']"}
                                                                             <option value="{$v.id}" {if condition="$rs['parentid'] == $v['id']"}selected="selected"{/if}>{$v.html} {$v['title']}</option>
@@ -128,15 +128,15 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_urlroute}</label>
+                                                            <label class="control-label col-md-3">{:lang('URL网址')}</label>
                                                             <div class="col-md-5">
-                                                                <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="urlroute" id="urlroute" placeholder="{$Think.lang.v_urlroute_tips}" value="{$rs.urlroute}" /></div>
+                                                                <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="urlroute" id="urlroute" placeholder="{:lang('URL网址必须为1-30个英文字母')}" value="{$rs.urlroute}" /></div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_sequence}</label>
+                                                            <label class="control-label col-md-3">{:lang('排序')}</label>
                                                             <div class="col-md-5">
-                                                                <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="sequence" value="{eq name="rs.sequence" value=""}0{else /}{$rs.sequence}{/eq}" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{$Think.lang.v_require_number}！');this.value='0';}" /></div>
+                                                                <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="sequence" value="{eq name="rs.sequence" value=""}0{else /}{$rs.sequence}{/eq}" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{:lang('必须为0或正整数')}！');this.value='0';}" /></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -144,8 +144,8 @@
                                                 <div class="form-actions">
                                                     <div class="row">
                                                         <div class="col-md-offset-3 col-md-9">
-                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {$Think.lang.v_save}</button>
-                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{$Think.lang.v_goback}</button>
+                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {:lang('保存')}</button>
+                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{:lang('返回上一页')}</button>
                                                         </div>
                                                     </div>
                                                 </div>

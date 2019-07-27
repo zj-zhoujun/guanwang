@@ -17,13 +17,13 @@
                                 {/switch}
                                 <span class="title">
 				                    {switch name="modulers.id"}
-                                        {case value="1"}{$Think.lang.v_product}{/case}
-                                        {case value="2"}{$Think.lang.v_news}{/case}
-                                        {case value="3"}{$Think.lang.v_about_module}{/case}
-                                        {case value="4"}{$Think.lang.v_project}{/case}
-                                        {case value="5"}{$Think.lang.v_down}{/case}
+                                        {case value="1"}{:lang('产品')}{/case}
+                                        {case value="2"}{:lang('新闻')}{/case}
+                                        {case value="3"}{:lang('单页')}{/case}
+                                        {case value="4"}{:lang('案例')}{/case}
+                                        {case value="5"}{:lang('下载')}{/case}
                                         {default /}{$modulers.title}
-                                    {/switch} {$Think.lang.v_manage}
+                                    {/switch} {:lang('管理')}
                                 </span>
                                 <span class="selected"></span>
                                 <span class="arrow open"></span>
@@ -33,13 +33,13 @@
                                 <li class="nav-item {if condition="$modulers.id eq $Think.get.moduleid and $Request.controller eq $modulers.tabledir and $Request.action eq 'edit'"} active open{/if}">
                                     <a href="{:url($modulers['tabledir'].'/edit?moduleid='.$modulers['id'].'&lang='.input('get.lang'))}" class="nav-link ">
                                         <i class="fa fa-edit"></i>
-                                        {$Think.lang.v_add}
+                                        {:lang('添加')}
 				                        {switch name="modulers.id"}
-                                            {case value="1"}{$Think.lang.v_product}{/case}
-                                            {case value="2"}{$Think.lang.v_news}{/case}
-                                            {case value="3"}{$Think.lang.v_about_module}{/case}
-                                            {case value="4"}{$Think.lang.v_project}{/case}
-                                            {case value="5"}{$Think.lang.v_down}{/case}
+                                            {case value="1"}{:lang('产品')}{/case}
+                                            {case value="2"}{:lang('新闻')}{/case}
+                                            {case value="3"}{:lang('单页')}{/case}
+                                            {case value="4"}{:lang('案例')}{/case}
+                                            {case value="5"}{:lang('下载')}{/case}
                                             {default /}{$modulers.title}
                                         {/switch}
                                         {if condition="$modulers.id eq $Think.get.moduleid and $Request.controller eq $modulers.tabledir and $Request.action eq 'edit'"}<span class="fa fa-angle-right pull-right"></span>{/if}
@@ -51,13 +51,13 @@
                                     <a href="{:url($modulers['tabledir'].'/index?moduleid='.$modulers['id'].'&lang='.input('get.lang'))}" class="nav-link ">
                                         <i class="fa fa-th"></i>
 				                        {switch name="modulers.id"}
-                                            {case value="1"}{$Think.lang.v_product}{/case}
-                                            {case value="2"}{$Think.lang.v_news}{/case}
-                                            {case value="3"}{$Think.lang.v_about_module}{/case}
-                                            {case value="4"}{$Think.lang.v_project}{/case}
-                                            {case value="5"}{$Think.lang.v_down}{/case}
+                                            {case value="1"}{:lang('产品')}{/case}
+                                            {case value="2"}{:lang('新闻')}{/case}
+                                            {case value="3"}{:lang('单页')}{/case}
+                                            {case value="4"}{:lang('案例')}{/case}
+                                            {case value="5"}{:lang('下载')}{/case}
                                             {default /}{$modulers.title}
-                                        {/switch} {$Think.lang.v_manage}
+                                        {/switch} {:lang('管理')}
                                         {if condition="$modulers.id eq $Think.get.moduleid and $Request.controller eq $modulers.tabledir and $Request.action eq 'index'"}<span class="fa fa-angle-right pull-right"></span>{/if}
                                     </a>
                                 </li>
@@ -66,13 +66,13 @@
                                     <a href="{:url('Sort/index?moduleid='.$modulers['id'].'&lang='.input('get.lang'))}" class="nav-link ">
                                         <i class="fa fa-sitemap"></i>
 				                        {switch name="modulers.id"}
-                                            {case value="1"}{$Think.lang.v_product}{/case}
-                                            {case value="2"}{$Think.lang.v_news}{/case}
-                                            {case value="3"}{$Think.lang.v_about_module}{/case}
-                                            {case value="4"}{$Think.lang.v_project}{/case}
-                                            {case value="5"}{$Think.lang.v_down}{/case}
+                                            {case value="1"}{:lang('产品')}{/case}
+                                            {case value="2"}{:lang('新闻')}{/case}
+                                            {case value="3"}{:lang('单页')}{/case}
+                                            {case value="4"}{:lang('案例')}{/case}
+                                            {case value="5"}{:lang('下载')}{/case}
                                             {default /}{$modulers.title}
-                                        {/switch} {$Think.lang.v_sort}
+                                        {/switch} {:lang('分类')}
                                         {if condition="$modulers.id eq $Think.get.moduleid and $Request.controller eq 'Sort'"}<span class="fa fa-angle-right pull-right"></span>{/if}
                                     </a>
                                 </li>
@@ -82,13 +82,13 @@
                                     <a href="{:url('Attribute/index?moduleid='.$modulers['id'].'&lang='.input('get.lang'))}" class="nav-link ">
                                         <i class="fa fa-tag"></i>
 				                        {switch name="modulers.id"}
-                                            {case value="1"}{$Think.lang.v_product}{/case}
-                                            {case value="2"}{$Think.lang.v_news}{/case}
-                                            {case value="3"}{$Think.lang.v_about_module}{/case}
-                                            {case value="4"}{$Think.lang.v_project}{/case}
-                                            {case value="5"}{$Think.lang.v_down}{/case}
+                                            {case value="1"}{:lang('产品')}{/case}
+                                            {case value="2"}{:lang('新闻')}{/case}
+                                            {case value="3"}{:lang('单页')}{/case}
+                                            {case value="4"}{:lang('案例')}{/case}
+                                            {case value="5"}{:lang('下载')}{/case}
                                             {default /}{$modulers.title}
-                                        {/switch} {$Think.lang.v_attribute}
+                                        {/switch} {:lang('属性')}
                                         {if condition="$modulers.id eq $Think.get.moduleid and $Request.controller eq 'Attribute'"}<span class="fa fa-angle-right pull-right"></span>{/if}
                                     </a>
                                 </li>

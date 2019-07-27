@@ -37,9 +37,9 @@
                     <!--页面导航 开始-->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_system_manage}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_config_setting}</span></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('系统管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('参数设置')}</span></li>
                         </ul>
                     </div>
                     <!--页面导航 结束-->
@@ -53,60 +53,60 @@
                                     <div class="portlet-body">
                                         <div class="tabbable-bordered">
                                             <div class="edit_nav_left">
-                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{$Think.lang.v_config_setting}</span>
+                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{:lang('参数设置')}</span>
                                             </div>
                                             <ul class="nav nav-tabs tabs-reversed">
                                                 <li>
-                                                    <a href="#tab_meta" data-toggle="tab">{$Think.lang.v_extend}</a>
+                                                    <a href="#tab_meta" data-toggle="tab">{:lang('扩展')}</a>
                                                 </li>
                                                 <li class="active">
-                                                    <a href="#tab_general" data-toggle="tab">{$Think.lang.v_basic}</a>
+                                                    <a href="#tab_general" data-toggle="tab">{:lang('基本')}</a>
                                                 </li>
                                             </ul>
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="tab_general">
                                                     <div class="form-body">
-                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{$Think.lang.v_error_tips}</div>
+                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{:lang('表单填写有误，清检查红色区域修正')}</div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_watermark} {$Think.lang.v_type}</label>
+                                                            <label class="control-label col-md-3">{$Think.lang.v_watermark} {:lang('类型')}</label>
                                                             <div class="radio-list col-md-9">
                                                                 <label class="radio-inline">
-                                                                    <input type="radio" name="water" id="optionsRadios1" value="0" {eq name="Think.config.water" value="0"}checked="checked" {/eq} />{$Think.lang.v_disable}
+                                                                    <input type="radio" name="water" id="optionsRadios1" value="0" {eq name="Think.config.water" value="0"}checked="checked" {/eq} />{:lang('禁用')}
                                                                 </label>
                                                                 <label class="radio-inline">
                                                                     <input type="radio" name="water" id="optionsRadios1" value="1" {eq name="Think.config.water" value="1"}checked="checked" {/eq} />{$Think.lang.v_word} {$Think.lang.v_watermark}
                                                                 </label>
                                                                 <label class="radio-inline">
-                                                                    <input type="radio" name="water" id="optionsRadios1" value="2" {eq name="Think.config.water" value="2"}checked="checked" {/eq} />{$Think.lang.v_img} {$Think.lang.v_watermark}
+                                                                    <input type="radio" name="water" id="optionsRadios1" value="2" {eq name="Think.config.water" value="2"}checked="checked" {/eq} />{:lang('图片')} {$Think.lang.v_watermark}
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_watermark} {$Think.lang.v_position}</label>
+                                                            <label class="control-label col-md-3">{$Think.lang.v_watermark} {:lang('位置')}</label>
                                                             <div class="radio-list col-md-5">
                                                                 <table class="table table-bordered table-condensed">
 										                            <tr>
-										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="1" {eq name="Think.config.waterPosition" value="1"}checked="checked" {/eq}/>{$Think.lang.v_top_left}</label></td>
-										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="2" {eq name="Think.config.waterPosition" value="2"}checked="checked" {/eq}/>{$Think.lang.v_top_center}</label></td>
-										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="3" {eq name="Think.config.waterPosition" value="3"}checked="checked" {/eq}/>{$Think.lang.v_top_right}</label></td>
+										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="1" {eq name="Think.config.waterPosition" value="1"}checked="checked" {/eq}/>{:lang('左上角')}</label></td>
+										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="2" {eq name="Think.config.waterPosition" value="2"}checked="checked" {/eq}/>{:lang('上居中')}</label></td>
+										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="3" {eq name="Think.config.waterPosition" value="3"}checked="checked" {/eq}/>{:lang('右上角')}</label></td>
                                                                     </tr>
 										                            <tr>
-										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="4" {eq name="Think.config.waterPosition" value="4"}checked="checked" {/eq}/>{$Think.lang.v_center_left}</label></td>
-										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="5" {eq name="Think.config.waterPosition" value="5"}checked="checked" {/eq}/>{$Think.lang.v_center_middle}</label></td>
-										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="6" {eq name="Think.config.waterPosition" value="6"}checked="checked" {/eq}/>{$Think.lang.v_center_right}</label></td>
+										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="4" {eq name="Think.config.waterPosition" value="4"}checked="checked" {/eq}/>{:lang('左局中')}</label></td>
+										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="5" {eq name="Think.config.waterPosition" value="5"}checked="checked" {/eq}/>{:lang('正局中')}</label></td>
+										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="6" {eq name="Think.config.waterPosition" value="6"}checked="checked" {/eq}/>{:lang('右局中')}</label></td>
                                                                     </tr>
 										                            <tr>
-										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="7" {eq name="Think.config.waterPosition" value="7"}checked="checked" {/eq}/>{$Think.lang.v_bottom_left}</label></td>
-										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="8" {eq name="Think.config.waterPosition" value="8"}checked="checked" {/eq}/>{$Think.lang.v_bottom_center}</label></td>
-										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="9" {eq name="Think.config.waterPosition" value="9"}checked="checked" {/eq}/>{$Think.lang.v_bottom_right}</label></td>
+										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="7" {eq name="Think.config.waterPosition" value="7"}checked="checked" {/eq}/>{:lang('左下角')}</label></td>
+										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="8" {eq name="Think.config.waterPosition" value="8"}checked="checked" {/eq}/>{:lang('下居中')}</label></td>
+										                                <td><label class="radio-inline"><input type="radio" name="waterPosition" value="9" {eq name="Think.config.waterPosition" value="9"}checked="checked" {/eq}/>{:lang('右下角')}</label></td>
                                                                     </tr>
                                                                 </table>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_watermark} {$Think.lang.v_img}</label>
+                                                            <label class="control-label col-md-3">{$Think.lang.v_watermark} {:lang('图片')}</label>
                                                             <div class="col-md-5">
-                                                                <div class="input-group"><input type="text" name="waterImage" id="morepics1" value="{$Think.config.waterImage}" class="form-control" /><span class="input-group-btn"><input type="button" onClick="upImage1();" value=" {$Think.lang.v_upload_img} " class="btn green" /></span></div>
+                                                                <div class="input-group"><input type="text" name="waterImage" id="morepics1" value="{$Think.config.waterImage}" class="form-control" /><span class="input-group-btn"><input type="button" onClick="upImage1();" value=" {:lang('上传图片')} " class="btn green" /></span></div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -140,13 +140,13 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_enable_ornot} {$Think.lang.v_thumbnail}</label>
+                                                            <label class="control-label col-md-3">{:lang('是否启用')} {$Think.lang.v_thumbnail}</label>
                                                             <div class="radio-list col-md-9">
                                                                 <label class="radio-inline">
-                                                                    <input type="radio" name="thumbnail" id="optionsRadios1" value="1" {eq name="Think.config.thumbnail" value="1"}checked="checked" {/eq} />{$Think.lang.v_yes}
+                                                                    <input type="radio" name="thumbnail" id="optionsRadios1" value="1" {eq name="Think.config.thumbnail" value="1"}checked="checked" {/eq} />{:lang('是')}
                                                                 </label>
                                                                 <label class="radio-inline">
-                                                                    <input type="radio" name="thumbnail" id="optionsRadios1" value="0" {eq name="Think.config.thumbnail" value="0"}checked="checked" {/eq} />{$Think.lang.v_no}
+                                                                    <input type="radio" name="thumbnail" id="optionsRadios1" value="0" {eq name="Think.config.thumbnail" value="0"}checked="checked" {/eq} />{:lang('否')}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -190,40 +190,40 @@
                                                 <div class="tab-pane" id="tab_meta">
                                                     <div class="form-body">
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_pc_mobile}</label>
+                                                            <label class="control-label col-md-3">{:lang('PC端和移动端共用模板')}</label>
                                                             <div class="radio-list col-md-9">
                                                                 <label class="radio-inline">
-                                                                    <input type="radio" name="settheme" id="optionsRadios1" value="1" {eq name="Think.config.settheme" value="1"}checked="checked" {/eq} />{$Think.lang.v_yes}
+                                                                    <input type="radio" name="settheme" id="optionsRadios1" value="1" {eq name="Think.config.settheme" value="1"}checked="checked" {/eq} />{:lang('是')}
                                                                 </label>
                                                                 <label class="radio-inline">
-                                                                    <input type="radio" name="settheme" id="optionsRadios1" value="0" {eq name="Think.config.settheme" value="0"}checked="checked" {/eq} />{$Think.lang.v_no}
+                                                                    <input type="radio" name="settheme" id="optionsRadios1" value="0" {eq name="Think.config.settheme" value="0"}checked="checked" {/eq} />{:lang('否')}
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_display_module}<br />（{$Think.lang.v_please_check}）</label>
+                                                            <label class="control-label col-md-3">{:lang('后台要显示的模块')}<br />（{:lang('请勾选')}）</label>
                                                             <div class="col-md-8">
                                                                 <div class="panel-group accordion faq-content" id="accordion1">
                                                                     <div class="panel panel-default">
                                                                         <div id="collapse_1" class="panel-collapse collapse in">
                                                                             <div class="panel-body">
                                                                                 <div class="icheck-inline">
-                                                                                    <label class="cursor"><input name="siteinfo[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.siteinfo" value=""}checked="checked"{/neq} /> {$Think.lang.v_siteinfo}</label>
-                                                                                    <label class="cursor"><input name="field[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.field" value=""}checked="checked"{/neq} /> {$Think.lang.v_field}</label>
-                                                                                    <label class="cursor"><input name="guestbook[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.guestbook" value=""}checked="checked"{/neq} /> {$Think.lang.v_guestbook}</label>
-                                                                                    <label class="cursor"><input name="chat[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.chat" value=""}checked="checked"{/neq} /> {$Think.lang.v_chat}</label>
-                                                                                    <label class="cursor"><input name="ad[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.ad" value=""}checked="checked"{/neq} /> {$Think.lang.v_ad}</label>
-                                                                                    <label class="cursor"><input name="keyword[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.keyword" value=""}checked="checked"{/neq} /> {$Think.lang.v_keyword}</label>
-                                                                                    <label class="cursor"><input name="navigation[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.navigation" value=""}checked="checked"{/neq} /> {$Think.lang.v_navigation}</label>
-                                                                                    <label class="cursor"><input name="comment[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.comment" value=""}checked="checked"{/neq} /> {$Think.lang.v_comment}</label>
+                                                                                    <label class="cursor"><input name="siteinfo[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.siteinfo" value=""}checked="checked"{/neq} /> {:lang('网站设置')}</label>
+                                                                                    <label class="cursor"><input name="field[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.field" value=""}checked="checked"{/neq} /> {:lang('字段')}</label>
+                                                                                    <label class="cursor"><input name="guestbook[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.guestbook" value=""}checked="checked"{/neq} /> {:lang('留言')}</label>
+                                                                                    <label class="cursor"><input name="chat[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.chat" value=""}checked="checked"{/neq} /> {:lang('在线客服')}</label>
+                                                                                    <label class="cursor"><input name="ad[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.ad" value=""}checked="checked"{/neq} /> {:lang('广告')}</label>
+                                                                                    <label class="cursor"><input name="keyword[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.keyword" value=""}checked="checked"{/neq} /> {:lang('关键词')}</label>
+                                                                                    <label class="cursor"><input name="navigation[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.navigation" value=""}checked="checked"{/neq} /> {:lang('导航')}</label>
+                                                                                    <label class="cursor"><input name="comment[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.comment" value=""}checked="checked"{/neq} /> {:lang('评论')}</label>
                                                                                     <label class="cursor"><input name="area[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.area" value=""}checked="checked"{/neq} /> {$Think.lang.v_area}</label>
-                                                                                    <label class="cursor"><input name="user[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.user" value=""}checked="checked"{/neq} /> {$Think.lang.v_user}</label>
-                                                                                    <label class="cursor"><input name="authgroup[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.authgroup" value=""}checked="checked"{/neq} /> {$Think.lang.v_usergroup}</label>
-                                                                                    <label class="cursor"><input name="authrule[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.authrule" value=""}checked="checked"{/neq} /> {$Think.lang.v_auth_manage}</label>
-                                                                                    <label class="cursor"><input name="language[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.language" value=""}checked="checked"{/neq} /> {$Think.lang.v_language_manage}</label>
-                                                                                    <label class="cursor"><input name="module[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.module" value=""}checked="checked"{/neq} /> {$Think.lang.v_module_manage}</label>
-                                                                                    <label class="cursor"><input name="parameter[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.parameter" value=""}checked="checked"{/neq} /> {$Think.lang.v_config_setting}</label>
-                                                                                    <label class="cursor"><input name="databackup[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.databackup" value=""}checked="checked"{/neq} /> {$Think.lang.v_data}</label>
+                                                                                    <label class="cursor"><input name="user[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.user" value=""}checked="checked"{/neq} /> {:lang('用户')}</label>
+                                                                                    <label class="cursor"><input name="authgroup[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.authgroup" value=""}checked="checked"{/neq} /> {:lang('用户组')}</label>
+                                                                                    <label class="cursor"><input name="authrule[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.authrule" value=""}checked="checked"{/neq} /> {:lang('权限管理')}</label>
+                                                                                    <label class="cursor"><input name="language[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.language" value=""}checked="checked"{/neq} /> {:lang('语言管理')}</label>
+                                                                                    <label class="cursor"><input name="module[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.module" value=""}checked="checked"{/neq} /> {:lang('模块管理')}</label>
+                                                                                    <label class="cursor"><input name="parameter[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.parameter" value=""}checked="checked"{/neq} /> {:lang('参数设置')}</label>
+                                                                                    <label class="cursor"><input name="databackup[]" type="checkbox" value="1" {neq name="Think.config.isdisplay.databackup" value=""}checked="checked"{/neq} /> {:lang('数据库')}</label>
                                                                               </div>        
                                                                             </div>    
                                                                         </div>    
@@ -236,8 +236,8 @@
                                                 <div class="form-actions">
                                                     <div class="row">
                                                         <div class="col-md-offset-3 col-md-9">
-                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {$Think.lang.v_save}</button>
-                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{$Think.lang.v_goback}</button>
+                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {:lang('保存')}</button>
+                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{:lang('返回上一页')}</button>
                                                         </div>
                                                     </div>
                                                 </div>

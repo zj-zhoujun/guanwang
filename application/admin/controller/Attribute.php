@@ -19,7 +19,7 @@ class Attribute extends Base{
 		$lang = input('lang'); $moduleid = input('moduleid');
 		
 		$haveSort = SortModel::all(['moduleid'=>$moduleid,'lang'=>$lang]);
-		if($haveSort==false) $this->error(lang('c_add_sort_first'),url('Sort/index?moduleid='.$moduleid.'&lan='.$lang));//分类不存在
+		if($haveSort==false) $this->error(lang('清先添加分类'),url('Sort/index?moduleid='.$moduleid.'&lan='.$lang));//分类不存在
 		
         if(!request()->isPost()){
             $rs = AttributeModel::get($id);
@@ -33,7 +33,7 @@ class Attribute extends Base{
         }else{
 			$result = AttributeModel::edit($id);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'));
+			$this->success(lang('操作成功'));
         }		
 	}
 
@@ -60,7 +60,7 @@ class Attribute extends Base{
 		//删除对应属性值
 		Db::name("Attribute_value")->where("attid=".$id)->delete();
 		
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量删除数据
@@ -75,7 +75,7 @@ class Attribute extends Base{
 		    //删除对应属性值
 		    Db::name("Attribute_value")->where("attid=".$id)->delete();
 	    }
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 
 	//批量更新排序
@@ -89,7 +89,7 @@ class Attribute extends Base{
             AttributeModel::update($data);
         }
 		
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 
     //Ajax分类对应属性

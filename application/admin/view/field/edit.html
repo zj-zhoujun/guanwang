@@ -36,10 +36,10 @@
                     <!--页面导航 开始-->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_field} {$Think.lang.v_manage}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_field}</span></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('字段')} {:lang('管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{eq name="rs.id" value=""}{:lang('添加')}{else /}{:lang('编辑')}{/eq} {:lang('字段')}</span></li>
                         </ul>
                     </div>
                     <!--页面导航 结束-->
@@ -55,32 +55,32 @@
                                     <div class="portlet-body">
                                         <div class="tabbable-bordered">
                                             <div class="edit_nav_left">
-                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_field}</span>
+                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{eq name="rs.id" value=""}{:lang('添加')}{else /}{:lang('编辑')}{/eq} {:lang('字段')}</span>
                                             </div>
                                             <ul class="nav nav-tabs tabs-reversed"></ul>
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="tab_general">
                                                     <div class="form-body">
-                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{$Think.lang.v_error_tips}</div>
+                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{:lang('表单填写有误，清检查红色区域修正')}</div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_field} {$Think.lang.v_label}<span class="required" aria-required="true">*</span></label>
+                                                            <label class="control-label col-md-3">{:lang('字段')} {:lang('标签')}<span class="required" aria-required="true">*</span></label>
                                                             <div class="col-md-6">
                                                                 <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="fieldlabel" value="{$rs.fieldlabel}" /></div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_field} {$Think.lang.v_description}</label>
+                                                            <label class="control-label col-md-3">{:lang('字段')} {:lang('描述')}</label>
                                                             <div class="col-md-6">
                                                                 <input type="text" class="form-control" name="fieldtext" value="{$rs.fieldtext}" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_field} {$Think.lang.v_content_a}</label>
+                                                            <label class="control-label col-md-3">{:lang('字段')} {:lang('内容')}</label>
                                                             <div class="col-md-{neq name="Think.get.fieldtype" value="richtext"}6{else /}9{/neq}">
                                                                 {switch name="Think.get.fieldtype"}
                                                                     {case value="text"}<input name="fieldvalue" type="text" class="form-control" value="{$rs['fieldvalue']}">{/case}
-                                                                    {case value="imgupload"}<div class="input-group"><input type="text" name="fieldvalue" id="morepics1" value="{$rs['fieldvalue']}" class="form-control" /><span class="input-group-btn"><input type="button" onClick="upImage1();" value=" {$Think.lang.v_upload_img} " class="btn green" /></span></div>{/case}
-                                                                    {case value="fileupload"}<div class="input-group"><input name="fieldvalue" id="file" type="text" class="form-control" value="{$rs['fieldvalue']}" /><span class="input-group-btn"><input type="button" value=" {$Think.lang.v_upload_file} " class="btn green" onclick="upFiles();"></span></div>{/case}
+                                                                    {case value="imgupload"}<div class="input-group"><input type="text" name="fieldvalue" id="morepics1" value="{$rs['fieldvalue']}" class="form-control" /><span class="input-group-btn"><input type="button" onClick="upImage1();" value=" {:lang('上传图片')} " class="btn green" /></span></div>{/case}
+                                                                    {case value="fileupload"}<div class="input-group"><input name="fieldvalue" id="file" type="text" class="form-control" value="{$rs['fieldvalue']}" /><span class="input-group-btn"><input type="button" value=" {:lang('上传附件')} " class="btn green" onclick="upFiles();"></span></div>{/case}
                                                                     {case value="richtext"}<textarea name="fieldvalue" id="content1a" style="width:100%; height:300px;">{$rs['fieldvalue']}</textarea>{/case}
                                                                     {case value="textarea"}<textarea name="fieldvalue" class="form-control" rows="5">{$rs['fieldvalue']}</textarea>{/case}
                                                                     {default /}<input name="fieldvalue" type="text" class="form-control" value="{$rs['fieldvalue']}">
@@ -88,9 +88,9 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_sequence}</label>
+                                                            <label class="control-label col-md-3">{:lang('排序')}</label>
                                                             <div class="col-md-6">
-                                                                <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="sequence" value="{php}if(empty($rs['sequence'])){ echo "0"; }else{ echo $rs['sequence']; }{/php}" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{$Think.lang.v_require_number}！');this.value='0';}" /></div>
+                                                                <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="sequence" value="{php}if(empty($rs['sequence'])){ echo "0"; }else{ echo $rs['sequence']; }{/php}" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{:lang('必须为0或正整数')}！');this.value='0';}" /></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -98,8 +98,8 @@
                                                 <div class="form-actions">
                                                     <div class="row">
                                                         <div class="col-md-offset-3 col-md-9">
-                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {$Think.lang.v_save}</button>
-                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{$Think.lang.v_goback}</button>
+                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {:lang('保存')}</button>
+                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{:lang('返回上一页')}</button>
                                                         </div>
                                                     </div>
                                                 </div>

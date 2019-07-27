@@ -71,7 +71,7 @@
                 <div class="row margin-bottom-10">
                     <div class="pull-left col-md-7 col-sm-7 padding-left-15">
                         <ul class="breadcrumb">
-                            <li><a href="/"><i class="fa fa-home"></i>{$Think.lang.v_home}</a></li>
+                            <li><a href="/"><i class="fa fa-home"></i>{:lang('内容管理')}</a></li>
                             <li><a href="{:url('/product/index-1')}">{$Think.lang.product}</a></li>
                             {volist name="listnavigation" id="rs"}
                                 <li class="active"><a href="{:url('/'.$rs['urlroute'].'-p'.$rs['id'].'-1')}">{$rs.title}</a></li>
@@ -81,8 +81,8 @@
                     <div class="pull-right col-md-5 col-sm-5 padding-right-15">
                         <form name="kwsearch" method="get" onSubmit="return checksearch();" action="">
                             <div class="input-group">
-                                <input name="keyword" type="text" placeholder="{$Think.lang.v_quickfind}" class="form-control">
-                                <span class="input-group-btn"><button class="btn btn-primary" type="submit">{$Think.lang.v_search}</button></span>
+                                <input name="keyword" type="text" placeholder="{:lang('快速查找')}" class="form-control">
+                                <span class="input-group-btn"><button class="btn btn-primary" type="submit">{:lang('搜索')}</button></span>
                             </div>
                         </form>
                     </div> 
@@ -119,7 +119,7 @@
                 <!--产品列表 结束-->
                 <!--分页 开始-->
                 <div class="row">
-                    <div class="col-md-4 col-sm-4 items-info">{$Think.lang.v_total} {$lastPage} {$Think.lang.v_page} {$total} {$Think.lang.v_records}</div>
+                    <div class="col-md-4 col-sm-4 items-info">{:lang('共')} {$lastPage} {:lang('页')} {$total} {:lang('条记录')}</div>
                     <div class="col-md-8 col-sm-8">
                         {$list->render()}
                     </div>

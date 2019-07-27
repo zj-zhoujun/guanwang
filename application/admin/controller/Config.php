@@ -100,7 +100,7 @@ class Config extends Base{
             ];";
 			$configFile = CONF_PATH.request()->module().'/config.php';
 		    $result = file_put_contents($configFile,$str);
-		    $result ? $this->success(lang('c_success')) : $this->error(lang('c_edit_fail').$configFile.lang('c_file_auth'));
+		    $result ? $this->success(lang('操作成功')) : $this->error(lang('修改失败，请修改').$configFile.lang('文件权限'));
 		}
     }
 

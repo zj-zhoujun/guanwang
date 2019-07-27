@@ -25,7 +25,7 @@ class Siteinfo extends Base{
 			$action = $siteinfo ? 'edit' : 'add'; //判断是新增还是编辑
 			$result = SiteinfoModel::edit($action);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'));
+			$this->success(lang('操作成功'));
         }		
 	}
 

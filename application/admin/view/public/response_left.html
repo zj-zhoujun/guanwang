@@ -19,13 +19,13 @@
                                 {/switch}
                                 <span class="title">
 				                    {switch name="modulers.id"}
-                                        {case value="1"}{$Think.lang.v_product}{/case}
-                                        {case value="2"}{$Think.lang.v_news}{/case}
-                                        {case value="3"}{$Think.lang.v_about_module}{/case}
-                                        {case value="4"}{$Think.lang.v_project}{/case}
-                                        {case value="5"}{$Think.lang.v_down}{/case}
+                                        {case value="1"}{:lang('产品')}{/case}
+                                        {case value="2"}{:lang('新闻')}{/case}
+                                        {case value="3"}{:lang('单页')}{/case}
+                                        {case value="4"}{:lang('案例')}{/case}
+                                        {case value="5"}{:lang('下载')}{/case}
                                         {default /}{$modulers.title}
-                                    {/switch} {$Think.lang.v_manage}
+                                    {/switch} {:lang('管理')}
                                 </span>
                                 <span class="selected"></span>
                                 <span class="arrow open"></span>
@@ -35,13 +35,13 @@
                                 <li class="nav-item {if condition="$modulers.id eq $Think.get.moduleid and $Request.controller eq $modulers.tabledir and $Request.action eq 'edit'"} active open{/if}">
                                     <a href="{:url($modulers['tabledir'].'/edit?moduleid='.$modulers['id'].'&lang='.input('get.lang'))}" class="nav-link ">
                                         <i class="fa fa-edit"></i>
-                                        {$Think.lang.v_add}
+                                        {:lang('添加')}
 				                        {switch name="modulers.id"}
-                                            {case value="1"}{$Think.lang.v_product}{/case}
-                                            {case value="2"}{$Think.lang.v_news}{/case}
-                                            {case value="3"}{$Think.lang.v_about_module}{/case}
-                                            {case value="4"}{$Think.lang.v_project}{/case}
-                                            {case value="5"}{$Think.lang.v_down}{/case}
+                                            {case value="1"}{:lang('产品')}{/case}
+                                            {case value="2"}{:lang('新闻')}{/case}
+                                            {case value="3"}{:lang('单页')}{/case}
+                                            {case value="4"}{:lang('案例')}{/case}
+                                            {case value="5"}{:lang('下载')}{/case}
                                             {default /}{$modulers.title}
                                         {/switch}
                                         {if condition="$modulers.id eq $Think.get.moduleid and $Request.controller eq $modulers.tabledir and $Request.action eq 'edit'"}<span class="fa fa-angle-right pull-right"></span>{/if}
@@ -53,13 +53,13 @@
                                     <a href="{:url($modulers['tabledir'].'/index?moduleid='.$modulers['id'].'&lang='.input('get.lang'))}" class="nav-link ">
                                         <i class="fa fa-th"></i>
 				                        {switch name="modulers.id"}
-                                            {case value="1"}{$Think.lang.v_product}{/case}
-                                            {case value="2"}{$Think.lang.v_news}{/case}
-                                            {case value="3"}{$Think.lang.v_about_module}{/case}
-                                            {case value="4"}{$Think.lang.v_project}{/case}
-                                            {case value="5"}{$Think.lang.v_down}{/case}
+                                            {case value="1"}{:lang('产品')}{/case}
+                                            {case value="2"}{:lang('新闻')}{/case}
+                                            {case value="3"}{:lang('单页')}{/case}
+                                            {case value="4"}{:lang('案例')}{/case}
+                                            {case value="5"}{:lang('下载')}{/case}
                                             {default /}{$modulers.title}
-                                        {/switch} {$Think.lang.v_manage}
+                                        {/switch} {:lang('管理')}
                                         {if condition="$modulers.id eq $Think.get.moduleid and $Request.controller eq $modulers.tabledir and $Request.action eq 'index'"}<span class="fa fa-angle-right pull-right"></span>{/if}
                                     </a>
                                 </li>
@@ -68,13 +68,13 @@
                                     <a href="{:url('Sort/index?moduleid='.$modulers['id'].'&lang='.input('get.lang'))}" class="nav-link ">
                                         <i class="fa fa-sitemap"></i>
 				                        {switch name="modulers.id"}
-                                            {case value="1"}{$Think.lang.v_product}{/case}
-                                            {case value="2"}{$Think.lang.v_news}{/case}
-                                            {case value="3"}{$Think.lang.v_about_module}{/case}
-                                            {case value="4"}{$Think.lang.v_project}{/case}
-                                            {case value="5"}{$Think.lang.v_down}{/case}
+                                            {case value="1"}{:lang('产品')}{/case}
+                                            {case value="2"}{:lang('新闻')}{/case}
+                                            {case value="3"}{:lang('单页')}{/case}
+                                            {case value="4"}{:lang('案例')}{/case}
+                                            {case value="5"}{:lang('下载')}{/case}
                                             {default /}{$modulers.title}
-                                        {/switch} {$Think.lang.v_sort}
+                                        {/switch} {:lang('分类')}
                                         {if condition="$modulers.id eq $Think.get.moduleid and $Request.controller eq 'Sort'"}<span class="fa fa-angle-right pull-right"></span>{/if}
                                     </a>
                                 </li>
@@ -84,13 +84,13 @@
                                     <a href="{:url('Attribute/index?moduleid='.$modulers['id'].'&lang='.input('get.lang'))}" class="nav-link ">
                                         <i class="fa fa-tag"></i>
 				                        {switch name="modulers.id"}
-                                            {case value="1"}{$Think.lang.v_product}{/case}
-                                            {case value="2"}{$Think.lang.v_news}{/case}
-                                            {case value="3"}{$Think.lang.v_about_module}{/case}
-                                            {case value="4"}{$Think.lang.v_project}{/case}
-                                            {case value="5"}{$Think.lang.v_down}{/case}
+                                            {case value="1"}{:lang('产品')}{/case}
+                                            {case value="2"}{:lang('新闻')}{/case}
+                                            {case value="3"}{:lang('单页')}{/case}
+                                            {case value="4"}{:lang('案例')}{/case}
+                                            {case value="5"}{:lang('下载')}{/case}
                                             {default /}{$modulers.title}
-                                        {/switch} {$Think.lang.v_attribute}
+                                        {/switch} {:lang('属性')}
                                         {if condition="$modulers.id eq $Think.get.moduleid and $Request.controller eq 'Attribute'"}<span class="fa fa-angle-right pull-right"></span>{/if}
                                     </a>
                                 </li>
@@ -106,31 +106,31 @@
                             {/switch}">
                             <a href="javascript:;" class="nav-link nav-toggle">
 				                <i class="icon-globe"></i>
-                                <span class="title">{$Think.lang.v_global}</span>
+                                <span class="title">{:lang('全局管理')}</span>
                                 <span class="selected"></span><span class="arrow open"></span>
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item {eq name="Request.controller" value="Field"} active open{/eq}">
-                                    <a href="{:url('Field/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-list-alt"></i> {$Think.lang.v_field} {$Think.lang.v_manage}{eq name="Request.controller" value="Field"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
+                                    <a href="{:url('Field/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-list-alt"></i> {:lang('字段')} {:lang('管理')}{eq name="Request.controller" value="Field"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
                                 </li>
                                 {eq name="Think.config.chat" value="1"}
                                 <li class="nav-item {eq name="Request.controller" value="Chat"} active open{/eq}">
-                                    <a href="{:url('Chat/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-comments"></i> {$Think.lang.v_chat}{eq name="Request.controller" value="Chat"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
+                                    <a href="{:url('Chat/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-comments"></i> {:lang('在线客服')}{eq name="Request.controller" value="Chat"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
                                 </li>
                                 {/eq}
                                 {eq name="Think.config.advertisement" value="1"}
                                 <li class="nav-item {eq name="Request.controller" value="Ad"} active open{/eq}">
-                                    <a href="{:url('Ad/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-bullhorn"></i> {$Think.lang.v_ad} {$Think.lang.v_manage}{eq name="Request.controller" value="Ad"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
+                                    <a href="{:url('Ad/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-bullhorn"></i> {:lang('广告')} {:lang('管理')}{eq name="Request.controller" value="Ad"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
                                 </li>
                                 {/eq}
                                 {eq name="Think.config.navigation" value="1"}
                                 <li class="nav-item {eq name="Request.controller" value="Navigation"} active open{/eq}">
-                                    <a href="{:url('Navigation/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-navicon"></i> {$Think.lang.v_navigation} {$Think.lang.v_manage}{eq name="Request.controller" value="Navigation"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
+                                    <a href="{:url('Navigation/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-navicon"></i> {:lang('导航')} {:lang('管理')}{eq name="Request.controller" value="Navigation"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
                                 </li>
                                 {/eq}
                                 {eq name="Think.config.comment" value="1"}
                                 <li class="nav-item {eq name="Request.controller" value="Comment"} active open{/eq}">
-                                    <a href="{:url('Comment/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-commenting-o"></i> {$Think.lang.v_comment} {$Think.lang.v_manage}{eq name="Request.controller" value="Comment"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
+                                    <a href="{:url('Comment/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-commenting-o"></i> {:lang('评论')} {:lang('管理')}{eq name="Request.controller" value="Comment"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
                                 </li>
                                 {/eq}
                                 {eq name="Think.config.area" value="1"}
@@ -139,7 +139,7 @@
                                 </li>
                                 {/eq}
                                 <li class="nav-item {eq name="Request.controller" value="User"} active open{/eq}">
-                                    <a href="{:url('User/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-user"></i> {$Think.lang.v_user_manage}{eq name="Request.controller" value="User"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
+                                    <a href="{:url('User/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-user"></i> {:lang('用户管理')}{eq name="Request.controller" value="User"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
                                 </li>
                             </ul>
                         </li>
@@ -150,38 +150,38 @@
                             {/switch}">
                             <a href="javascript:;" class="nav-link nav-toggle">
 				                <i class="icon-settings"></i>
-                                <span class="title">{$Think.lang.v_system_manage}</span>
+                                <span class="title">{:lang('系统管理')}</span>
                                 <span class="selected"></span><span class="arrow open"></span>
                             </a>
                             <ul class="sub-menu">
                                 {eq name="Think.config.authgroup" value="1"}
                                 <li class="nav-item {eq name="Request.controller" value="AuthGroup"} active open{/eq}">
-                                    <a href="{:url('AuthGroup/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-users"></i> {$Think.lang.v_usergroup_manage}{eq name="Request.controller" value="AuthGroup"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
+                                    <a href="{:url('AuthGroup/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-users"></i> {:lang('用户组管理')}{eq name="Request.controller" value="AuthGroup"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
                                 </li>
                                 {/eq}
                                 {eq name="Think.config.authrule" value="1"}
                                 <li class="nav-item {eq name="Request.controller" value="AuthRule"} active open{/eq}">
-                                    <a href="{:url('AuthRule/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-briefcase"></i> {$Think.lang.v_auth_manage}{eq name="Request.controller" value="AuthRule"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
+                                    <a href="{:url('AuthRule/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-briefcase"></i> {:lang('权限管理')}{eq name="Request.controller" value="AuthRule"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
                                 </li>
                                 {/eq}
                                 {eq name="Think.config.language" value="1"}
                                 <li class="nav-item {eq name="Request.controller" value="Language"} active open{/eq}">
-                                    <a href="{:url('Language/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-language"></i> {$Think.lang.v_language_manage}{eq name="Request.controller" value="Language"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
+                                    <a href="{:url('Language/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-language"></i> {:lang('语言管理')}{eq name="Request.controller" value="Language"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
                                 </li>
                                 {/eq}
                                 {eq name="Think.config.module" value="1"}
                                 <li class="nav-item {eq name="Request.controller" value="Module"} active open{/eq}">
-                                    <a href="{:url('Module/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-cubes"></i> {$Think.lang.v_module_manage}{eq name="Request.controller" value="Module"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
+                                    <a href="{:url('Module/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-cubes"></i> {:lang('模块管理')}{eq name="Request.controller" value="Module"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
                                 </li>
                                 {/eq}
                                 {eq name="Think.config.parametersetting" value="1"}
                                 <li class="nav-item {eq name="Request.controller" value="Setconfig"} active open{/eq}">
-                                    <a href="{:url('Setconfig/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-cogs"></i> {$Think.lang.v_config_setting}{eq name="Request.controller" value="Setconfig"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
+                                    <a href="{:url('Setconfig/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-cogs"></i> {:lang('参数设置')}{eq name="Request.controller" value="Setconfig"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
                                 </li>
                                 {/eq}
                                 {eq name="Think.config.databackup" value="1"}
                                 <li class="nav-item {eq name="Request.controller" value="Databackup"} active open{/eq}">
-                                    <a href="{:url('Databackup/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-database"></i> {$Think.lang.v_data} {$Think.lang.v_backup}{eq name="Request.controller" value="Databackup"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
+                                    <a href="{:url('Databackup/index?lang='.input('get.lang'))}" class="nav-link "><i class="fa fa-database"></i> {:lang('数据库')} {:lang('备份')}{eq name="Request.controller" value="Databackup"}<span class="fa fa-angle-right pull-right"></span>{/eq}</a>
                                 </li>
                                 {/eq}
                             </ul>

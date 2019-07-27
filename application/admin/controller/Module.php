@@ -22,7 +22,7 @@ class Module extends Base{
 				
 			$result = ModuleModel::edit($id);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'));
+			$this->success(lang('操作成功'));
         }else{
             $rs = ModuleModel::get($id);
             $this->assign('rs',$rs);
@@ -46,11 +46,11 @@ class Module extends Base{
 	    $id=input('id');
         $module = ModuleModel::get($id);
 		
-		if(AttributeModel::all(['id'=>$id])==true) $this->error(lang('c_delete_module_att_first'));
-		if(SortModel::all(['id'=>$id])==true) $this->error(lang('c_delete_module_sort_first'));
+		if(AttributeModel::all(['id'=>$id])==true) $this->error(lang('清先删除该模块下的属性'));
+		if(SortModel::all(['id'=>$id])==true) $this->error(lang('清先删除该模块下的分类'));
 		
         $module->delete();
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量删除数据
@@ -62,12 +62,12 @@ class Module extends Base{
 		    $id=$selectid[$i];
 			$module = ModuleModel::get($id);
 			
-		    if(AttributeModel::all(['id'=>$id])==true) $this->error(lang('c_delete_module_att_first'));
-		    if(SortModel::all(['id'=>$id])==true) $this->error(lang('c_delete_module_sort_first'));
+		    if(AttributeModel::all(['id'=>$id])==true) $this->error(lang('清先删除该模块下的属性'));
+		    if(SortModel::all(['id'=>$id])==true) $this->error(lang('清先删除该模块下的分类'));
 			
             $module->delete();
 	    }
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 
 	//更新启用
@@ -77,13 +77,13 @@ class Module extends Base{
 		
 	    $CountDisabled = ModuleModel::all(['disabled'=>1])->count();
 	    $RsDisabled = ModuleModel::get($id);
-	    if($value==0 and $RsDisabled['disabled']==1 and $CountDisabled<2) $this->error(lang('c_atleast_enable'));
+	    if($value==0 and $RsDisabled['disabled']==1 and $CountDisabled<2) $this->error(lang('至少启用一项'));
 
         $data['id'] = (int)$id;
         $data['disabled'] = $value;
         ModuleModel::update($data);
 
-	    $this->success(lang('c_success'));
+	    $this->success(lang('操作成功'));
 	}
 
 	//批量更新排序
@@ -98,7 +98,7 @@ class Module extends Base{
             $data['listnum'] = $listnum[$i];
             ModuleModel::update($data);
         }
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 }
 

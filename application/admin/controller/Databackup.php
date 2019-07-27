@@ -32,20 +32,20 @@ class Databackup extends Base{
             if(input('Action') == 'backup'){
                 $mr->backup();
 				//备份成功
-				$this->success(lang('c_success'));
+				$this->success(lang('操作成功'));
             }elseif(input('Action') == 'RL'){
 		        //操作失败，仅限开发者使用
-		        $this->error(lang('c_fail_only_developer'));
+		        $this->error(lang('操作失败，仅限开发者'));
 
                 $mr->recover(input('File'));
 				//还原成功
-				$this->success(lang('c_success'));
+				$this->success(lang('操作成功'));
             }elseif(input('Action') == 'Del'){
                 if (@unlink($DataDir . input('File'))) {
 				//删除成功
-				$this->success(lang('c_success'));
+				$this->success(lang('操作成功'));
                 }else{
-                    $this->error(lang('c_fail'));
+                    $this->error(lang('操作失败'));
                 }
             }
             if (input('Action') == 'download') {

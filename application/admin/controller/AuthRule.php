@@ -26,7 +26,7 @@ class AuthRule extends Base{
         if(request()->isPost()){
 			$result = AuthRuleModel::edit($id);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'));
+			$this->success(lang('操作成功'));
         }else{
             $rs = AuthRuleModel::get($id);
             $this->assign('rs',$rs);
@@ -41,12 +41,12 @@ class AuthRule extends Base{
     public function delete_one($id){
         //禁止删除含有子权限的权限
         $hasChild = AuthRuleModel::all(['parentid'=>'id']);
-        if($hasChild) $this->error(lang('c_delete_child_auth_first'));
+        if($hasChild) $this->error(lang('清先删除该权限下的子权限'));
 
         $AuthRule = AuthRuleModel::get($id);
         $AuthRule->delete();
 		
-        $this->success(lang('c_success'));
+        $this->success(lang('操作成功'));
     }	
 	
 	//批量删除数据
@@ -59,13 +59,13 @@ class AuthRule extends Base{
             //禁止删除含有子权限的权限
             $hasChild = AuthRuleModel::all(['parentid'=>'id']);
             if($hasChild){
-                $this->error(lang('c_delete_child_auth_first'));
+                $this->error(lang('清先删除该权限下的子权限'));
 				break;
             }
 			$AuthRule = AuthRuleModel::get($id);
             $AuthRule->delete();
 	    }
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	

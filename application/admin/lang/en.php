@@ -337,8 +337,8 @@ return [
 	 
 //后台控制器语言包
     //后台控制器公共语言包
-	 'c_success' => 'Success',
-	 'c_success_login' => 'Login success',
+	 '操作成功' => 'Success',
+	 '操作成功_login' => 'Login success',
 	 'c_fail' => 'Fail',
 	 'c_add_sort_first' => 'Please add classification',
 	 'c_add_area' => 'Please add area',

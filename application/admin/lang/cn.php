@@ -328,10 +328,10 @@ return [
 	 
 //后台控制器语言包
     //后台控制器公共语言包
-	 'c_success' => '操作成功',
+	 '操作成功' => '操作成功',
 	 'c_success_login' => '登陆成功',
 	 'c_fail' => '操作失败',
-	 'c_add_sort_first' => '请先添加分类',
+	 '清先添加分类' => '请先添加分类',
 	 'c_add_area' => '请先添加地区',
 	 'c_add_module_first' => '请先添加模块',
 	 'c_add_auth_first' => '请先添加权限',

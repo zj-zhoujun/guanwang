@@ -22,10 +22,10 @@
                     <!--页面导航 开始-->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_system_manage}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_module_manage}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_module}</span></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('系统管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('模块管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{eq name="rs.id" value=""}{:lang('添加')}{else /}{:lang('编辑')}{/eq} {:lang('模块')}</span></li>
                         </ul>
                     </div>
                     <!--页面导航 结束-->
@@ -40,107 +40,107 @@
                                     <div class="portlet-body">
                                         <div class="tabbable-bordered">
                                             <div class="edit_nav_left">
-                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{eq name="rs.id" value=""}{$Think.lang.v_add}{else /}{$Think.lang.v_edit}{/eq} {$Think.lang.v_module}</span>
+                                                <i class="fa fa-edit font-white"></i> <span class="font-white">{eq name="rs.id" value=""}{:lang('添加')}{else /}{:lang('编辑')}{/eq} {:lang('模块')}</span>
                                             </div>
                                             <ul class="nav nav-tabs tabs-reversed"></ul>
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="tab_general">
                                                     <div class="form-body">
-                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{$Think.lang.v_error_tips}</div>
+                                                        <div class="alert alert-danger display-hide"><button class="close" data-close="alert"></button>{:lang('表单填写有误，清检查红色区域修正')}</div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_module_name}<span class="required" aria-required="true">*</span></label>
+                                                            <label class="control-label col-md-3">{:lang('模块名称')}<span class="required" aria-required="true">*</span></label>
                                                             <div class="col-md-4">
                                                                 <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="title" value="{$rs.title}" placeholder="{$Think.lang.v_module_name_tips}" /></div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_module_mulu}<span class="required" aria-required="true">*</span></label>
+                                                            <label class="control-label col-md-3">{:lang('目录')}<span class="required" aria-required="true">*</span></label>
                                                             <div class="col-md-4">
                                                                 <div class="input-icon right"><i class="fa"></i><input type="text" class="form-control" name="tabledir" value="{$rs.tabledir}" placeholder="{$Think.lang.v_module_mulu_tips}" readonly="readonly" /></div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_sequence}</label>
+                                                            <label class="control-label col-md-3">{:lang('排序')}</label>
                                                             <div class="col-md-4">
-                                                                <input type="text" class="form-control" name="sequence" value="{php}if(empty($rs['sequence'])){ echo "0"; }else{ echo $rs['sequence']; }{/php}" onKeydown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{$Think.lang.v_require_number}！');this.value='0';}" />
+                                                                <input type="text" class="form-control" name="sequence" value="{php}if(empty($rs['sequence'])){ echo "0"; }else{ echo $rs['sequence']; }{/php}" onKeydown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{:lang('必须为0或正整数')}！');this.value='0';}" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_enable_ornot}</label>
+                                                            <label class="control-label col-md-3">{:lang('是否启用')}</label>
                                                             <div class="radio-list">
                                                                 <label class="radio-inline">
-                                                                    <input type="radio" name="disabled" id="optionsRadios1" value="1"{if condition="$rs['disabled'] eq 1"} checked="checked"{/if} /> {$Think.lang.v_enable}
+                                                                    <input type="radio" name="disabled" id="optionsRadios1" value="1"{if condition="$rs['disabled'] eq 1"} checked="checked"{/if} /> {:lang('启用')}
                                                                 </label>
                                                                 <label class="radio-inline">
-                                                                    <input type="radio" name="disabled" id="optionsRadios1" value="0"{if condition="$rs['disabled'] eq 0"} checked="checked"{/if} />{$Think.lang.v_disable}
+                                                                    <input type="radio" name="disabled" id="optionsRadios1" value="0"{if condition="$rs['disabled'] eq 0"} checked="checked"{/if} />{:lang('禁用')}
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_listnum}</label>
+                                                            <label class="control-label col-md-3">{:lang('前台列表显示数量')}</label>
                                                             <div class="col-md-4">
-                                                                <input type="text" class="form-control" name="listnum" value="{if condition="empty($rs['listnum'])"}16{else/}{$rs['listnum']}{/if}" onKeydown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{$Think.lang.v_require_number}！');this.value='16';}" />
+                                                                <input type="text" class="form-control" name="listnum" value="{if condition="empty($rs['listnum'])"}16{else/}{$rs['listnum']}{/if}" onKeydown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{:lang('必须为0或正整数')}！');this.value='16';}" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">{$Think.lang.v_config_setting}</label>
+                                                            <label class="control-label col-md-3">{:lang('参数设置')}</label>
                                                             <div class="col-md-9">
                                                                 <div class="checkbox-list">
                                                                     {php}$isdisplay_array=explode(',',$rs['isdisplay']);{/php}
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="attribute" {if condition="(in_array('attribute',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_enable_ornot} {$Think.lang.v_attribute}
+                                                                        <input type="checkbox" name="isdisplay[]" value="attribute" {if condition="(in_array('attribute',$isdisplay_array))"}checked="checked"{/if}>{:lang('是否启用')} {:lang('属性')}
                                                                     </label>
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="area" {if condition="(in_array('area',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_enable_ornot} {$Think.lang.v_area}
+                                                                        <input type="checkbox" name="isdisplay[]" value="area" {if condition="(in_array('area',$isdisplay_array))"}checked="checked"{/if}>{:lang('是否启用')} {$Think.lang.v_area}
                                                                     </label>
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="morecontents" {if condition="(in_array('morecontents',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_enable_ornot} {$Think.lang.v_morecontents}
+                                                                        <input type="checkbox" name="isdisplay[]" value="morecontents" {if condition="(in_array('morecontents',$isdisplay_array))"}checked="checked"{/if}>{:lang('是否启用')} {:lang('多内容')}
                                                                     </label>
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="thumb" {if condition="(in_array('thumb',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_enable_ornot} {$Think.lang.v_single_picture_upload}
+                                                                        <input type="checkbox" name="isdisplay[]" value="thumb" {if condition="(in_array('thumb',$isdisplay_array))"}checked="checked"{/if}>{:lang('是否启用')} {:lang('单图上传')}
                                                                     </label>
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="morepics" {if condition="(in_array('morepics',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_enable_ornot} {$Think.lang.v_more_pictures_upload}
+                                                                        <input type="checkbox" name="isdisplay[]" value="morepics" {if condition="(in_array('morepics',$isdisplay_array))"}checked="checked"{/if}>{:lang('是否启用')} {:lang('多图上传')}
                                                                     </label>
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="fileurl" {if condition="(in_array('fileurl',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_enable_ornot} {$Think.lang.v_single_file_upload}
+                                                                        <input type="checkbox" name="isdisplay[]" value="fileurl" {if condition="(in_array('fileurl',$isdisplay_array))"}checked="checked"{/if}>{:lang('是否启用')} {:lang('单附件上传')}
                                                                     </label>
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="morefiles" {if condition="(in_array('morefiles',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_enable_ornot} {$Think.lang.v_more_files_upload}
+                                                                        <input type="checkbox" name="isdisplay[]" value="morefiles" {if condition="(in_array('morefiles',$isdisplay_array))"}checked="checked"{/if}>{:lang('是否启用')} {:lang('多附件上传')}
                                                                     </label>
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="price" {if condition="(in_array('price',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_enable_ornot} {$Think.lang.v_price}
+                                                                        <input type="checkbox" name="isdisplay[]" value="price" {if condition="(in_array('price',$isdisplay_array))"}checked="checked"{/if}>{:lang('是否启用')} {:lang('价格')}
                                                                     </label>
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="hits" {if condition="(in_array('hits',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_enable_ornot} {$Think.lang.v_click}
+                                                                        <input type="checkbox" name="isdisplay[]" value="hits" {if condition="(in_array('hits',$isdisplay_array))"}checked="checked"{/if}>{:lang('是否启用')} {:lang('点击数')}
                                                                     </label>
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="client" {if condition="(in_array('client',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_enable_ornot} {$Think.lang.v_client}
+                                                                        <input type="checkbox" name="isdisplay[]" value="client" {if condition="(in_array('client',$isdisplay_array))"}checked="checked"{/if}>{:lang('是否启用')} {:lang('客户端')}
                                                                     </label>
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="status" {if condition="(in_array('status',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_enable_ornot} {$Think.lang.v_status}
+                                                                        <input type="checkbox" name="isdisplay[]" value="status" {if condition="(in_array('status',$isdisplay_array))"}checked="checked"{/if}>{:lang('是否启用')} {:lang('状态')}
                                                                     </label>
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="addtime" {if condition="(in_array('addtime',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_enable_ornot} {$Think.lang.v_adddate}
+                                                                        <input type="checkbox" name="isdisplay[]" value="addtime" {if condition="(in_array('addtime',$isdisplay_array))"}checked="checked"{/if}>{:lang('是否启用')} {:lang('添加日期')}
                                                                     </label>
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="linkurl" {if condition="(in_array('linkurl',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_enable_ornot} {$Think.lang.v_jump_url}
+                                                                        <input type="checkbox" name="isdisplay[]" value="linkurl" {if condition="(in_array('linkurl',$isdisplay_array))"}checked="checked"{/if}>{:lang('是否启用')} {:lang('跳转地址')}
                                                                     </label>
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="sort" {if condition="(in_array('sort',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_enable_ornot} {$Think.lang.v_sort}
+                                                                        <input type="checkbox" name="isdisplay[]" value="sort" {if condition="(in_array('sort',$isdisplay_array))"}checked="checked"{/if}>{:lang('是否启用')} {:lang('分类')}
                                                                     </label>
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="sortimg" {if condition="(in_array('sortimg',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_enable_ornot} {$Think.lang.v_sort} {$Think.lang.v_img}
+                                                                        <input type="checkbox" name="isdisplay[]" value="sortimg" {if condition="(in_array('sortimg',$isdisplay_array))"}checked="checked"{/if}>{:lang('是否启用')} {:lang('分类')} {:lang('图片')}
                                                                     </label>
                                                                     
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="addinfo" {if condition="(in_array('addinfo',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_enable_ornot} {$Think.lang.v_addinfo}
+                                                                        <input type="checkbox" name="isdisplay[]" value="addinfo" {if condition="(in_array('addinfo',$isdisplay_array))"}checked="checked"{/if}>{:lang('是否启用')} {:lang('添加信息')}
                                                                     </label>
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="leftdisplay" {if condition="(in_array('leftdisplay',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_leftdisplay}
+                                                                        <input type="checkbox" name="isdisplay[]" value="leftdisplay" {if condition="(in_array('leftdisplay',$isdisplay_array))"}checked="checked"{/if}>{:lang('左侧模块是否展开')}
                                                                     </label>
                                                                     <label class="checkbox-inline check_cursor">
-                                                                        <input type="checkbox" name="isdisplay[]" value="keywordlink" {if condition="(in_array('keywordlink',$isdisplay_array))"}checked="checked"{/if}>{$Think.lang.v_keywordlink}
+                                                                        <input type="checkbox" name="isdisplay[]" value="keywordlink" {if condition="(in_array('keywordlink',$isdisplay_array))"}checked="checked"{/if}>{:lang('关键词内链')}
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -150,8 +150,8 @@
                                                 <div class="form-actions">
                                                     <div class="row">
                                                         <div class="col-md-offset-3 col-md-9">
-                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {$Think.lang.v_save}</button>
-                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{$Think.lang.v_goback}</button>
+                                                            <button type="submit" class="btn green"><i class="fa fa-check"></i> {:lang('保存')}</button>
+                                                            <button type="button" class="btn default" onclick="javascript:history.back(-1);">{:lang('返回上一页')}</button>
                                                         </div>
                                                     </div>
                                                 </div>

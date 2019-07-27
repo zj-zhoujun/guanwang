@@ -25,7 +25,7 @@
             <!--底部产品中心 结束-->
             <!--底部新闻动态 开始-->
             <div class="col-md-2 col-sm-6 pre-footer-col">
-                <h2>{$Think.lang.v_news}</h2>
+                <h2>{:lang('新闻')}</h2>
                 <ul class="list-unstyled">
                     {tag:common name="rs" table="sort" where="lang='en' and moduleid=2 and parentid=0" num="6" order="sequence desc,id desc"}
                         <li><i class="fa fa-angle-right"></i> <a href="{:url('/en/'.$rs['urlroute'].'-n'.$rs['id'].'-1')}">{$rs.title}</a></li>

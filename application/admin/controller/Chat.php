@@ -20,7 +20,7 @@ class Chat extends Base{
         }else{
 			$result = ChatModel::edit($id);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'));
+			$this->success(lang('操作成功'));
         }		
 	}
 
@@ -40,7 +40,7 @@ class Chat extends Base{
 	    $id=input('id');
         $chat = ChatModel::get($id);
         $chat->delete();
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量删除数据
@@ -53,7 +53,7 @@ class Chat extends Base{
 			$chat = ChatModel::get($id);
             $chat->delete();
 	    }
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 
 	
@@ -72,7 +72,7 @@ class Chat extends Base{
             ChatModel::update($data);
         }
 		
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 
 }

@@ -22,28 +22,28 @@
                     <!--页面导航 开始-->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_global}</span><i class="fa fa-angle-right"></i></li>
-                            <li><span>{$Think.lang.v_ad} {$Think.lang.v_manage}</span></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('全局管理')}</span><i class="fa fa-angle-right"></i></li>
+                            <li><span>{:lang('广告')} {:lang('管理')}</span></li>
                         </ul>
                     </div>
                     <!--页面导航 结束-->
                     <!--页面头部 结束-->
                     <!--右侧主体 开始-->
                     <div class="col-md-12 margin-top-10 margin-bottom-10">
-                        <button type="button" class="btn green" onclick="javascript:window.location.href='{:url('Ad/edit?lang='.input('get.lang'))}'">{$Think.lang.v_add} {$Think.lang.v_ad}</button>
+                        <button type="button" class="btn green" onclick="javascript:window.location.href='{:url('Ad/edit?lang='.input('get.lang'))}'">{:lang('添加')} {:lang('广告')}</button>
                     </div>
                     <form name="form2" id="form2" action="" method="post">
                         <table class="table table-striped table-bordered table-hover table-checkable order-column">
                             <thead>
                                 <tr class="bg-default">
                                     <th>ID</th>
-                                    <th>{$Think.lang.v_title}</th>
-                                    <th>{$Think.lang.v_img}</th>
-                                    <th>{$Think.lang.v_type}</th>
-                                    <th>{$Think.lang.v_position}</th>
-                                    {if condition="!$Request.isMobile"}<th>{$Think.lang.v_sequence}</th>{/if}
-                                    <th>{$Think.lang.v_do}</th>
+                                    <th>{:lang('标题')}</th>
+                                    <th>{:lang('图片')}</th>
+                                    <th>{:lang('类型')}</th>
+                                    <th>{:lang('位置')}</th>
+                                    {if condition="!$Request.isMobile"}<th>{:lang('排序')}</th>{/if}
+                                    <th>{:lang('操作')}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,30 +55,30 @@
                                     <td><a href="{$rs.thumb}" target="_blank"><img src="{$rs.thumb}" {if condition="!$Request.isMobile"}width="300"{else /}width="50" height="50"{/if} border="0" /></a></td>
                                     <td>
 						                {switch name="rs.typeid"}
-                                            {case value="1"}{$Think.lang.v_banner}{/case}
-                                            {case value="2"}{$Think.lang.v_friendlink}{/case}
-                                            {default /}{$Think.lang.v_banner}
+                                            {case value="1"}{:lang('幻灯片')}{/case}
+                                            {case value="2"}{:lang('友情链接')}{/case}
+                                            {default /}{:lang('幻灯片')}
                                         {/switch}
                                     </td>
                                     <td>
 						                {switch name="rs.position"}
-                                            {case value="Index"}{$Think.lang.v_index}{/case}
-                                            {case value="Product"}{$Think.lang.v_product}{/case}
-                                            {case value="News"}{$Think.lang.v_news}{/case}
-                                            {case value="Down"}{$Think.lang.v_down}{/case}
-                                            {case value="About"}{$Think.lang.v_about_module}{/case}
-                                            {case value="Project"}{$Think.lang.v_project}{/case}
+                                            {case value="Index"}{:lang('首页')}{/case}
+                                            {case value="Product"}{:lang('产品')}{/case}
+                                            {case value="News"}{:lang('新闻')}{/case}
+                                            {case value="Down"}{:lang('下载')}{/case}
+                                            {case value="About"}{:lang('单页')}{/case}
+                                            {case value="Project"}{:lang('案例')}{/case}
                                             {default /}{$rs['position']}
-                                        {/switch}{$Think.lang.v_module}&nbsp;&nbsp;
+                                        {/switch}{:lang('模块')}&nbsp;&nbsp;
                                     </td>
-                                    {if condition="!$Request.isMobile"}<td><input name="sequence[]" type="text" value="{$rs['sequence']}" class="form-control input-sm" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{$Think.lang.v_require_number}！');this.value='0';}" /></td>{/if}
-                                    <td><a href="{:url('Ad/edit?id='.$rs['id'].'&lang='.input('get.lang'))}" class="btn green btn-sm"><i class="fa fa-edit"></i> {$Think.lang.v_edit}</a><a class="btn red-flamingo btn-sm" onClick='return confirm("{$Think.lang.v_confirm_delete}！");' href="{:url('ad/delete_one?id='.$rs['id'])}"><i class="fa fa-times"></i> {$Think.lang.v_delete}</a></td>
+                                    {if condition="!$Request.isMobile"}<td><input name="sequence[]" type="text" value="{$rs['sequence']}" class="form-control input-sm" onKeyDown="if(event.keyCode==13)event.returnValue=false" onChange="if(/\D/.test(this.value)){alert('{:lang('必须为0或正整数')}！');this.value='0';}" /></td>{/if}
+                                    <td><a href="{:url('Ad/edit?id='.$rs['id'].'&lang='.input('get.lang'))}" class="btn green btn-sm"><i class="fa fa-edit"></i> {:lang('编辑')}</a><a class="btn red-flamingo btn-sm" onClick='return confirm("{$Think.lang.v_confirm_delete}！");' href="{:url('ad/delete_one?id='.$rs['id'])}"><i class="fa fa-times"></i> {:lang('删除')}</a></td>
                                 </tr>
                               {/volist}
                                 <tr>
                                     <td colspan="7">
-                                        <div class="col-md-7"><div class="pull-left pdl5">{$list->render()}</div><div class="pull-left lh31 pdl5">{$Think.lang.v_total} {$lastPage} {$Think.lang.v_page} {$total} {$Think.lang.v_records}</div></div>
-                                        <div class="col-md-5"><div class="pull-right"><button type="button" class="btn blue" onclick="CheckOthers(this.form);"><i class="fa fa-check"></i> {$Think.lang.v_select_all}</button>{if condition="!$Request.isMobile"}<button type="button" class="btn green" onClick='ConfirmDel("","{:url('ad/update_all')}","update");'><i class="fa fa-arrow-circle-o-up"></i> {$Think.lang.v_update_all}</button>{/if}<button type="button" class="btn red-flamingo" onClick='ConfirmDel("{$Think.lang.v_confirm_delete}！","{:url('ad/delete_all')}","delete");'><i class="fa fa-times"></i> {$Think.lang.v_delete_select}</button></div></div>
+                                        <div class="col-md-7"><div class="pull-left pdl5">{$list->render()}</div><div class="pull-left lh31 pdl5">{:lang('共')} {$lastPage} {:lang('页')} {$total} {:lang('条记录')}</div></div>
+                                        <div class="col-md-5"><div class="pull-right"><button type="button" class="btn blue" onclick="CheckOthers(this.form);"><i class="fa fa-check"></i> {:lang('全选或反选')}</button>{if condition="!$Request.isMobile"}<button type="button" class="btn green" onClick='ConfirmDel("","{:url('ad/update_all')}","update");'><i class="fa fa-arrow-circle-o-up"></i> {:lang('批量更新')}</button>{/if}<button type="button" class="btn red-flamingo" onClick='ConfirmDel("{$Think.lang.v_confirm_delete}！","{:url('ad/delete_all')}","delete");'><i class="fa fa-times"></i> {:lang('删除所选')}</button></div></div>
                                     </td>
                                 </tr>
                             </tbody>

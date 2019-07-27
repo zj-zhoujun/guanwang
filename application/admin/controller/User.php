@@ -18,7 +18,7 @@ class User extends Base{
 		$lang = input('lang');
 		
 	    //判断用户组是否存在
-	    if(AuthGroupModel::all(['status'=>1])==false) $this->error(lang('c_add_authgroup_first'));
+	    if(AuthGroupModel::all(['status'=>1])==false) $this->error(lang('清先添加用户组'));
 		
 	    if(!request()->isPost()){
 		    //所属用户组
@@ -35,7 +35,7 @@ class User extends Base{
 
 			$result = UserModel::edit($id);
 			if($result < 1) return $result->getError();
-			$this->success(lang('c_success'));
+			$this->success(lang('操作成功'));
 		}
     }
 
@@ -62,7 +62,7 @@ class User extends Base{
 		$AuthGroupAccess = AuthGroupAccessModel::get($id);
         $AuthGroupAccess->delete($id);
 
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 	//批量删除管理员
@@ -81,7 +81,7 @@ class User extends Base{
 			$AuthGroupAccess = AuthGroupAccessModel::get($id);
             $AuthGroupAccess->delete();
 	    }
-		$this->success(lang('c_success'));
+		$this->success(lang('操作成功'));
     }	
 	
 }

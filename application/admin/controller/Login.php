@@ -47,12 +47,12 @@ class Login extends Controller {
             $username = input('post.username'); $password = input('post.password'); $verify = input('post.verify');
             //验证码是否正确
             $captcha = new \think\captcha\Captcha();
-            if(!$captcha->check($verify)) $this->error(lang('c_error_verify'));
+            if(!$captcha->check($verify)) $this->error(lang('验证码错误'));
 
             //账号密码是否正确
             $userWhere['username'] = $username; $userWhere['password'] = md5($password);
             $user = Db::name('user')->where($userWhere)->find();
-            if(!$user) $this->error(lang('c_error_username_or_password'));
+            if(!$user) $this->error(lang('用户名或密码错误'));
 		
             $userid = $user['id'];
             //写入session
@@ -74,7 +74,7 @@ class Login extends Controller {
             session('system_url',$licenseDomain);//授权URL
             session('system_version','v5.0.7_20170429');//系统版本
             //重定向到首页
-            $this->success(lang('c_success_login'),url('Index/index?lang='.input('lang')));
+            $this->success(lang('登陆成功'),url('Index/index?lang='.input('lang')));
 		}
     }
 
